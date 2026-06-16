@@ -1,26 +1,287 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import "tailwindcss";
 
+@theme {
+    --font-sans: "PT Sans", system-ui, sans-serif;
+}
+
+html,
+body {
+    font-family: "Actor", sans-serif;
+    background: transparent;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #ffffff;
+    --foreground: #0a0a0a;
+
+    --primary-blue: #2563eb;
+    --primary-pink: #ff2fb2;
+    --primary-red: #ff3b30;
+    --primary-yellow: #ffb800;
+    --primary-purple: #7c3aed;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+    box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+    scroll-behavior: auto;
+    background: transparent;
+    padding: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    color: #0a0a0a;
+    overflow-x: hidden;
+}
+
+button,
+a {
+    cursor: pointer;
+}
+
+::selection {
+    background: #ff4fd8;
+    color: #ffffff;
+}
+
+html {
+    scroll-behavior: auto !important;
+}
+
+body {
+    overscroll-behavior: none;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+}
+
+[data-smooth-transform] {
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+.heavy-blur {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+@media (min-width: 768px) {
+    html,
+    body,
+    a,
+    button {
+        cursor: none;
+    }
+}
+
+/* ─── Liquid Glass System ─────────────────────────────────────────── */
+
+/*
+  Liquid glass = solid color base + luminous border that catches light.
+  The "glass" effect comes from:
+    1. A bright top-edge specular (inset highlight)
+    2. A multi-layer border: white inner edge + subtle colored halo outer ring
+    3. A slow light-sweep animation (the shine beam passing across)
+    4. Depth via layered box-shadows
+*/
+
+/* ── Glass card — translucent frosted glass ── */
+.glass-card {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    border: 1.5px solid rgba(255, 255, 255, 0.65);
+    outline: 1px solid rgba(180, 210, 255, 0.30);
+    outline-offset: -2px;
+    box-shadow:
+        0 28px 80px rgba(0, 0, 0, 0.08),
+        inset 0 2px 1px rgba(255, 255, 255, 0.90),
+        inset 0 -1px 2px rgba(0, 0, 0, 0.03),
+        0 0 0 1px rgba(200, 220, 255, 0.18),
+        0 0 32px rgba(37, 99, 235, 0.05);
+}
+
+/* ── Glass item — inner frosted elements ── */
+.glass-item {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1.5px solid rgba(255, 255, 255, 0.70);
+    outline: 1px solid rgba(180, 210, 255, 0.22);
+    outline-offset: -2px;
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.05),
+        inset 0 1.5px 1px rgba(255, 255, 255, 0.85),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.02),
+        0 0 0 1px rgba(200, 220, 255, 0.14);
+}
+
+/* ── Primary button — solid blue + glass border treatment ── */
+.btn-glass-primary {
+    position: relative;
+    overflow: hidden;
+    background: #2563eb;
+    /* Luminous border */
+    border: 1.5px solid rgba(255, 255, 255, 0.42);
+    box-shadow:
+        /* Depth */
+        0 14px 34px rgba(37, 99, 235, 0.32),
+        /* Top specular highlight */
+        inset 0 1.5px 1px rgba(255, 255, 255, 0.55),
+        /* Bottom inner shadow */
+        inset 0 -1px 1px rgba(0, 0, 0, 0.18),
+        /* Outer glow ring */
+        0 0 0 1px rgba(37, 99, 235, 0.28);
+    color: #fff;
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+/* Sweep beam */
+.btn-glass-primary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        108deg,
+        transparent 20%,
+        rgba(255, 255, 255, 0.38) 50%,
+        transparent 80%
+    );
+    transform: translateX(-130%);
+    transition: transform 0.55s ease;
+}
+
+.btn-glass-primary:hover {
+    transform: scale(1.03);
+    box-shadow:
+        0 18px 42px rgba(37, 99, 235, 0.38),
+        inset 0 1.5px 1px rgba(255, 255, 255, 0.6),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.18),
+        0 0 0 1px rgba(37, 99, 235, 0.32);
+}
+
+.btn-glass-primary:hover::before {
+    transform: translateX(130%);
+}
+
+/* ── Secondary button — white base + glass border ── */
+.btn-glass-secondary {
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.9);
+    outline: 1px solid rgba(180, 210, 255, 0.3);
+    outline-offset: -2px;
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.07),
+        inset 0 1.5px 1px rgba(255, 255, 255, 1),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.04),
+        0 0 0 1px rgba(200, 220, 255, 0.2);
+    color: #0a0a0a;
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.btn-glass-secondary::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        108deg,
+        transparent 20%,
+        rgba(210, 230, 255, 0.5) 50%,
+        transparent 80%
+    );
+    transform: translateX(-130%);
+    transition: transform 0.55s ease;
+}
+
+.btn-glass-secondary:hover {
+    transform: translateY(-1px);
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.1),
+        inset 0 1.5px 1px rgba(255, 255, 255, 1),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.04),
+        0 0 0 1px rgba(180, 210, 255, 0.28);
+}
+
+.btn-glass-secondary:hover::before {
+    transform: translateX(130%);
+}
+
+/* ── Gradient button (multi-color) + glass border ── */
+.btn-glass-gradient {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        #2563eb 0%,
+        #ff2fb2 50%,
+        #ffb800 100%
+    );
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    box-shadow:
+        0 16px 42px rgba(255, 47, 178, 0.28),
+        inset 0 1.5px 1px rgba(255, 255, 255, 0.5),
+        inset 0 -1px 1px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(255, 47, 178, 0.22);
+    color: #fff;
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+.btn-glass-gradient::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        108deg,
+        transparent 20%,
+        rgba(255, 255, 255, 0.38) 50%,
+        transparent 80%
+    );
+    transform: translateX(-130%);
+    transition: transform 0.55s ease;
+}
+
+.btn-glass-gradient:hover {
+    transform: scale(1.03);
+}
+
+.btn-glass-gradient:hover::before {
+    transform: translateX(130%);
+}
+
+/* ── About section responsive scroll height ── */
+.about-section {
+    min-height: 350vh;
+}
+
+@media (min-width: 1024px) {
+    .about-section {
+        min-height: 500vh;
+    }
+}
+
+/* ── Marquee animation ── */
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+.marquee-track {
+    animation: marquee 22s linear infinite;
+}
+
+.marquee-track:hover {
+    animation-play-state: paused;
 }
