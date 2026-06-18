@@ -55,7 +55,7 @@ export function Navbar() {
             <LiquidGlassBubble
               accent="#2563eb"
               accentLight="#60a5fa"
-              className="rounded-full px-5 py-2 text-sm "
+              className="btn-press rounded-full px-5 py-2 text-sm font-semibold"
             >
               <a
                 href="https://calendar.app.google/uCHWaZUmUy9fbeax5"

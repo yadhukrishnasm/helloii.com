@@ -12,7 +12,7 @@ const FONT = "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif";
 
 const W = 720;
 const H = 680;
-const DUR = 25;
+const DUR = 23;
 
 const WID_RIGHT = 200;
 const WID_BOTTOM = 32;
@@ -355,6 +355,66 @@ function CheckBadge() {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
+    </svg>
+  );
+}
+
+function ShopifyCardIcon({ size = 14 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      {/* Shopify bag body */}
+      <path
+        d="M16.5 6.5C16.2 4.6 14.8 3 13 3c-1.8 0-3.2 1.6-3.5 3.5H7L5.5 20h13L17 6.5h-.5Z"
+        fill="white"
+        fillOpacity="0.9"
+      />
+      {/* Bag handle */}
+      <path
+        d="M10 8.5c0-1.1.9-2 2-2s2 .9 2 2"
+        stroke="white"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        fill="none"
+        opacity="0.5"
+      />
+      {/* S letterform */}
+      <path
+        d="M13.4 10.8c-.3-.2-.7-.3-1.1-.3-.7 0-1.1.3-1.1.8 0 .4.3.7 1 .9l.4.1c.9.3 1.4.7 1.4 1.5 0 1-.8 1.7-2.1 1.7-.6 0-1.2-.2-1.6-.5l.4-.7c.3.2.7.4 1.2.4.8 0 1.2-.3 1.2-.9 0-.4-.3-.7-1-.9l-.4-.1c-.9-.3-1.3-.7-1.3-1.5 0-.9.7-1.6 2-1.6.5 0 1 .1 1.4.4l-.4.7Z"
+        fill="rgba(0,0,0,0.45)"
+      />
+    </svg>
+  );
+}
+
+function AICardIcon({ size = 14 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      {/* Central star */}
+      <path
+        d="M12 2 L13.4 9.5 L20 12 L13.4 14.5 L12 22 L10.6 14.5 L4 12 L10.6 9.5 Z"
+        fill="white"
+        fillOpacity="0.95"
+      />
+      {/* Small satellite sparkle */}
+      <path
+        d="M20 4 L20.8 6.5 L23 7 L20.8 7.5 L20 10 L19.2 7.5 L17 7 L19.2 6.5 Z"
+        fill="white"
+        fillOpacity="0.6"
+      />
+    </svg>
+  );
+}
+
+function ClockCardIcon({ size = 14 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="9" stroke="white" strokeWidth="1.8" fillOpacity="0" />
+      {/* Hour hand pointing to 12 */}
+      <path d="M12 7v5" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
+      {/* Minute hand pointing to 3 */}
+      <path d="M12 12h3.5" stroke="white" strokeWidth="1.6" strokeLinecap="round" />
+      {/* Center dot */}
+      <circle cx="12" cy="12" r="1.2" fill="white" />
     </svg>
   );
 }
@@ -1193,13 +1253,15 @@ function FeatureCards({ time }: { time: number }) {
       side: "left",
       topOff: 0,
       color: "#2563eb",
+      icon: <AICardIcon size={14} />,
     },
     {
       label: "Shopify ready",
       detail: "Store-aware support",
       side: "right",
       topOff: 100,
-      color: "#9333ea",
+      color: "#95BF47",
+      icon: <ShopifyCardIcon size={14} />,
     },
     {
       label: "24/7 support",
@@ -1207,6 +1269,7 @@ function FeatureCards({ time }: { time: number }) {
       side: "left",
       topOff: 200,
       color: "#16a34a",
+      icon: <ClockCardIcon size={14} />,
     },
   ];
 
@@ -1253,7 +1316,7 @@ function FeatureCards({ time }: { time: number }) {
                 justifyContent: "center",
               }}
             >
-              <Sparkle color="#fff" size={13} />
+              {card.icon}
             </div>
 
             <div

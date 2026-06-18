@@ -8,32 +8,44 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 // same white overlay — but mapped to fractional viewport units instead of a 1920×1080 canvas.
 const BLOBS = [
   {
-    cx: 0.12, cy: 0.15,
-    ax: 0.045, ay: 0.05,
-    fx: 0.31, fy: 0.25,
+    cx: 0.1,
+    cy: 0.12,
+    ax: 0.045,
+    ay: 0.05,
+    fx: 0.31,
+    fy: 0.25,
     size: 600,
-    color: "rgba(238,72,108,0.48)",
+    color: "rgba(37,99,235,0.36)",
   },
   {
-    cx: 0.62, cy: 0.13,
-    ax: 0.055, ay: 0.055,
-    fx: 0.20, fy: 0.29,
+    cx: 0.68,
+    cy: 0.1,
+    ax: 0.055,
+    ay: 0.055,
+    fx: 0.2,
+    fy: 0.29,
     size: 680,
-    color: "rgba(46,120,238,0.40)",
+    color: "rgba(79,70,229,0.30)",
   },
   {
-    cx: 0.78, cy: 0.66,
-    ax: 0.07, ay: 0.065,
-    fx: 0.18, fy: 0.22,
-    size: 740,
-    color: "rgba(255,201,64,0.38)",
+    cx: 0.8,
+    cy: 0.65,
+    ax: 0.07,
+    ay: 0.065,
+    fx: 0.18,
+    fy: 0.22,
+    size: 720,
+    color: "rgba(124,58,237,0.24)",
   },
   {
-    cx: 0.30, cy: 0.76,
-    ax: 0.055, ay: 0.065,
-    fx: 0.21, fy: 0.19,
-    size: 620,
-    color: "rgba(139,92,246,0.30)",
+    cx: 0.25,
+    cy: 0.78,
+    ax: 0.055,
+    ay: 0.065,
+    fx: 0.21,
+    fy: 0.19,
+    size: 580,
+    color: "rgba(37,99,235,0.28)",
   },
 ] as const;
 
@@ -47,8 +59,16 @@ export function AnimatedBackground() {
   const mouseY = useMotionValue(
     typeof window !== "undefined" ? window.innerHeight / 2 : 0,
   );
-  const followerX = useSpring(mouseX, { stiffness: 55, damping: 20, mass: 1.2 });
-  const followerY = useSpring(mouseY, { stiffness: 55, damping: 20, mass: 1.2 });
+  const followerX = useSpring(mouseX, {
+    stiffness: 55,
+    damping: 20,
+    mass: 1.2,
+  });
+  const followerY = useSpring(mouseY, {
+    stiffness: 55,
+    damping: 20,
+    mass: 1.2,
+  });
 
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
@@ -90,13 +110,15 @@ export function AnimatedBackground() {
     <>
       <div
         className="pointer-events-none fixed inset-0 -z-50 overflow-hidden"
-        style={{ background: "#f5f7fb" }}
+        style={{ background: "#f8f9fc" }}
       >
         {/* Time-based blobs — same technique as product AnimatedMesh */}
         {BLOBS.map((blob, i) => (
           <div
             key={i}
-            ref={(el) => { blobRefs.current[i] = el; }}
+            ref={(el) => {
+              blobRefs.current[i] = el;
+            }}
             style={{
               position: "absolute",
               top: 0,
@@ -166,9 +188,22 @@ function LiquidCursor() {
       style={{ x: mouseX, y: mouseY }}
       className="pointer-events-none fixed left-0 top-0 z-[9998] hidden md:block"
     >
-      <div className="-translate-x-1/2 -translate-y-1/2">
-        <div className="h-10 w-10 rounded-full border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.35),rgba(255,255,255,0.08))] shadow-[0_4px_20px_rgba(37,99,235,0.15)] backdrop-blur-md" />
-      </div>
+      <svg
+        width="22"
+        height="26"
+        viewBox="0 0 22 26"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style={{ filter: "drop-shadow(0 2px 6px rgba(37,99,235,0.28))" }}
+      >
+        <path
+          d="M2 2L20 11.5L12.5 13.5L9 23L2 2Z"
+          fill="rgba(255,255,255,0.92)"
+          stroke="rgba(37,99,235,0.5)"
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+        />
+      </svg>
     </motion.div>
   );
 }

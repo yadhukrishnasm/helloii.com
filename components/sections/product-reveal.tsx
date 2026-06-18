@@ -165,7 +165,7 @@ export function ProductReveal() {
             }}
             className="relative w-full lg:flex-1"
           >
-            <div className="relative mx-auto aspect-[820/760] w-full max-w-[860px] overflow-visible bg-transparent px-6 py-10">
+            <div className="relative mx-auto aspect-[820/760] w-full max-w-[860px] overflow-visible bg-transparent sm:px-6 sm:py-10">
               <ChatbotAnimation />
             </div>
           </motion.div>

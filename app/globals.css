@@ -16,10 +16,9 @@ body {
     --foreground: #0a0a0a;
 
     --primary-blue: #2563eb;
-    --primary-pink: #ff2fb2;
-    --primary-red: #ff3b30;
-    --primary-yellow: #ffb800;
-    --primary-purple: #7c3aed;
+    --primary-violet: #7c3aed;
+    --primary-indigo: #4f46e5;
+    --primary-slate: #1e293b;
 }
 
 * {
@@ -47,12 +46,12 @@ a {
 }
 
 ::selection {
-    background: #ff4fd8;
+    background: #7c3aed;
     color: #ffffff;
 }
 
 html {
-    scroll-behavior: auto !important;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -79,6 +78,32 @@ body {
     button {
         cursor: none;
     }
+}
+
+/* ─── Physical press effect ───────────────────────────────────────── */
+
+.btn-press {
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        filter 0.15s ease;
+}
+
+.btn-press:hover {
+    transform: scale(0.95);
+    filter: brightness(0.92);
+}
+
+.btn-press:active {
+    transform: scale(0.91);
+    filter: brightness(0.86);
+}
+
+/* ─── Grain texture overlay ──────────────────────────────────────── */
+.grain-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 200px 200px;
 }
 
 /* ─── Liquid Glass System ─────────────────────────────────────────── */
@@ -224,13 +249,13 @@ body {
 .btn-glass-gradient {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, #2563eb 0%, #ff2fb2 50%, #ffb800 100%);
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 55%, #4f46e5 100%);
     border: 1.5px solid rgba(255, 255, 255, 0.4);
     box-shadow:
-        0 16px 42px rgba(255, 47, 178, 0.28),
+        0 16px 42px rgba(124, 58, 237, 0.28),
         inset 0 1.5px 1px rgba(255, 255, 255, 0.5),
         inset 0 -1px 1px rgba(0, 0, 0, 0.12),
-        0 0 0 1px rgba(255, 47, 178, 0.22);
+        0 0 0 1px rgba(124, 58, 237, 0.22);
     color: #fff;
     transition:
         transform 0.28s ease,
@@ -291,7 +316,7 @@ body {
 }
 
 .marquee-track {
-    animation: marquee 22s linear infinite;
+    animation: marquee 140s linear infinite;
 }
 
 .marquee-track:hover {

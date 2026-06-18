@@ -9,8 +9,8 @@ const SHOPIFY_URL = "http://apps.shopify.com/ai-sales-support-assistant";
 
 const STATS = [
   { value: "50+", label: "Shopify Stores" },
-  { value: "1L+", label: "Chats Handled" },
-  { value: "5★", label: "Avg Rating" },
+  { value: "100K+", label: "Chats Handled" },
+  { value: "5.0★", label: "Avg Rating" },
   { value: "3 yrs", label: "In Market" },
 ];
 
@@ -36,66 +36,81 @@ export function Hero() {
       className="relative flex min-h-screen items-center pb-20 pt-32"
     >
       <Container>
-        <div className="mx-auto max-w-3xl text-center">
+        {/* ── Gradient box ── */}
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a3faa] via-[#2563EB] to-[#4f46e5] px-8 py-16 shadow-[0_32px_80px_rgba(37,99,235,0.30)] sm:px-14 sm:py-20">
 
-          {/* Shopify badge */}
-          <div className="h-shopify-badge inline-flex items-center gap-2 rounded-full border border-neutral-200/80 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-neutral-500 shadow-sm">
-            <ShopifyMark />
-            Built for Shopify
-          </div>
+          {/* Grain texture */}
+          <div className="grain-overlay pointer-events-none absolute inset-0 rounded-[inherit] opacity-[0.08]" />
 
-          {/* Headline */}
-          <h1 className="h-headline mt-6 text-[2.8rem] font-bold leading-[1.05] tracking-[-0.04em] text-neutral-950 sm:text-6xl lg:text-7xl">
-            The AI assistant your{" "}
-            <span className="text-[#2563EB]">Shopify store</span>{" "}
-            needs
-          </h1>
+          {/* Top specular line */}
+          <div className="pointer-events-none absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
 
-          {/* Subtext */}
-          <p className="h-sub mx-auto mt-5 max-w-xl text-base leading-7 text-neutral-500 sm:text-lg sm:leading-8">
-            Answer every customer question, recommend the right product, and
-            handle support — automatically, 24/7. Not a generic chatbot.
-            Built exclusively for Shopify.
-          </p>
+          {/* Corner glow — top left */}
+          <div className="pointer-events-none absolute -left-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
+          {/* Corner glow — bottom right */}
+          <div className="pointer-events-none absolute -bottom-16 -right-16 h-64 w-64 rounded-full bg-[#7C3AED]/30 blur-3xl" />
 
-          {/* Trust stats */}
-          <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-            {STATS.map((s) => (
-              <div
-                key={s.label}
-                className="h-stat rounded-2xl border border-neutral-200/70 bg-white px-4 py-4"
+          <div className="relative mx-auto max-w-3xl text-center">
+
+            {/* Shopify badge */}
+            <div className="h-shopify-badge inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white/80 backdrop-blur-sm">
+              <ShopifyMark />
+              Built for Shopify
+            </div>
+
+            {/* Headline */}
+            <h1 className="h-headline mt-6 text-[2.8rem] font-bold leading-[1.05] tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl">
+              The AI assistant your{" "}
+              <span className="text-blue-200">Shopify store</span>{" "}
+              needs
+            </h1>
+
+            {/* Subtext */}
+            <p className="h-sub mx-auto mt-5 max-w-xl text-base leading-7 text-blue-100/80 sm:text-lg sm:leading-8">
+              Answer every customer question, recommend the right product, and
+              handle support — automatically, 24/7. Not a generic chatbot.
+              Built exclusively for Shopify.
+            </p>
+
+            {/* Trust stats */}
+            <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+              {STATS.map((s) => (
+                <div
+                  key={s.label}
+                  className="h-stat rounded-2xl border border-white/15 bg-white/10 px-4 py-4 backdrop-blur-sm"
+                >
+                  <p className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                    {s.value}
+                  </p>
+                  <p className="mt-1 text-xs font-medium text-blue-200/80">
+                    {s.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div className="h-cta mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+              <a
+                href={SHOPIFY_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-[#2563EB] shadow-[0_8px_24px_rgba(0,0,0,0.15)] transition-transform hover:scale-[1.03] active:scale-[0.98]"
               >
-                <p className="text-2xl font-bold tracking-tight text-[#2563EB] sm:text-3xl">
-                  {s.value}
-                </p>
-                <p className="mt-1 text-xs font-medium text-neutral-500">
-                  {s.label}
-                </p>
-              </div>
-            ))}
-          </div>
+                Add to Shopify — free
+                <span aria-hidden>→</span>
+              </a>
+              <a
+                href="https://calendar.app.google/uCHWaZUmUy9fbeax5"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/10"
+              >
+                Book a demo
+              </a>
+            </div>
 
-          {/* CTA */}
-          <div className="h-cta mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <a
-              href={SHOPIFY_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[#2563EB] px-8 py-3.5 text-sm font-bold text-white shadow-[0_8px_24px_rgba(37,99,235,0.32)] transition-transform hover:scale-[1.03] active:scale-[0.98]"
-            >
-              Add to Shopify
-              <span aria-hidden>→</span>
-            </a>
-            <a
-              href="https://calendar.app.google/uCHWaZUmUy9fbeax5"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white px-8 py-3.5 text-sm font-bold text-neutral-700 transition-colors hover:text-neutral-950"
-            >
-              Book a demo
-            </a>
           </div>
-
         </div>
       </Container>
     </section>

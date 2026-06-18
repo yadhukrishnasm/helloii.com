@@ -2,50 +2,55 @@
 
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/container";
+import { LiquidGlassBubble } from "@/components/ui/liquid-glass";
 
 const PLANS = [
   {
     name: "Starter",
-    price: "—",
-    description: "Placeholder — pricing details coming soon.",
+    price: "$19",
+    period: "/month",
+    description: "Perfect for stores just getting started with AI-powered support.",
     features: [
-      "Placeholder feature one",
-      "Placeholder feature two",
-      "Placeholder feature three",
-      "Placeholder feature four",
+      "Up to 1,000 chats / month",
+      "1 Shopify store",
+      "Full product catalog sync",
+      "Standard chat widget",
+      "Basic analytics dashboard",
+      "Email support",
     ],
-    cta: "Get started",
-    popular: false,
+    cta: "Start free trial",
     accent: "#2563EB",
   },
   {
     name: "Growth",
-    price: "—",
-    description: "Placeholder — pricing details coming soon.",
+    price: "$49",
+    period: "/month",
+    description: "For growing stores that need more volume and brand control.",
     features: [
-      "Everything in Starter",
-      "Placeholder feature one",
-      "Placeholder feature two",
-      "Placeholder feature three",
-      "Placeholder feature four",
+      "Up to 5,000 chats / month",
+      "1 Shopify store",
+      "Custom brand colors & widget",
+      "Product recommendations engine",
+      "Advanced analytics per day",
+      "Priority email support",
     ],
-    cta: "Get started",
-    popular: true,
-    accent: "#FF2FB2",
+    cta: "Start free trial",
+    accent: "#7C3AED",
   },
   {
-    name: "Pro",
-    price: "—",
-    description: "Placeholder — pricing details coming soon.",
+    name: "Scale",
+    price: "$99",
+    period: "/month",
+    description: "For high-volume stores and teams that need full control.",
     features: [
-      "Everything in Growth",
-      "Placeholder feature one",
-      "Placeholder feature two",
-      "Placeholder feature three",
-      "Priority support",
+      "Unlimited chats",
+      "Up to 3 Shopify stores",
+      "White-label widget",
+      "API access",
+      "Custom knowledge base entries",
+      "Dedicated onboarding & support",
     ],
     cta: "Contact us",
-    popular: false,
     accent: "#2563EB",
   },
 ];
@@ -53,8 +58,10 @@ const PLANS = [
 export function Pricing() {
   return (
     <section id="pricing" className="relative py-20 sm:py-28">
-      <Container>
+      <div className="pointer-events-none absolute left-[-8%] top-16 h-72 w-72 rounded-full bg-[#7C3AED]/08 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-10 right-[-8%] h-80 w-80 rounded-full bg-[#2563EB]/08 blur-3xl" />
 
+      <Container>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -69,7 +76,8 @@ export function Pricing() {
             Plans for every store
           </h2>
           <p className="mx-auto mt-3 max-w-md text-base text-neutral-500">
-            Start free, scale as you grow. No hidden fees.
+            14-day free trial on all plans. No credit card required to get
+            started. Cancel any time.
           </p>
         </motion.div>
 
@@ -85,55 +93,66 @@ export function Pricing() {
                 delay: i * 0.09,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className={`relative rounded-2xl border p-6 ${
-                plan.popular
-                  ? "border-[#FF2FB2]/40 bg-white shadow-[0_8px_40px_rgba(255,47,178,0.10)]"
-                  : "border-neutral-200/70 bg-white"
-              }`}
+              className="relative overflow-hidden rounded-2xl border border-white/60 bg-white/65 p-7 backdrop-blur-md"
             >
-              {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex rounded-full bg-[#FF2FB2] px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white">
-                    Most Popular
-                  </span>
-                </div>
-              )}
 
-              <div className="mb-5">
-                <p className="text-sm font-bold uppercase tracking-widest text-neutral-400">
+              <div className="mb-6">
+                <p className="text-xs font-bold uppercase tracking-widest text-neutral-400">
                   {plan.name}
                 </p>
-                <p className="mt-2 text-4xl font-bold tracking-tight text-neutral-950">
-                  {plan.price}
-                </p>
-                <p className="mt-2 text-sm text-neutral-500">{plan.description}</p>
+                <div className="mt-3 flex items-end gap-1">
+                  <span className="text-4xl font-bold tracking-tight text-neutral-950">
+                    {plan.price}
+                  </span>
+                  <span className="mb-1 text-sm font-medium text-neutral-400">
+                    {plan.period}
+                  </span>
+                </div>
+                <p className="mt-2 text-sm leading-6 text-neutral-500">{plan.description}</p>
               </div>
 
-              <ul className="mb-7 space-y-2.5">
+              <ul className="mb-7 space-y-3">
                 {plan.features.map((f) => (
                   <li key={f} className="flex items-start gap-2.5 text-sm text-neutral-600">
-                    <span className="mt-0.5 text-xs" style={{ color: plan.accent }}>✓</span>
+                    <span
+                      className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-white"
+                      style={{ background: plan.accent }}
+                    >
+                      ✓
+                    </span>
                     {f}
                   </li>
                 ))}
               </ul>
 
-              <a
-                href="http://apps.shopify.com/ai-sales-support-assistant"
-                target="_blank"
-                rel="noreferrer"
-                className={`block w-full rounded-full py-3 text-center text-sm font-bold transition-opacity hover:opacity-90 ${
-                  plan.popular
-                    ? "bg-[#FF2FB2] text-white shadow-[0_4px_16px_rgba(255,47,178,0.28)]"
-                    : "bg-[#2563EB] text-white shadow-[0_4px_16px_rgba(37,99,235,0.22)]"
-                }`}
+              <LiquidGlassBubble
+                accent={plan.accent}
+                accentLight={plan.accent === "#7C3AED" ? "#a78bfa" : "#60a5fa"}
+                className="btn-press block w-full rounded-full"
               >
-                {plan.cta}
-              </a>
+                <a
+                  href="http://apps.shopify.com/ai-sales-support-assistant"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block w-full py-3 text-center text-sm font-semibold"
+                >
+                  {plan.cta}
+                </a>
+              </LiquidGlassBubble>
             </motion.div>
           ))}
         </div>
 
+        {/* Trust footnote */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-10 text-center text-xs text-neutral-400"
+        >
+          All plans include a 14-day free trial · Billed monthly · Cancel anytime via Shopify
+        </motion.p>
       </Container>
     </section>
   );
