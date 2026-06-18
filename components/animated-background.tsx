@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+// useSpring is still used by the background blob follower above
 
 // Mirrors AnimatedMesh from product-animation.jsx — same colors, same sine/cosine motion,
 // same white overlay — but mapped to fractional viewport units instead of a 1920×1080 canvas.
@@ -146,15 +147,10 @@ export function AnimatedBackground() {
   );
 }
 
+// Remove unused spring imports — only useMotionValue needed for direct tracking
 function LiquidCursor() {
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
-
-  const cursorX = useSpring(mouseX, { stiffness: 260, damping: 24, mass: 0.4 });
-  const cursorY = useSpring(mouseY, { stiffness: 260, damping: 24, mass: 0.4 });
-
-  const ringX = useSpring(mouseX, { stiffness: 120, damping: 18, mass: 0.8 });
-  const ringY = useSpring(mouseY, { stiffness: 120, damping: 18, mass: 0.8 });
 
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
@@ -166,26 +162,13 @@ function LiquidCursor() {
   }, [mouseX, mouseY]);
 
   return (
-    <>
-      <motion.div
-        style={{ x: ringX, y: ringY }}
-        className="pointer-events-none fixed left-0 top-0 z-[9998] hidden md:block"
-      >
-        <div className="-translate-x-1/2 -translate-y-1/2">
-          <div className="h-14 w-14 rounded-full border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.35),rgba(255,255,255,0.08))] shadow-[0_8px_30px_rgba(37,99,235,0.18)] backdrop-blur-md" />
-        </div>
-      </motion.div>
-
-      <motion.div
-        style={{ x: cursorX, y: cursorY }}
-        className="pointer-events-none fixed left-0 top-0 z-[9999] hidden md:block"
-      >
-        <div className="-translate-x-1/2 -translate-y-1/2">
-          <div className="relative h-5 w-5 rounded-full bg-[linear-gradient(135deg,#2563EB,#FF2FB2,#FFB800)] shadow-[0_0_24px_rgba(255,47,178,0.35)]">
-            <div className="absolute inset-[2px] rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.95),rgba(255,255,255,0.18)_60%,transparent_100%)]" />
-          </div>
-        </div>
-      </motion.div>
-    </>
+    <motion.div
+      style={{ x: mouseX, y: mouseY }}
+      className="pointer-events-none fixed left-0 top-0 z-[9998] hidden md:block"
+    >
+      <div className="-translate-x-1/2 -translate-y-1/2">
+        <div className="h-10 w-10 rounded-full border border-white/60 bg-[linear-gradient(135deg,rgba(255,255,255,0.35),rgba(255,255,255,0.08))] shadow-[0_4px_20px_rgba(37,99,235,0.15)] backdrop-blur-md" />
+      </div>
+    </motion.div>
   );
 }

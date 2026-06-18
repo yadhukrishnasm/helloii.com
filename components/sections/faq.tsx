@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/ui/reveal";
@@ -109,42 +109,27 @@ function FAQItem({
         </span>
 
         <span
-          className={`btn-glass-secondary flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xl font-medium text-[#2563EB] transition-transform duration-300 ${open ? "rotate-45" : "rotate-0"}`}
+          className={`btn-glass-secondary flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xl font-medium text-[#2563EB] transition-transform duration-500 ${open ? "rotate-45" : "rotate-0"}`}
         >
           +
         </span>
       </button>
 
-      <AnimatePresence initial={false}>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{
-              height: "auto",
-              opacity: 1,
-              transition: {
-                height: { duration: 0.44, ease: [0.22, 1, 0.36, 1] },
-                opacity: { duration: 0.3, delay: 0.1, ease: "easeOut" },
-              },
-            }}
-            exit={{
-              height: 0,
-              opacity: 0,
-              transition: {
-                height: { duration: 0.32, ease: [0.55, 0, 0.1, 1] },
-                opacity: { duration: 0.16, ease: "easeIn" },
-              },
-            }}
-            className="overflow-hidden"
-          >
-            <div className="border-t border-neutral-100 px-5 pb-6 pt-4 sm:px-7">
-              <p className="max-w-3xl text-sm leading-7 text-neutral-600 sm:text-base">
-                {answer}
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateRows: open ? "1fr" : "0fr",
+          transition: "grid-template-rows 0.4s ease-in-out",
+        }}
+      >
+        <div style={{ overflow: "hidden" }}>
+          <div className="border-t border-neutral-100 px-5 pb-6 pt-4 sm:px-7">
+            <p className="max-w-3xl text-sm leading-7 text-neutral-600 sm:text-base">
+              {answer}
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

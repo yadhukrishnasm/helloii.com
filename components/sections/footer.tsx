@@ -5,8 +5,8 @@ import { Container } from "@/components/layout/container";
 export function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-neutral-200/70 py-10 sm:py-14">
-      <div className="pointer-events-none absolute left-[10%] top-0 -z-10 h-[260px] w-[260px] rounded-full bg-[#FF2FB2]/10 blur-[90px]" />
-      <div className="pointer-events-none absolute right-[10%] bottom-0 -z-10 h-[260px] w-[260px] rounded-full bg-[#FFB800]/14 blur-[90px]" />
+      <div className="pointer-events-none absolute left-[10%] top-0 -z-10 h-[260px] w-[260px] rounded-full bg-[#2563EB]/08 blur-[90px]" />
+      <div className="pointer-events-none absolute right-[10%] bottom-0 -z-10 h-[260px] w-[260px] rounded-full bg-[#FF2FB2]/08 blur-[90px]" />
 
       <Container>
         <div className="grid gap-10 lg:grid-cols-[1.4fr_0.7fr_0.7fr_0.7fr]">
@@ -52,11 +52,14 @@ export function Footer() {
             </h3>
 
             <nav className="mt-5 flex flex-col gap-3 text-sm font-medium text-neutral-700">
-              <a href="#about" className="transition-colors hover:text-neutral-950">
-                About
-              </a>
               <a href="#product" className="transition-colors hover:text-neutral-950">
-                Product demo
+                Product
+              </a>
+              <a href="#features" className="transition-colors hover:text-neutral-950">
+                Features
+              </a>
+              <a href="#pricing" className="transition-colors hover:text-neutral-950">
+                Pricing
               </a>
               <a href="#faq" className="transition-colors hover:text-neutral-950">
                 FAQ

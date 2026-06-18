@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/container";
+import { LiquidGlassBubble } from "./ui/liquid-glass";
 
 export function Navbar() {
   return (
@@ -26,19 +27,23 @@ export function Navbar() {
 
             <nav className="hidden items-center gap-6 md:flex">
               <a
-                href="#about"
-                className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
-              >
-                About
-              </a>
-
-              <a
                 href="#product"
                 className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
               >
                 Product
               </a>
-
+              <a
+                href="#features"
+                className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
+              >
+                Features
+              </a>
+              <a
+                href="#pricing"
+                className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
+              >
+                Pricing
+              </a>
               <a
                 href="#faq"
                 className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
@@ -47,14 +52,19 @@ export function Navbar() {
               </a>
             </nav>
 
-            <a
-              href="https://calendar.app.google/uCHWaZUmUy9fbeax5"
-              target="_blank"
-              rel="noreferrer"
-              className="btn-glass-primary rounded-full px-5 py-2 text-sm font-medium"
+            <LiquidGlassBubble
+              accent="#2563eb"
+              accentLight="#60a5fa"
+              className="rounded-full px-5 py-2 text-sm "
             >
-              Book a demo
-            </a>
+              <a
+                href="https://calendar.app.google/uCHWaZUmUy9fbeax5"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Book a demo
+              </a>
+            </LiquidGlassBubble>
           </div>
         </div>
       </Container>

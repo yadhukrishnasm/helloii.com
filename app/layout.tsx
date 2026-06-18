@@ -41,8 +41,7 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen text-neutral-950 antialiased">
         <AnimatedBackground />
-
-        <SmoothScroll>{children}</SmoothScroll>
+        {children}
       </body>
     </html>
   );
