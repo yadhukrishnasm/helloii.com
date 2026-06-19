@@ -140,7 +140,7 @@ export function Testimonials() {
           <button
             onClick={prev}
             aria-label="Previous"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200/80 bg-white/70 text-neutral-500 backdrop-blur-sm transition-colors hover:border-neutral-300 hover:text-neutral-950"
+            className="btn-press flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200/80 bg-white/70 text-neutral-500 backdrop-blur-sm"
           >
             ←
           </button>
@@ -164,7 +164,7 @@ export function Testimonials() {
           <button
             onClick={next}
             aria-label="Next"
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200/80 bg-white/70 text-neutral-500 backdrop-blur-sm transition-colors hover:border-neutral-300 hover:text-neutral-950"
+            className="btn-press flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200/80 bg-white/70 text-neutral-500 backdrop-blur-sm"
           >
             →
           </button>

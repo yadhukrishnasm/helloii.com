@@ -109,7 +109,7 @@ function FAQItem({
         </span>
 
         <span
-          className={`btn-glass-secondary flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xl font-medium text-[#2563EB] transition-transform duration-500 ${open ? "rotate-45" : "rotate-0"}`}
+          className={`btn-press btn-glass-secondary flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xl font-medium text-[#2563EB] duration-300 ${open ? "rotate-45" : "rotate-0"}`}
         >
           +
         </span>

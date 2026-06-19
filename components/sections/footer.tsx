@@ -29,7 +29,7 @@ export function Footer() {
                 href="http://apps.shopify.com/ai-sales-support-assistant"
                 target="_blank"
                 rel="noreferrer"
-                className="btn-glass-gradient inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
+                className="btn-press btn-glass-gradient inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
               >
                 Sign up for free
               </a>
@@ -38,7 +38,7 @@ export function Footer() {
                 href="https://calendar.app.google/uCHWaZUmUy9fbeax5"
                 target="_blank"
                 rel="noreferrer"
-                className="btn-glass-secondary inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
+                className="btn-press btn-glass-secondary inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
               >
                 Book a demo
               </a>
@@ -52,16 +52,28 @@ export function Footer() {
             </h3>
 
             <nav className="mt-5 flex flex-col gap-3 text-sm font-medium text-neutral-700">
-              <a href="#product" className="transition-colors hover:text-neutral-950">
+              <a
+                href="#product"
+                className="transition-colors hover:text-neutral-950"
+              >
                 Product
               </a>
-              <a href="#features" className="transition-colors hover:text-neutral-950">
+              <a
+                href="#features"
+                className="transition-colors hover:text-neutral-950"
+              >
                 Features
               </a>
-              <a href="#pricing" className="transition-colors hover:text-neutral-950">
+              <a
+                href="#pricing"
+                className="transition-colors hover:text-neutral-950"
+              >
                 Pricing
               </a>
-              <a href="#faq" className="transition-colors hover:text-neutral-950">
+              <a
+                href="#faq"
+                className="transition-colors hover:text-neutral-950"
+              >
                 FAQ
               </a>
             </nav>
@@ -81,9 +93,9 @@ export function Footer() {
                 hello@helloii.com
               </a>
               <p className="text-sm leading-6 text-neutral-500">
-                311/5, Mannangara (H),<br />
-                Kozhikode, Kerala,<br />
-                India — 673585
+                UL Cyberpark,
+                <br /> Nellikode (PO),
+                <br /> Kozhikode, Kerala, India - 673016
               </p>
             </div>
           </div>

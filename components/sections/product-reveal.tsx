@@ -132,7 +132,7 @@ export function ProductReveal() {
                 onClick={() =>
                   setActive((prev) => (prev - 1 + FLOWS.length) % FLOWS.length)
                 }
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 bg-white text-neutral-600 transition-colors hover:text-neutral-950"
+                className="btn-press flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200/80 bg-white/70 text-neutral-500 backdrop-blur-sm"
                 aria-label="Previous"
                 type="button"
               >
@@ -141,7 +141,7 @@ export function ProductReveal() {
 
               <button
                 onClick={() => setActive((prev) => (prev + 1) % FLOWS.length)}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200 bg-white text-neutral-600 transition-colors hover:text-neutral-950"
+                className="btn-press flex h-9 w-9 items-center justify-center rounded-full border border-neutral-200/80 bg-white/70 text-neutral-500 backdrop-blur-sm"
                 aria-label="Next"
                 type="button"
               >

@@ -8,51 +8,47 @@ const PLANS = [
   {
     name: "Starter",
     price: "$19",
-    period: "/month",
-    description: "Perfect for stores just getting started with AI-powered support.",
-    features: [
-      "Up to 1,000 chats / month",
-      "1 Shopify store",
-      "Full product catalog sync",
-      "Standard chat widget",
-      "Basic analytics dashboard",
-      "Email support",
-    ],
+    period: "/mo",
+    description: "For stores just getting started.",
     cta: "Start free trial",
+    href: "http://apps.shopify.com/ai-sales-support-assistant",
     accent: "#2563EB",
+    accentLight: "#60a5fa",
   },
   {
     name: "Growth",
     price: "$49",
-    period: "/month",
-    description: "For growing stores that need more volume and brand control.",
-    features: [
-      "Up to 5,000 chats / month",
-      "1 Shopify store",
-      "Custom brand colors & widget",
-      "Product recommendations engine",
-      "Advanced analytics per day",
-      "Priority email support",
-    ],
+    period: "/mo",
+    description: "More volume and brand control.",
     cta: "Start free trial",
+    href: "http://apps.shopify.com/ai-sales-support-assistant",
     accent: "#7C3AED",
+    accentLight: "#a78bfa",
   },
   {
     name: "Scale",
     price: "$99",
-    period: "/month",
-    description: "For high-volume stores and teams that need full control.",
-    features: [
-      "Unlimited chats",
-      "Up to 3 Shopify stores",
-      "White-label widget",
-      "API access",
-      "Custom knowledge base entries",
-      "Dedicated onboarding & support",
-    ],
+    period: "/mo",
+    description: "Full control for high-volume stores.",
     cta: "Contact us",
-    accent: "#2563EB",
+    href: "http://apps.shopify.com/ai-sales-support-assistant",
+    accent: "#4F46E5",
+    accentLight: "#818cf8",
   },
+];
+
+type RowValue = string | boolean;
+
+const ROWS: { label: string; values: RowValue[] }[] = [
+  { label: "Chats per month",          values: ["1,000",    "5,000",    "Unlimited"] },
+  { label: "Shopify stores",           values: ["1",        "1",        "3"] },
+  { label: "Product catalog sync",     values: [true,       true,       true] },
+  { label: "Custom brand colors",      values: [false,      true,       true] },
+  { label: "Product recommendations",  values: [false,      true,       true] },
+  { label: "Analytics",                values: ["Basic",    "Advanced", "Advanced"] },
+  { label: "Chat widget",              values: ["Standard", "Custom",   "White-label"] },
+  { label: "API access",               values: [false,      false,      true] },
+  { label: "Support",                  values: ["Email",    "Priority", "Dedicated"] },
 ];
 
 export function Pricing() {
@@ -76,80 +72,144 @@ export function Pricing() {
             Plans for every store
           </h2>
           <p className="mx-auto mt-3 max-w-md text-base text-neutral-500">
-            14-day free trial on all plans. No credit card required to get
-            started. Cancel any time.
+            14-day free trial on all plans. No credit card required. Cancel any time.
           </p>
         </motion.div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:items-start">
-          {PLANS.map((plan, i) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{
-                duration: 0.5,
-                delay: i * 0.09,
-                ease: [0.22, 1, 0.36, 1],
-              }}
-              className="relative overflow-hidden rounded-2xl border border-white/60 bg-white/65 p-7 backdrop-blur-md"
-            >
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {/* Outer glass container */}
+          <div className="overflow-hidden rounded-3xl border border-white/60 bg-white/65 shadow-[0_8px_40px_rgba(0,0,0,0.07)] backdrop-blur-md">
 
-              <div className="mb-6">
-                <p className="text-xs font-bold uppercase tracking-widest text-neutral-400">
-                  {plan.name}
-                </p>
-                <div className="mt-3 flex items-end gap-1">
-                  <span className="text-4xl font-bold tracking-tight text-neutral-950">
-                    {plan.price}
-                  </span>
-                  <span className="mb-1 text-sm font-medium text-neutral-400">
-                    {plan.period}
-                  </span>
-                </div>
-                <p className="mt-2 text-sm leading-6 text-neutral-500">{plan.description}</p>
-              </div>
+            {/* Scrollable table wrapper (mobile) */}
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[560px] border-collapse">
 
-              <ul className="mb-7 space-y-3">
-                {plan.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2.5 text-sm text-neutral-600">
-                    <span
-                      className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full text-[10px] font-bold text-white"
-                      style={{ background: plan.accent }}
+                {/* Plan headers */}
+                <thead>
+                  <tr>
+                    {/* Feature label column */}
+                    <th className="w-[38%] px-6 pb-6 pt-8 text-left align-bottom">
+                      <span className="text-xs font-bold uppercase tracking-[0.18em] text-neutral-400">
+                        Features
+                      </span>
+                    </th>
+
+                    {PLANS.map((plan, i) => (
+                      <th
+                        key={plan.name}
+                        className="px-4 pb-6 pt-8 text-left align-top"
+                      >
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.4, delay: i * 0.08 }}
+                        >
+                          {/* Accent top bar */}
+                          <div
+                            className="mb-4 h-0.5 w-8 rounded-full"
+                            style={{ background: plan.accent }}
+                          />
+
+                          <p
+                            className="text-xs font-bold uppercase tracking-widest"
+                            style={{ color: plan.accent }}
+                          >
+                            {plan.name}
+                          </p>
+
+                          <div className="mt-2 flex items-end gap-0.5">
+                            <span className="text-3xl font-bold tracking-tight text-neutral-950">
+                              {plan.price}
+                            </span>
+                            <span className="mb-1 text-sm text-neutral-400">
+                              {plan.period}
+                            </span>
+                          </div>
+
+                          <p className="mt-1.5 text-xs leading-5 text-neutral-500">
+                            {plan.description}
+                          </p>
+                        </motion.div>
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+
+                {/* Feature rows */}
+                <tbody>
+                  {ROWS.map((row, ri) => (
+                    <tr
+                      key={row.label}
+                      className="border-t border-neutral-100/80"
                     >
-                      ✓
-                    </span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
+                      <td className="px-6 py-3.5 text-sm font-medium text-neutral-600">
+                        {row.label}
+                      </td>
 
-              <LiquidGlassBubble
-                accent={plan.accent}
-                accentLight={plan.accent === "#7C3AED" ? "#a78bfa" : "#60a5fa"}
-                className="btn-press block w-full rounded-full"
-              >
-                <a
-                  href="http://apps.shopify.com/ai-sales-support-assistant"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="block w-full py-3 text-center text-sm font-semibold"
-                >
-                  {plan.cta}
-                </a>
-              </LiquidGlassBubble>
-            </motion.div>
-          ))}
-        </div>
+                      {row.values.map((val, pi) => (
+                        <td key={pi} className="px-4 py-3.5 text-sm">
+                          {typeof val === "boolean" ? (
+                            val ? (
+                              <span
+                                className="inline-flex h-5 w-5 items-center justify-center rounded-full text-[11px] font-bold text-white"
+                                style={{ background: PLANS[pi].accent }}
+                              >
+                                ✓
+                              </span>
+                            ) : (
+                              <span className="text-neutral-300">—</span>
+                            )
+                          ) : (
+                            <span className="font-medium text-neutral-800">
+                              {val}
+                            </span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
 
-        {/* Trust footnote */}
+                  {/* CTA row */}
+                  <tr className="border-t border-neutral-100/80">
+                    <td className="px-6 py-6" />
+                    {PLANS.map((plan) => (
+                      <td key={plan.name} className="px-4 py-6">
+                        <LiquidGlassBubble
+                          accent={plan.accent}
+                          accentLight={plan.accentLight}
+                          className="btn-press block rounded-full"
+                        >
+                          <a
+                            href={plan.href}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="block w-full py-2.5 text-center text-sm font-semibold"
+                          >
+                            {plan.cta}
+                          </a>
+                        </LiquidGlassBubble>
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Footnote */}
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-10 text-center text-xs text-neutral-400"
+          className="mt-8 text-center text-xs text-neutral-400"
         >
           All plans include a 14-day free trial · Billed monthly · Cancel anytime via Shopify
         </motion.p>

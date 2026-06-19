@@ -40,18 +40,10 @@ export function CTABanner() {
               href={SHOPIFY_URL}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-[#2563EB] shadow-[0_8px_24px_rgba(0,0,0,0.15)] transition-transform hover:scale-[1.03] active:scale-[0.98]"
+              className="btn-press inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-[#2563EB] shadow-[0_8px_24px_rgba(0,0,0,0.15)]"
             >
               Start free trial
               <span aria-hidden>→</span>
-            </a>
-            <a
-              href="https://calendar.app.google/uCHWaZUmUy9fbeax5"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/10"
-            >
-              Book a demo
             </a>
           </div>
         </motion.div>
