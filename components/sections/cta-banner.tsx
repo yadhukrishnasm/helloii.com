@@ -16,6 +16,8 @@ export function CTABanner() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="relative overflow-hidden rounded-3xl border border-white/50 bg-gradient-to-br from-[#1d4ed8] via-[#2563EB] to-[#4f46e5] px-8 py-16 text-center shadow-[0_32px_80px_rgba(37,99,235,0.28)] sm:px-14 sm:py-20"
         >
+          <div className="grain-overlay pointer-events-none absolute inset-0 rounded-[inherit] opacity-[0.6]" />
+
           {/* Subtle inner glow top-left */}
           <div className="pointer-events-none absolute -left-10 -top-10 h-60 w-60 rounded-full bg-white/10 blur-3xl" />
           <div className="pointer-events-none absolute -bottom-10 -right-10 h-60 w-60 rounded-full bg-[#7C3AED]/30 blur-3xl" />

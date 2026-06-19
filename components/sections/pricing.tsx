@@ -7,17 +7,17 @@ import { LiquidGlassBubble } from "@/components/ui/liquid-glass";
 const PLANS = [
   {
     name: "Starter",
-    price: "$19",
+    price: "$0",
     period: "/mo",
     description: "For stores just getting started.",
-    cta: "Start free trial",
+    cta: "Get started free",
     href: "http://apps.shopify.com/ai-sales-support-assistant",
     accent: "#2563EB",
     accentLight: "#60a5fa",
   },
   {
     name: "Growth",
-    price: "$49",
+    price: "$25",
     period: "/mo",
     description: "More volume and brand control.",
     cta: "Start free trial",
@@ -27,10 +27,10 @@ const PLANS = [
   },
   {
     name: "Scale",
-    price: "$99",
+    price: "$55",
     period: "/mo",
     description: "Full control for high-volume stores.",
-    cta: "Contact us",
+    cta: "Start free trial",
     href: "http://apps.shopify.com/ai-sales-support-assistant",
     accent: "#4F46E5",
     accentLight: "#818cf8",
@@ -40,15 +40,15 @@ const PLANS = [
 type RowValue = string | boolean;
 
 const ROWS: { label: string; values: RowValue[] }[] = [
-  { label: "Chats per month",          values: ["1,000",    "5,000",    "Unlimited"] },
-  { label: "Shopify stores",           values: ["1",        "1",        "3"] },
-  { label: "Product catalog sync",     values: [true,       true,       true] },
-  { label: "Custom brand colors",      values: [false,      true,       true] },
-  { label: "Product recommendations",  values: [false,      true,       true] },
-  { label: "Analytics",                values: ["Basic",    "Advanced", "Advanced"] },
-  { label: "Chat widget",              values: ["Standard", "Custom",   "White-label"] },
-  { label: "API access",               values: [false,      false,      true] },
-  { label: "Support",                  values: ["Email",    "Priority", "Dedicated"] },
+  { label: "Chats per month", values: ["1,000", "5,000", "Unlimited"] },
+  { label: "Shopify stores", values: ["1", "1", "3"] },
+  { label: "Product catalog sync", values: [true, true, true] },
+  { label: "Custom brand colors", values: [false, true, true] },
+  { label: "Product recommendations", values: [false, true, true] },
+  { label: "Analytics", values: ["Basic", "Advanced", "Advanced"] },
+  { label: "Chat widget", values: ["Standard", "Custom", "White-label"] },
+  { label: "API access", values: [false, false, true] },
+  { label: "Support", values: ["Email", "Priority", "Dedicated"] },
 ];
 
 export function Pricing() {
@@ -72,7 +72,8 @@ export function Pricing() {
             Plans for every store
           </h2>
           <p className="mx-auto mt-3 max-w-md text-base text-neutral-500">
-            14-day free trial on all plans. No credit card required. Cancel any time.
+            14-day free trial on all plans. No credit card required. Cancel any
+            time.
           </p>
         </motion.div>
 
@@ -84,11 +85,9 @@ export function Pricing() {
         >
           {/* Outer glass container */}
           <div className="overflow-hidden rounded-3xl border border-white/60 bg-white/65 shadow-[0_8px_40px_rgba(0,0,0,0.07)] backdrop-blur-md">
-
             {/* Scrollable table wrapper (mobile) */}
             <div className="overflow-x-auto">
               <table className="w-full min-w-[560px] border-collapse">
-
                 {/* Plan headers */}
                 <thead>
                   <tr>
@@ -143,7 +142,7 @@ export function Pricing() {
 
                 {/* Feature rows */}
                 <tbody>
-                  {ROWS.map((row, ri) => (
+                  {ROWS.map((row) => (
                     <tr
                       key={row.label}
                       className="border-t border-neutral-100/80"
@@ -211,7 +210,8 @@ export function Pricing() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-8 text-center text-xs text-neutral-400"
         >
-          All plans include a 14-day free trial · Billed monthly · Cancel anytime via Shopify
+          All plans include a 14-day free trial · Billed monthly · Cancel
+          anytime via Shopify
         </motion.p>
       </Container>
     </section>

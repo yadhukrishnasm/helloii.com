@@ -93,9 +93,9 @@ export function Footer() {
                 hello@helloii.com
               </a>
               <p className="text-sm leading-6 text-neutral-500">
-                UL Cyberpark,
-                <br /> Nellikode (PO),
-                <br /> Kozhikode, Kerala, India - 673016
+                LEAP KSUM, 2nd Floor, <br />
+                UL CyberPark, Kozhikode <br />
+                Kerala - India
               </p>
             </div>
           </div>

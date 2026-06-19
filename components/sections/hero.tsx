@@ -8,10 +8,57 @@ import { Container } from "@/components/layout/container";
 const SHOPIFY_URL = "http://apps.shopify.com/ai-sales-support-assistant";
 
 const STATS = [
-  { value: "50+", label: "Shopify Stores" },
-  { value: "100K+", label: "Chats Handled" },
-  { value: "5.0★", label: "Avg Rating" },
-  { value: "3 yrs", label: "In Market" },
+  {
+    value: "50+",
+    label: "Shopify Stores",
+    icon: StoreIcon,
+    className: "sm:left-24 sm:top-20 lg:left-32 lg:top-20 sm:-rotate-[5deg]",
+    burstX: 180,
+    burstY: 120,
+    // proximity repulsion config — unique per card
+    proximityRadius: 180,
+    strength: 14,
+    returnEase: "elastic.out(1, 0.5)",
+    moveDuration: 0.5,
+  },
+  {
+    value: "1M+",
+    label: "Chats Handled",
+    icon: ChatIcon,
+    className: "sm:right-24 sm:top-24 lg:right-32 lg:top-24 sm:rotate-[4deg]",
+    burstX: -180,
+    burstY: 120,
+    proximityRadius: 220,
+    strength: 10,
+    returnEase: "power3.out",
+    moveDuration: 0.7,
+  },
+  {
+    value: "5.0★",
+    label: "Avg Rating",
+    icon: RatingIcon,
+    className:
+      "sm:left-20 sm:bottom-24 lg:left-28 lg:bottom-28 sm:rotate-[6deg]",
+    burstX: 180,
+    burstY: -120,
+    proximityRadius: 200,
+    strength: 18,
+    returnEase: "elastic.out(1.2, 0.4)",
+    moveDuration: 0.4,
+  },
+  {
+    value: "3 yrs",
+    label: "In Market",
+    icon: MarketIcon,
+    className:
+      "sm:right-20 sm:bottom-24 lg:right-28 lg:bottom-28 sm:-rotate-[6deg]",
+    burstX: -180,
+    burstY: -120,
+    proximityRadius: 160,
+    strength: 12,
+    returnEase: "power2.out",
+    moveDuration: 0.65,
+  },
 ];
 
 export function Hero() {
@@ -19,13 +66,103 @@ export function Hero() {
 
   useGSAP(
     () => {
-      gsap
-        .timeline({ defaults: { ease: "power3.out" } })
-        .from(".h-shopify-badge", { opacity: 0, y: 14, duration: 0.55 })
+      const hero = ref.current;
+      if (!hero) return;
+
+      const statCards = gsap.utils.toArray<HTMLElement>(".h-stat-float");
+
+      // Hide cards immediately so they're invisible before burst
+      gsap.set(statCards, { opacity: 0, x: 0, y: 0, scale: 1 });
+
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      tl.from(".h-shopify-badge", { opacity: 0, y: 14, duration: 0.55 })
         .from(".h-headline", { opacity: 0, y: 28, duration: 0.65 }, "-=0.3")
         .from(".h-sub", { opacity: 0, y: 18, duration: 0.55 }, "-=0.35")
-        .from(".h-stat", { opacity: 0, y: 16, duration: 0.45, stagger: 0.09 }, "-=0.3")
-        .from(".h-cta", { opacity: 0, y: 14, duration: 0.45 }, "-=0.2");
+        .from(".h-cta", { opacity: 0, y: 14, duration: 0.45 }, "-=0.2")
+        .add(() => {
+          statCards.forEach((card, i) => {
+            const stat = STATS[i];
+            gsap.fromTo(
+              card,
+              {
+                x: stat.burstX,
+                y: stat.burstY,
+                scale: 0.6,
+                opacity: 0,
+                filter: "blur(8px)",
+              },
+              {
+                x: 0,
+                y: 0,
+                scale: 1,
+                opacity: 1,
+                filter: "blur(0px)",
+                duration: 0.95,
+                delay: i * 0.07,
+                ease: "expo.out",
+              },
+            );
+          });
+        }, "-=0.2");
+
+      // Track displaced cards so untouched cards never animate
+      const displaced = new Set<number>();
+
+      const handleMouseMove = (event: MouseEvent) => {
+        statCards.forEach((card, i) => {
+          const stat = STATS[i];
+          const cardRect = card.getBoundingClientRect();
+          const cardCX = cardRect.left + cardRect.width / 2;
+          const cardCY = cardRect.top + cardRect.height / 2;
+
+          const dx = event.clientX - cardCX;
+          const dy = event.clientY - cardCY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < stat.proximityRadius && dist > 0) {
+            displaced.add(i);
+            const t = 1 - dist / stat.proximityRadius;
+            gsap.to(card, {
+              x: -(dx / dist) * t * stat.strength,
+              y: -(dy / dist) * t * stat.strength,
+              duration: stat.moveDuration,
+              ease: "power2.out",
+              overwrite: "auto",
+            });
+          } else if (displaced.has(i)) {
+            displaced.delete(i);
+            gsap.to(card, {
+              x: 0,
+              y: 0,
+              duration: 0.9,
+              ease: stat.returnEase,
+              overwrite: "auto",
+            });
+          }
+        });
+      };
+
+      const handleMouseLeave = () => {
+        displaced.forEach((i) => {
+          gsap.to(statCards[i], {
+            x: 0,
+            y: 0,
+            duration: 1.0,
+            ease: STATS[i].returnEase,
+            overwrite: "auto",
+          });
+        });
+        displaced.clear();
+      };
+
+      hero.addEventListener("mousemove", handleMouseMove);
+      hero.addEventListener("mouseleave", handleMouseLeave);
+
+      return () => {
+        hero.removeEventListener("mousemove", handleMouseMove);
+        hero.removeEventListener("mouseleave", handleMouseLeave);
+      };
     },
     { scope: ref },
   );
@@ -36,84 +173,246 @@ export function Hero() {
       className="relative flex min-h-screen items-center pb-20 pt-32"
     >
       <Container>
-        {/* ── Gradient box ── */}
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#1a3faa] via-[#2563EB] to-[#4f46e5] px-8 py-16 shadow-[0_32px_80px_rgba(37,99,235,0.30)] sm:px-14 sm:py-20">
+        <div className="relative overflow-visible rounded-3xl bg-gradient-to-br from-[#1a3faa] via-[#2563EB] to-[#4f46e5] px-8 py-16 shadow-[0_32px_80px_rgba(37,99,235,0.30)] sm:px-14 sm:py-30">
+          <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]">
+            <div className="grain-overlay absolute inset-0 rounded-[inherit] opacity-[0.6]" />
 
-          {/* Grain texture */}
-          <div className="grain-overlay pointer-events-none absolute inset-0 rounded-[inherit] opacity-[0.08]" />
+            <div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
 
-          {/* Top specular line */}
-          <div className="pointer-events-none absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+            <div className="absolute -left-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
 
-          {/* Corner glow — top left */}
-          <div className="pointer-events-none absolute -left-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
-          {/* Corner glow — bottom right */}
-          <div className="pointer-events-none absolute -bottom-16 -right-16 h-64 w-64 rounded-full bg-[#7C3AED]/30 blur-3xl" />
+            <div className="absolute -bottom-16 -right-16 h-64 w-64 rounded-full bg-[#7C3AED]/30 blur-3xl" />
+          </div>
 
-          <div className="relative mx-auto max-w-3xl text-center">
+          {/* Desktop exploded stat cards */}
+          <div className="pointer-events-none absolute inset-0 z-20 hidden sm:block">
+            {STATS.map((s) => {
+              const Icon = s.icon;
 
-            {/* Shopify badge */}
+              return (
+                <div
+                  key={s.label}
+                  className={`h-stat-float absolute w-[168px] rounded-[1.4rem] border border-white/20 bg-white/15 px-4 py-4 text-center shadow-[0_18px_45px_rgba(0,0,0,0.18)] backdrop-blur-md will-change-transform ${s.className}`}
+                >
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-white/20 bg-white/15 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]">
+                    <Icon />
+                  </div>
+
+                  <p className="mt-3 text-3xl font-black leading-none tracking-tight text-white">
+                    {s.value}
+                  </p>
+
+                  <p className="mt-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.08em] text-blue-100/85">
+                    {s.label}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="relative z-10 mx-auto max-w-3xl text-center">
             <div className="h-shopify-badge inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white/80 backdrop-blur-sm">
               <ShopifyMark />
               Built for Shopify
             </div>
 
-            {/* Headline */}
-            <h1 className="h-headline mt-6 text-[2.8rem] font-bold leading-[1.05] tracking-[-0.04em] text-white sm:text-6xl lg:text-7xl">
+            <h1 className="h-headline mt-6 text-[2.8rem] font-bold leading-[1.05] tracking-[-0.02em] text-white sm:text-6xl lg:text-7xl">
               The AI assistant your{" "}
-              <span className="text-blue-200">Shopify store</span>{" "}
-              needs
+              <span className="text-[#b2de5f]">Shopify store</span> needs
             </h1>
 
-            {/* Subtext */}
             <p className="h-sub mx-auto mt-5 max-w-xl text-base leading-7 text-blue-100/80 sm:text-lg sm:leading-8">
               Answer every customer question, recommend the right product, and
-              handle support — automatically, 24/7. Not a generic chatbot.
-              Built exclusively for Shopify.
+              handle support — automatically, 24/7. Not a generic chatbot. Built
+              exclusively for Shopify.
             </p>
 
-            {/* Trust stats */}
-            <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-              {STATS.map((s) => (
-                <div
-                  key={s.label}
-                  className="h-stat rounded-2xl border border-white/15 bg-white/10 px-4 py-4 backdrop-blur-sm"
-                >
-                  <p className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
-                    {s.value}
-                  </p>
-                  <p className="mt-1 text-xs font-medium text-blue-200/80">
-                    {s.label}
-                  </p>
-                </div>
-              ))}
+            {/* Mobile stat grid */}
+            <div className="mt-10 grid grid-cols-2 gap-3 sm:hidden">
+              {STATS.map((s) => {
+                const Icon = s.icon;
+
+                return (
+                  <div
+                    key={s.label}
+                    className="h-stat rounded-2xl border border-white/15 bg-white/10 px-4 py-4 text-center backdrop-blur-sm"
+                  >
+                    <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border border-white/20 bg-white/10 text-white">
+                      <Icon />
+                    </div>
+
+                    <p className="mt-3 text-2xl font-black tracking-tight text-white">
+                      {s.value}
+                    </p>
+
+                    <p className="mt-1 text-[0.68rem] font-semibold uppercase tracking-[0.08em] text-blue-200/85">
+                      {s.label}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
 
-            {/* CTA */}
             <div className="h-cta mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
               <a
                 href={SHOPIFY_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="btn-press inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-[#2563EB] shadow-[0_8px_24px_rgba(0,0,0,0.15)]"
+                className="btn-press inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-3.5 text-sm font-bold text-white"
               >
                 Add to Shopify — free
                 <span aria-hidden>→</span>
               </a>
+
               <a
                 href="https://calendar.app.google/uCHWaZUmUy9fbeax5"
                 target="_blank"
                 rel="noreferrer"
-                className="btn-press inline-flex items-center gap-2 rounded-full border border-white/30 px-8 py-3.5 text-sm font-bold text-white"
+                className="btn-press inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-[#2563EB] shadow-[0_8px_24px_rgba(0,0,0,0.15)]"
               >
                 Book a demo
               </a>
             </div>
-
           </div>
         </div>
       </Container>
     </section>
+  );
+}
+
+function StoreIcon() {
+  return (
+    <svg
+      width="28"
+      height="28"
+      viewBox="0 0 28 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <path
+        d="M5.25 12.25V23.25H22.75V12.25"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M8.25 23.25V16.5H13.25V23.25"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M4.5 6.25H23.5L25 11.25C25 13.04 23.54 14.5 21.75 14.5C20.46 14.5 19.35 13.75 18.83 12.67C18.31 13.75 17.21 14.5 15.92 14.5C14.63 14.5 13.52 13.75 13 12.67C12.48 13.75 11.37 14.5 10.08 14.5C8.79 14.5 7.69 13.75 7.17 12.67C6.65 13.75 5.54 14.5 4.25 14.5C2.46 14.5 1 13.04 1 11.25L4.5 6.25Z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8 6.25V3.75H20V6.25"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function ChatIcon() {
+  return (
+    <svg
+      width="28"
+      height="28"
+      viewBox="0 0 28 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <path
+        d="M5.25 6.5C5.25 4.98 6.48 3.75 8 3.75H20C21.52 3.75 22.75 4.98 22.75 6.5V14.5C22.75 16.02 21.52 17.25 20 17.25H12.25L6.75 22.25V17.25H8C6.48 17.25 5.25 16.02 5.25 14.5V6.5Z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M10 9.75H18"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M10 13H15.25"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+function RatingIcon() {
+  return (
+    <svg
+      width="28"
+      height="28"
+      viewBox="0 0 28 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <path
+        d="M14 3.25L17.05 9.43L23.88 10.42L18.94 15.24L20.1 22.03L14 18.82L7.9 22.03L9.06 15.24L4.12 10.42L10.95 9.43L14 3.25Z"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M14 7.85L15.55 11L19.03 11.51L16.51 13.96L17.11 17.43L14 15.8L10.89 17.43L11.49 13.96L8.97 11.51L12.45 11L14 7.85Z"
+        fill="currentColor"
+        opacity="0.45"
+      />
+    </svg>
+  );
+}
+
+function MarketIcon() {
+  return (
+    <svg
+      width="28"
+      height="28"
+      viewBox="0 0 28 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden
+    >
+      <path
+        d="M14 25C20.08 25 25 20.08 25 14C25 7.92 20.08 3 14 3C7.92 3 3 7.92 3 14C3 20.08 7.92 25 14 25Z"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
+      <path
+        d="M14 7.5V14L18.25 16.5"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7.5 14H5.5"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        opacity="0.55"
+      />
+      <path
+        d="M22.5 14H20.5"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        opacity="0.55"
+      />
+    </svg>
   );
 }
 
