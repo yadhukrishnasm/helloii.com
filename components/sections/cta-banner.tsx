@@ -29,12 +29,11 @@ export function CTABanner() {
           </p>
 
           <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-bold tracking-[-0.035em] text-white sm:text-4xl lg:text-5xl">
-            Add Helloii to your Shopify store today
+            Try Helloii free on your Shopify store now.
           </h2>
 
           <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-blue-100">
-            14-day free trial. No credit card required. Your store, your
-            customers, better conversations — starting now.
+            Install it and see Helloii answering your customers in minutes.
           </p>
 
           <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -44,7 +43,7 @@ export function CTABanner() {
               rel="noreferrer"
               className="btn-press inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-[#2563EB] shadow-[0_8px_24px_rgba(0,0,0,0.15)]"
             >
-              Start free trial
+              Try for Free
               <span aria-hidden>→</span>
             </a>
           </div>

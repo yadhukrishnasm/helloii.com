@@ -71,15 +71,6 @@ body {
     will-change: transform;
 }
 
-@media (min-width: 768px) {
-    html,
-    body,
-    a,
-    button {
-        cursor: none;
-    }
-}
-
 /* ─── Physical press effect ───────────────────────────────────────── */
 
 .btn-press {
@@ -116,6 +107,14 @@ body {
     3. A slow light-sweep animation (the shine beam passing across)
     4. Depth via layered box-shadows
 */
+
+/* ── Hide scrollbar on the chatbot animation's auto-scrolling message list ── */
+.chat-scroll {
+    scrollbar-width: none;
+}
+.chat-scroll::-webkit-scrollbar {
+    display: none;
+}
 
 /* ── Glass card — translucent frosted glass ── */
 .glass-card {
@@ -358,7 +357,6 @@ body {
     );
 
     border-radius: inherit;
-    pointer-events: none;
 }
 
 .liquid-glass::after {

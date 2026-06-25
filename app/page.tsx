@@ -8,7 +8,7 @@ import { HowItWorks } from "@/components/sections/how-it-works";
 import { RecognizedBy } from "@/components/sections/recognized-by";
 import { Testimonials } from "@/components/sections/testimonials";
 import { Pricing } from "@/components/sections/pricing";
-import { FAQ } from "@/components/sections/faq";
+import { AskHelloii } from "@/components/sections/ask-helloii";
 import { CTABanner } from "@/components/sections/cta-banner";
 import { Footer } from "@/components/sections/footer";
 
@@ -24,7 +24,7 @@ export default function HomePage() {
         <HowItWorks />
         <Testimonials />
         <Pricing />
-        <FAQ />
+        <AskHelloii />
         <CTABanner />
       </main>
       <Footer />

@@ -136,9 +136,9 @@ const FEATURES: {
 }[] = [
   {
     icon: BrandColorsIcon,
-    title: "Custom Brand Colors",
+    title: "Built to convert",
     description:
-      "Match Helloii exactly to your store's design. Full color customization so the assistant feels native — not bolted on.",
+      "Every answer nudges hesitant shoppers toward checkout.",
     accent: "#2563EB",
     accentLight: "#93C5FD",
     cardBg: "#DBEAFE",
@@ -148,9 +148,9 @@ const FEATURES: {
   },
   {
     icon: KnowledgeBaseIcon,
-    title: "Store Knowledge Base",
+    title: "Learns your whole store",
     description:
-      "Syncs with your Shopify catalog, product pages, and store policies. Always up to date — no manual input needed.",
+      "Helloii reads your products, collections, and policies, so it knows everything on your site.",
     accent: "#7C3AED",
     accentLight: "#C4B5FD",
     cardBg: "#EDE9FE",
@@ -160,9 +160,9 @@ const FEATURES: {
   },
   {
     icon: AISparkleIcon,
-    title: "GPT-Powered Responses",
+    title: "Set up by itself",
     description:
-      "Answers that feel human, not robotic. Powered by the latest GPT models to handle complex questions naturally.",
+      "Helloii reads your store and gets to work automatically — nothing to configure.",
     accent: "#2563EB",
     accentLight: "#93C5FD",
     cardBg: "#DBEAFE",
@@ -172,9 +172,9 @@ const FEATURES: {
   },
   {
     icon: AnalyticsIcon,
-    title: "Per-Store Analytics",
+    title: "Test in private",
     description:
-      "Track customers engaged, messages handled, and product recommendations — detailed analytics per store, per day.",
+      "Run Helloii on your store quietly before switching it on for shoppers.",
     accent: "#4F46E5",
     accentLight: "#A5B4FC",
     cardBg: "#E0E7FF",
@@ -184,9 +184,9 @@ const FEATURES: {
   },
   {
     icon: ChatboxIcon,
-    title: "Embedded Question Box",
+    title: "Human backup, built in",
     description:
-      "A compact assistant appears right below product descriptions — exactly where customers hesitate and need help most.",
+      "Helloii handles the routine and hands the tricky ones to you on WhatsApp.",
     accent: "#7C3AED",
     accentLight: "#C4B5FD",
     cardBg: "#EDE9FE",
@@ -217,8 +217,8 @@ export function Features() {
           </p>
 
           <h2 className="mt-3 text-3xl font-bold tracking-[-0.035em] text-neutral-950 sm:text-4xl lg:text-5xl">
-            Built for serious{" "}
-            <span className="text-[#7C3AED]">Shopify stores</span>
+            Built for{" "}
+            <span className="text-[#7C3AED]">eCommerce</span>
           </h2>
 
           <p className="mt-4 text-base leading-7 text-neutral-500">

@@ -29,30 +29,6 @@ const TESTIMONIALS = [
     initials: "PR",
     color: "#2563EB",
   },
-  {
-    quote:
-      "We sell technical outdoor gear and our customers always have detailed questions. Helloii answers them accurately from our product data — it's saved us hours every week.",
-    name: "Daniel Torres",
-    store: "Summit Outfitters",
-    initials: "DT",
-    color: "#4F46E5",
-  },
-  {
-    quote:
-      "Honestly I was skeptical about another chatbot. But this one actually understands our store. It even upsells complementary products in a way that feels natural, not pushy.",
-    name: "Ananya Krishnan",
-    store: "Aurielle Beauty",
-    initials: "AK",
-    color: "#7C3AED",
-  },
-  {
-    quote:
-      "Our customers shop late at night when we're offline. Helloii handles every question as if we were right there. Return rates dropped and reviews improved — that's all I needed to see.",
-    name: "Liam Barker",
-    store: "Moda Collective",
-    initials: "LB",
-    color: "#2563EB",
-  },
 ];
 
 export function Testimonials() {

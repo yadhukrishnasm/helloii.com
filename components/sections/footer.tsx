@@ -21,7 +21,8 @@ export function Footer() {
 
             <p className="mt-4 max-w-md text-sm font-medium leading-7 text-neutral-600">
               AI shopping assistant for ecommerce stores. Help customers ask,
-              discover, decide, and buy faster.
+              discover, decide, and buy faster — while cutting your support
+              load.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -31,7 +32,7 @@ export function Footer() {
                 rel="noreferrer"
                 className="btn-press btn-glass-gradient inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold"
               >
-                Sign up for free
+                Try for free
               </a>
 
               <a
@@ -70,12 +71,12 @@ export function Footer() {
               >
                 Pricing
               </a>
-              <a
-                href="#faq"
+              <Link
+                href="/faq"
                 className="transition-colors hover:text-neutral-950"
               >
                 FAQ
-              </a>
+              </Link>
             </nav>
           </div>
 
@@ -128,7 +129,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-neutral-200 pt-6 text-sm text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
-          <p>© Helloii.com, Powered by MAGNOINNOVATIONLAB PRIVATE LIMITED</p>
+          <p>© Helloii.com, from the House of Nysaclan — Nysaclan.com</p>
 
           <div className="flex gap-5">
             <a href="#" className="transition-colors hover:text-neutral-950">

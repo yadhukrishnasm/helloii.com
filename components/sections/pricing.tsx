@@ -7,17 +7,17 @@ import { LiquidGlassBubble } from "@/components/ui/liquid-glass";
 const PLANS = [
   {
     name: "Starter",
-    price: "$0",
+    price: "$19",
     period: "/mo",
     description: "For stores just getting started.",
-    cta: "Get started free",
+    cta: "Start free trial",
     href: "http://apps.shopify.com/ai-sales-support-assistant",
     accent: "#2563EB",
     accentLight: "#60a5fa",
   },
   {
     name: "Growth",
-    price: "$25",
+    price: "$49",
     period: "/mo",
     description: "More volume and brand control.",
     cta: "Start free trial",
@@ -27,10 +27,10 @@ const PLANS = [
   },
   {
     name: "Scale",
-    price: "$55",
+    price: "$99",
     period: "/mo",
     description: "Full control for high-volume stores.",
-    cta: "Start free trial",
+    cta: "Contact us",
     href: "http://apps.shopify.com/ai-sales-support-assistant",
     accent: "#4F46E5",
     accentLight: "#818cf8",
@@ -72,8 +72,8 @@ export function Pricing() {
             Plans for every store
           </h2>
           <p className="mx-auto mt-3 max-w-md text-base text-neutral-500">
-            14-day free trial on all plans. No credit card required. Cancel any
-            time.
+            14-day free trial on all self-serve plans. No credit card
+            required. Cancel any time.
           </p>
         </motion.div>
 
@@ -210,8 +210,8 @@ export function Pricing() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-8 text-center text-xs text-neutral-400"
         >
-          All plans include a 14-day free trial · Billed monthly · Cancel
-          anytime via Shopify
+          Self-serve plans include a 14-day free trial · Billed monthly ·
+          Cancel anytime via Shopify
         </motion.p>
       </Container>
     </section>

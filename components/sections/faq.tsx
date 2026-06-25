@@ -5,39 +5,22 @@ import { motion } from "framer-motion";
 
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/ui/reveal";
+import { FAQ_GROUPS, ALL_FAQS } from "@/lib/faq-data";
 
-const faqs = [
-  {
-    question: "What is Helloii?",
-    answer:
-      "Helloii is an AI shopping assistant for ecommerce stores. It helps customers ask questions, discover products, understand policies, and move closer to checkout.",
-  },
-  {
-    question: "Does Helloii work with Shopify?",
-    answer:
-      "Yes. Helloii is built for Shopify stores and can be connected to your storefront so customers can interact with the assistant directly while browsing.",
-  },
-  {
-    question: "Can it answer product questions?",
-    answer:
-      "Yes. Helloii can help answer questions about products, variants, sizing, availability, returns, delivery, and store policies depending on the data connected to it.",
-  },
-  {
-    question: "Can I customize the chatbot design?",
-    answer:
-      "Yes. The widget can be styled to match your brand, including colors, layout, and the glass-like assistant interface.",
-  },
-  {
-    question: "Is this only for support?",
-    answer:
-      "No. Helloii is not just a support bot. It also helps with product discovery, buying decisions, recommendations, and conversion-focused conversations.",
-  },
-  {
-    question: "How do I get started?",
-    answer:
-      "Book a demo and we will walk you through the setup, storefront integration, and how Helloii can fit your store.",
-  },
-];
+const faqGroups = FAQ_GROUPS;
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: ALL_FAQS.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
 
 export function FAQ() {
   return (
@@ -64,24 +47,41 @@ export function FAQ() {
 
           <Reveal>
             <p className="mx-auto mt-7 max-w-2xl text-base leading-8 text-neutral-600 sm:text-lg">
-              Simple answers about what Helloii does, how it works, and where it
-              fits inside your ecommerce store.
+              Answers about what Helloii does, how it works, what it costs,
+              and how it fits inside a Shopify store.
             </p>
           </Reveal>
         </div>
 
-        <div className="mx-auto mt-14 max-w-4xl space-y-4 sm:mt-20">
-          {faqs.map((faq, index) => (
-            <Reveal key={faq.question}>
-              <FAQItem
-                question={faq.question}
-                answer={faq.answer}
-                index={index}
-              />
-            </Reveal>
+        <div className="mx-auto mt-14 max-w-4xl space-y-10 sm:mt-20">
+          {faqGroups.map((group) => (
+            <div key={group.category}>
+              <Reveal>
+                <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-neutral-400">
+                  {group.category}
+                </h3>
+              </Reveal>
+
+              <div className="space-y-4">
+                {group.items.map((faq, index) => (
+                  <Reveal key={faq.question}>
+                    <FAQItem
+                      question={faq.question}
+                      answer={faq.answer}
+                      index={index}
+                    />
+                  </Reveal>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </Container>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
     </section>
   );
 }

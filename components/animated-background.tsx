@@ -163,47 +163,6 @@ export function AnimatedBackground() {
           }}
         />
       </div>
-
-      <LiquidCursor />
     </>
-  );
-}
-
-// Remove unused spring imports — only useMotionValue needed for direct tracking
-function LiquidCursor() {
-  const mouseX = useMotionValue(-100);
-  const mouseY = useMotionValue(-100);
-
-  useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-    };
-    window.addEventListener("mousemove", onMove);
-    return () => window.removeEventListener("mousemove", onMove);
-  }, [mouseX, mouseY]);
-
-  return (
-    <motion.div
-      style={{ x: mouseX, y: mouseY }}
-      className="pointer-events-none fixed left-0 top-0 z-[9998] hidden md:block"
-    >
-      <svg
-        width="22"
-        height="26"
-        viewBox="0 0 22 26"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ filter: "drop-shadow(0 2px 6px rgba(37,99,235,0.28))" }}
-      >
-        <path
-          d="M2 2L20 11.5L12.5 13.5L9 23L2 2Z"
-          fill="rgba(255,255,255,0.92)"
-          stroke="rgba(37,99,235,0.5)"
-          strokeWidth="1.5"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </motion.div>
   );
 }

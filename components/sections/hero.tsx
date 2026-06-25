@@ -9,7 +9,7 @@ const SHOPIFY_URL = "http://apps.shopify.com/ai-sales-support-assistant";
 
 const STATS = [
   {
-    value: "50+",
+    value: "200+",
     label: "Shopify Stores",
     icon: StoreIcon,
     className: "sm:left-24 sm:top-20 lg:left-32 lg:top-20 sm:-rotate-[5deg]",
@@ -170,10 +170,10 @@ export function Hero() {
   return (
     <section
       ref={ref}
-      className="relative flex min-h-screen items-center pb-20 pt-32"
+      className="relative flex min-h-screen items-center pb-12 pt-24 sm:pb-20 sm:pt-32"
     >
       <Container>
-        <div className="relative overflow-visible rounded-3xl bg-gradient-to-br from-[#1a3faa] via-[#2563EB] to-[#4f46e5] px-8 py-16 shadow-[0_32px_80px_rgba(37,99,235,0.30)] sm:px-14 sm:py-30">
+        <div className="relative overflow-visible rounded-3xl bg-gradient-to-br from-[#1a3faa] via-[#2563EB] to-[#4f46e5] px-6 py-10 shadow-[0_32px_80px_rgba(37,99,235,0.30)] sm:px-14 sm:py-30">
           <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]">
             <div className="grain-overlay absolute inset-0 rounded-[inherit] opacity-[0.6]" />
 
@@ -213,39 +213,51 @@ export function Hero() {
           <div className="relative z-10 mx-auto max-w-3xl text-center">
             <div className="h-shopify-badge inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.14em] text-white/80 backdrop-blur-sm">
               <ShopifyMark />
-              Built for Shopify
+              Shopify App
             </div>
 
-            <h1 className="h-headline mt-6 text-[2.8rem] font-bold leading-[1.05] tracking-[-0.02em] text-white sm:text-6xl lg:text-7xl">
-              The AI assistant your{" "}
-              <span className="text-[#b2de5f]">Shopify store</span> needs
+            <h1 className="h-headline mt-4 text-[2.3rem] font-bold leading-[1.08] tracking-[-0.02em] text-white sm:mt-6 sm:text-6xl sm:leading-[1.05] lg:text-7xl">
+              The AI assistant that turns{" "}
+              <span className="text-[#b2de5f]">questions</span> into checkouts.
             </h1>
 
-            <p className="h-sub mx-auto mt-5 max-w-xl text-base leading-7 text-blue-100/80 sm:text-lg sm:leading-8">
-              Answer every customer question, recommend the right product, and
-              handle support — automatically, 24/7. Not a generic chatbot. Built
-              exclusively for Shopify.
+            <p className="h-sub mx-auto mt-3 max-w-xl text-sm leading-6 text-blue-100/80 sm:mt-5 sm:text-lg sm:leading-8">
+              When shoppers can't get an answer, they leave. Helloii answers
+              instantly on your product pages — sizing, shipping, returns,
+              comparisons — guiding customers to the right product and to
+              checkout.
+            </p>
+
+            {/* Entity sentence — server-rendered, high in the DOM, for LLM/crawler
+                citation only. sr-only keeps it out of the visual layout for
+                human visitors on every screen size while leaving the text
+                fully present in the server-rendered HTML. */}
+            <p className="sr-only">
+              Helloii is an AI shopping assistant for Shopify stores that
+              reduces support load by instantly answering customer questions
+              about products, shipping, returns, sizing, and store policies —
+              24/7, with no human in the loop for routine questions.
             </p>
 
             {/* Mobile stat grid */}
-            <div className="mt-10 grid grid-cols-2 gap-3 sm:hidden">
+            <div className="mt-6 grid grid-cols-2 gap-2 sm:hidden">
               {STATS.map((s) => {
                 const Icon = s.icon;
 
                 return (
                   <div
                     key={s.label}
-                    className="h-stat rounded-2xl border border-white/15 bg-white/10 px-4 py-4 text-center backdrop-blur-sm"
+                    className="h-stat rounded-2xl border border-white/15 bg-white/10 px-3 py-3 text-center backdrop-blur-sm"
                   >
-                    <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border border-white/20 bg-white/10 text-white">
+                    <div className="mx-auto flex h-9 w-9 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white">
                       <Icon />
                     </div>
 
-                    <p className="mt-3 text-2xl font-black tracking-tight text-white">
+                    <p className="mt-2 text-xl font-black tracking-tight text-white">
                       {s.value}
                     </p>
 
-                    <p className="mt-1 text-[0.68rem] font-semibold uppercase tracking-[0.08em] text-blue-200/85">
+                    <p className="mt-0.5 text-[0.62rem] font-semibold uppercase tracking-[0.08em] text-blue-200/85">
                       {s.label}
                     </p>
                   </div>
@@ -253,7 +265,7 @@ export function Hero() {
               })}
             </div>
 
-            <div className="h-cta mt-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+            <div className="h-cta mt-6 flex flex-col items-center gap-3 sm:mt-10 sm:flex-row sm:justify-center">
               <a
                 href={SHOPIFY_URL}
                 target="_blank"

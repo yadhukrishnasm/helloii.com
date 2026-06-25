@@ -1,61 +1,86 @@
-const LOGOS = [
-  { src: "https://helloii.com/assets/images/v2/b_v2_1.png", alt: "Partner badge 1" },
-  { src: "https://helloii.com/assets/images/v2/b_v2_2.png", alt: "Partner badge 2" },
-  { src: "https://helloii.com/assets/images/v2/b_v2_3.png", alt: "Partner badge 3" },
-  { src: "https://helloii.com/assets/images/v2/b_v2_4.png", alt: "Partner badge 4" },
-  { src: "https://helloii.com/assets/images/v2/b_v2_5.png", alt: "Partner badge 5" },
-];
+"use client";
 
-// Repeat 4× per half so one set ≥ 3200 px — always wider than any viewport.
-// The CSS animation runs translateX(0 → -50%), where -50% = exactly one half.
-const SET = [...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS];
+import { useRef } from "react";
+import { useInView } from "framer-motion";
+import { Container } from "@/components/layout/container";
+
+const CUSTOMERS = [
+  {
+    name: "Fabus Frames",
+    src: "https://fabusframes.com/cdn/shop/files/Fabus_White_240x.png?v=1684904672",
+    dark: true,
+  },
+  {
+    name: "Denzo Fashion",
+    src: "https://denzofashion.com/cdn/shop/files/Denzo_LOGO-05.png?height=88&v=1779860396",
+  },
+  {
+    name: "Spice Basket",
+    src: "https://spicebasket.com/cdn/shop/files/Layer_1.svg?v=1753251331&width=600",
+  },
+  {
+    name: "Zilmor",
+    src: "https://zilmor.com/cdn/shop/files/1072X861-PNG_1_90x_1.png?v=1772515941&width=600",
+  },
+  {
+    name: "Kawaii Molds",
+    src: "https://kawaiimolds.com/cdn/shop/files/LOGO-TOPWEBSITE-whitebarbottomAsset_9.svg?v=1754250832&width=600",
+    dark: true,
+  },
+  {
+    name: "Gold Age",
+    src: "https://goldage.life/cdn/shop/files/AD906D9D-0C9C-470D-8073-5F2237B44DE7-2_90x.jpg?v=1651237394",
+  },
+  {
+    name: "Chryso Collections",
+    // No logo image found on the live site — store uses a text wordmark.
+    src: null,
+  },
+];
 
 export function RecognizedBy() {
   return (
     <section className="relative overflow-hidden border-y border-neutral-200/60 py-10 sm:py-14">
-      <div className="mb-8 text-center">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-neutral-400">
-          Recognised by
+      <Container>
+        <p className="mb-8 text-center text-xs font-bold uppercase tracking-[0.2em] text-neutral-400">
+          Trusted by
         </p>
-      </div>
 
-      {/* Outer clip */}
-      <div className="relative overflow-hidden">
-        {/* Fade masks */}
-        <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-24 bg-gradient-to-r from-[#f8f9fc] to-transparent" />
-        <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-24 bg-gradient-to-l from-[#f8f9fc] to-transparent" />
-
-        {/*
-          Two halves, each containing SET (4 repeats of LOGOS).
-          One half width ≥ 3200 px → safely wider than any viewport.
-          translateX(-50%) lands exactly at the start of the second half → seamless.
-        */}
-        <div className="marquee-track flex w-max items-center">
-          <div className="flex shrink-0 items-center gap-10 pr-10">
-            {SET.map((logo, i) => (
-              <LogoBadge key={`a-${i}`} logo={logo} />
-            ))}
-          </div>
-          <div className="flex shrink-0 items-center gap-10 pr-10">
-            {SET.map((logo, i) => (
-              <LogoBadge key={`b-${i}`} logo={logo} />
-            ))}
-          </div>
+        <div className="grid grid-cols-2 place-items-center gap-4 sm:grid-cols-3 sm:gap-1 lg:grid-cols-7">
+          {CUSTOMERS.map((customer) => (
+            <CustomerLogo key={customer.name} customer={customer} />
+          ))}
         </div>
-      </div>
+      </Container>
     </section>
   );
 }
 
-function LogoBadge({ logo }: { logo: { src: string; alt: string } }) {
+function CustomerLogo({
+  customer,
+}: {
+  customer: { name: string; src: string | null; dark?: boolean };
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+
   return (
-    <div className="glass-item flex h-16 w-36 shrink-0 items-center justify-center rounded-2xl px-4">
-      <img
-        src={logo.src}
-        alt={logo.alt}
-        className="h-10 w-auto object-contain opacity-90 transition-opacity duration-300 hover:opacity-100"
-        loading="lazy"
-      />
+    <div
+      ref={ref}
+      className="group flex h-14 w-full max-w-[150px] items-center justify-center"
+    >
+      {customer.src ? (
+        <img
+          src={customer.src}
+          alt={customer.name}
+          loading="lazy"
+          className="h-9 w-auto max-w-[120px] object-contain opacity-40 grayscale contrast-125 brightness-75 saturate-0 transition-all duration-500 ease-out group-hover:opacity-100 group-hover:grayscale-0 group-hover:contrast-100 group-hover:brightness-100 group-hover:saturate-100"
+        />
+      ) : (
+        <span className="text-sm font-semibold tracking-tight text-neutral-400 transition-colors duration-300 group-hover:text-neutral-950">
+          {customer.name}
+        </span>
+      )}
     </div>
   );
 }

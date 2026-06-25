@@ -44,13 +44,22 @@ export function Navbar() {
               >
                 Pricing
               </a>
-              <a
-                href="#faq"
+              <Link
+                href="/faq"
                 className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
               >
                 FAQ
-              </a>
+              </Link>
             </nav>
+
+            <a
+              href="https://calendar.app.google/uCHWaZUmUy9fbeax5"
+              target="_blank"
+              rel="noreferrer"
+              className="hidden text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950 lg:inline-block"
+            >
+              Book a demo
+            </a>
 
             <LiquidGlassBubble
               accent="#2563eb"
@@ -58,11 +67,11 @@ export function Navbar() {
               className="btn-press rounded-full px-5 py-2 text-sm font-semibold"
             >
               <a
-                href="https://calendar.app.google/uCHWaZUmUy9fbeax5"
+                href="http://apps.shopify.com/ai-sales-support-assistant"
                 target="_blank"
                 rel="noreferrer"
               >
-                Book a demo
+                Try for free in Shopify
               </a>
             </LiquidGlassBubble>
           </div>

@@ -8,28 +8,28 @@ const STEPS = [
     step: "01",
     title: "Install from the Shopify App Store",
     description:
-      "Add Helloii to your store in one click — no code, no developer required. It takes under two minutes to install and activate.",
+      "Add Helloii to your store in one click — no code, no developer required. Installing and activating takes under two minutes.",
     accent: "#2563EB",
   },
   {
     step: "02",
     title: "Helloii learns your store automatically",
     description:
-      "The assistant syncs with your product catalog, collections, policies, and FAQs. It reads everything your store already has — nothing to configure manually.",
+      "It syncs with your product catalog, collections, policies, and FAQs — reading everything your store already has. Nothing to configure manually.",
     accent: "#4F46E5",
   },
   {
     step: "03",
     title: "Customers get instant, accurate answers",
     description:
-      "The assistant appears on your product pages and answers questions in real time — about sizing, shipping, returns, and comparisons — exactly when customers need it.",
+      "Helloii appears on your product pages and answers questions in real time — sizing, shipping, returns, comparisons — exactly when customers need it.",
     accent: "#7C3AED",
   },
   {
     step: "04",
-    title: "Watch conversions and confidence grow",
+    title: "Watch conversions grow and support load drop",
     description:
-      "Track chats, question types, and engagement from your analytics dashboard. See exactly where customers hesitate and how Helloii moves them forward.",
+      "Track chats, question types, and engagement from your analytics dashboard. See where customers hesitate and how Helloii moves them forward.",
     accent: "#2563EB",
   },
 ];
