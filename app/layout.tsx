@@ -66,22 +66,22 @@ const SOFTWARE_JSON_LD = {
   offers: [
     {
       "@type": "Offer",
-      name: "Starter",
-      price: "19",
+      name: "Free",
+      price: "0",
       priceCurrency: "USD",
       billingDuration: "P1M",
     },
     {
       "@type": "Offer",
-      name: "Growth",
-      price: "49",
+      name: "Basic",
+      price: "25",
       priceCurrency: "USD",
       billingDuration: "P1M",
     },
     {
       "@type": "Offer",
-      name: "Scale",
-      price: "99",
+      name: "Pro",
+      price: "55",
       priceCurrency: "USD",
       billingDuration: "P1M",
     },

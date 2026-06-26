@@ -180,7 +180,7 @@ function AboutScrollSection() {
 
                 <motion.h2
                   style={{ opacity: headingOpacity, y: headingY }}
-                  className="mt-4 lg:mt-6 max-w-3xl text-3xl sm:text-4xl lg:text-5xl font-bold leading-[0.95] tracking-[-0.055em] text-neutral-950 xl:text-7xl"
+                  className="mt-4 lg:mt-6 max-w-3xl text-3xl sm:text-4xl lg:text-5xl font-bold leading-[0.95] tracking-tighter text-neutral-950 xl:text-7xl"
                 >
                   Built for the moments shoppers hesitate.
                 </motion.h2>
@@ -201,7 +201,7 @@ function AboutScrollSection() {
                   <CardHeader />
 
                   <div className="relative z-10 pt-3 lg:pt-5">
-                    <p className="text-xs lg:text-sm font-bold uppercase tracking-[0.16em] text-neutral-400">
+                    <p className="text-xs lg:text-sm font-bold uppercase tracking-[0.18em] text-neutral-400">
                       Customer questions
                     </p>
 
@@ -298,7 +298,7 @@ function CardHeader() {
 function IntroCard() {
   return (
     <div className="glass-item mt-4 rounded-3xl p-4 sm:p-5">
-      <p className="relative z-10 text-xl font-bold leading-tight tracking-[-0.04em] text-neutral-950 sm:text-2xl lg:text-3xl">
+      <p className="relative z-10 text-xl font-bold leading-tight tracking-tighter text-neutral-950 sm:text-2xl lg:text-3xl">
         "Can you help me choose?"
       </p>
       <p className="relative z-10 mt-2 lg:mt-4 text-sm leading-6 lg:leading-7 text-neutral-600">
@@ -321,7 +321,7 @@ function QuestionCard({
           className="mt-1 h-2.5 w-2.5 lg:h-3 lg:w-3 shrink-0 rounded-full"
         />
         <div>
-          <p className="text-sm lg:text-base font-bold leading-snug tracking-[-0.025em] text-neutral-950">
+          <p className="text-sm lg:text-base font-bold leading-snug tracking-tight text-neutral-950">
             {item.question}
           </p>
           <p className="mt-1 lg:mt-2 text-xs lg:text-sm leading-5 lg:leading-6 text-neutral-600">
@@ -336,7 +336,7 @@ function QuestionCard({
 function SmallStat({ value, label }: { value: string; label: string }) {
   return (
     <div className="glass-item rounded-2xl p-3 text-center">
-      <p className="relative z-10 text-lg font-bold tracking-[-0.035em] text-neutral-950">
+      <p className="relative z-10 text-lg font-bold tracking-tight text-neutral-950">
         {value}
       </p>
       <p className="relative z-10 mt-1 text-[11px] font-bold text-neutral-400">

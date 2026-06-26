@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { Navbar } from "@/components/navbar";
+import { Navbar } from "@/components/layout/navbar";
 import { FAQ } from "@/components/sections/faq";
 import { Footer } from "@/components/sections/footer";
 

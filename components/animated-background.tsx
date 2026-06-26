@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 // useSpring is still used by the background blob follower above
 
@@ -78,6 +78,26 @@ export function AnimatedBackground() {
     window.addEventListener("mousemove", onMove);
     return () => window.removeEventListener("mousemove", onMove);
   }, [mouseX, mouseY]);
+
+  // Set the correct (time=0) blob position synchronously before the
+  // browser's first paint. requestAnimationFrame's first callback only
+  // runs *after* that paint, so without this the blobs would briefly sit
+  // at their unset default (top-left) and visibly snap into place — looks
+  // like the whole background "slides" in on mount, especially on slower
+  // mobile hydration. useLayoutEffect (not useEffect) is what guarantees
+  // "before paint" here.
+  useLayoutEffect(() => {
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+
+    BLOBS.forEach((blob, i) => {
+      const el = blobRefs.current[i];
+      if (!el) return;
+      const x = blob.cx * vw;
+      const y = (blob.cy + blob.ay) * vh;
+      el.style.transform = `translate(${x - blob.size / 2}px, ${y - blob.size / 2}px)`;
+    });
+  }, []);
 
   // Time-driven blob animation — direct DOM mutation, no React re-renders
   useEffect(() => {

@@ -8,7 +8,7 @@ import React, {
   useState,
 } from "react";
 
-const FONT = "'Plus Jakarta Sans', system-ui, -apple-system, sans-serif";
+const FONT = "'IBM Plex Sans', system-ui, -apple-system, sans-serif";
 
 const W = 720;
 const H = 680;
@@ -1359,7 +1359,7 @@ function ChatPanel({
               fontFamily: FONT,
               fontSize: 11,
               color: "#a4a4ad",
-              letterSpacing: "0.02em",
+              letterSpacing: "0.025em",
               opacity: contentOpacity,
               flexShrink: 0,
             }}

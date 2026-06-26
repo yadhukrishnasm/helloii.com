@@ -120,7 +120,7 @@ export function AskHelloii() {
             Try it live
           </div>
 
-          <h2 className="mt-5 text-3xl font-bold tracking-[-0.035em] text-neutral-950 sm:text-4xl">
+          <h2 className="mt-5 text-3xl font-bold tracking-tight text-neutral-950 sm:text-4xl">
             Ask Helloii anything.
           </h2>
 
@@ -145,7 +145,7 @@ export function AskHelloii() {
           {exchanges.length > 0 && (
             <div
               ref={scrollRef}
-              className="chat-scroll relative z-10 mb-4 space-y-3 overflow-y-auto scroll-smooth"
+              className="chat-scroll-thin relative z-10 mb-4 space-y-3 overflow-y-auto scroll-smooth"
               style={{ maxHeight: `${VISIBLE_EXCHANGES * 116}px` }}
             >
               {exchanges.map((ex) => (
@@ -191,19 +191,9 @@ export function AskHelloii() {
             </div>
           )}
 
-          <div className="relative z-10 mb-4 flex flex-wrap gap-2 justify-center">
-            {SUGGESTED_QUESTIONS.map((q) => (
-              <button
-                key={q}
-                type="button"
-                onClick={() => handleAsk(q)}
-                disabled={loading}
-                className="glass-item rounded-full px-3 py-1.5 text-xs font-medium text-neutral-600 transition-colors hover:text-neutral-950 disabled:opacity-60"
-              >
-                {q}
-              </button>
-            ))}
-          </div>
+          {/* Suggested questions only show once a chat has actually started —
+              keeps the empty state clean, and gives quick follow-ups once
+              there's a conversation to add to. */}
 
           <form
             onSubmit={(e) => {
@@ -234,9 +224,22 @@ export function AskHelloii() {
               </LiquidGlassBubble>
             </button>
           </form>
-          <p className="pointer-events-none select-none text-center text-[10px] font-medium mt-3  text-neutral-400/60">
+          <p className="pointer-events-none select-none text-center text-[10px] font-medium m-3  text-neutral-400/60">
             powered by helloii
           </p>
+          <div className="relative z-10 mb-4 flex flex-wrap gap-2 justify-center">
+            {SUGGESTED_QUESTIONS.map((q) => (
+              <button
+                key={q}
+                type="button"
+                onClick={() => handleAsk(q)}
+                disabled={loading}
+                className="glass-item rounded-full px-3 py-1.5 text-xs font-medium text-neutral-600 transition-colors hover:text-neutral-950 disabled:opacity-60"
+              >
+                {q}
+              </button>
+            ))}
+          </div>
         </motion.div>
 
         {/* Server-rendered fallback — same Q&A as real text, visible without JS */}

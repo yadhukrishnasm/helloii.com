@@ -47,7 +47,7 @@ export function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center text-xs font-bold uppercase tracking-[0.22em] text-neutral-400"
+          className="text-center text-xs font-bold uppercase tracking-[0.18em] text-neutral-400"
         >
           What stores say
         </motion.p>
@@ -71,7 +71,7 @@ export function Testimonials() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="relative text-xl font-medium leading-relaxed tracking-[-0.02em] text-neutral-800 sm:text-2xl lg:text-3xl lg:leading-snug"
+              className="relative text-xl font-medium leading-relaxed tracking-tight text-neutral-800 sm:text-2xl lg:text-3xl lg:leading-snug"
             >
               &ldquo;{t.quote}&rdquo;
             </motion.blockquote>

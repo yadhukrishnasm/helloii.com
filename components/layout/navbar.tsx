@@ -1,11 +1,18 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/container";
-import { LiquidGlassBubble } from "./ui/liquid-glass";
+import { LiquidGlassBubble } from "../ui/liquid-glass";
 
 export function Navbar() {
+  // Product/Features/Pricing are anchors on the homepage's own sections —
+  // they don't exist on other routes, so linking to them there does
+  // nothing. Only show them when we're actually on the homepage.
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   return (
     <motion.header
       initial={{ opacity: 0, y: -30 }}
@@ -26,24 +33,28 @@ export function Navbar() {
             </Link>
 
             <nav className="hidden items-center gap-6 md:flex">
-              <a
-                href="#product"
-                className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
-              >
-                Product
-              </a>
-              <a
-                href="#features"
-                className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
-              >
-                Features
-              </a>
-              <a
-                href="#pricing"
-                className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
-              >
-                Pricing
-              </a>
+              {isHome && (
+                <>
+                  <a
+                    href="#product"
+                    className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
+                  >
+                    Product
+                  </a>
+                  <a
+                    href="#features"
+                    className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
+                  >
+                    Features
+                  </a>
+                  <a
+                    href="#pricing"
+                    className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
+                  >
+                    Pricing
+                  </a>
+                </>
+              )}
               <Link
                 href="/faq"
                 className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"

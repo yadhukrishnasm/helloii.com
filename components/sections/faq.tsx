@@ -40,7 +40,7 @@ export function FAQ() {
           </Reveal>
 
           <Reveal>
-            <h2 className="mt-6 text-4xl font-bold leading-[0.95] tracking-[-0.06em] text-neutral-950 sm:text-5xl lg:text-7xl">
+            <h2 className="mt-6 text-4xl font-bold leading-[0.95] tracking-tighter text-neutral-950 sm:text-5xl lg:text-7xl">
               Questions store owners usually ask.
             </h2>
           </Reveal>
@@ -104,7 +104,7 @@ function FAQItem({
         onClick={() => setOpen((value) => !value)}
         className="flex w-full items-center justify-between gap-6 px-5 py-5 text-left sm:px-7 sm:py-6"
       >
-        <span className="text-base font-bold tracking-[-0.03em] text-neutral-950 sm:text-lg">
+        <span className="text-base font-bold tracking-tight text-neutral-950 sm:text-lg">
           {question}
         </span>
 

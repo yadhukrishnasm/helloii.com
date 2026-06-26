@@ -216,7 +216,7 @@ export function Features() {
             Everything included
           </p>
 
-          <h2 className="mt-3 text-3xl font-bold tracking-[-0.035em] text-neutral-950 sm:text-4xl lg:text-5xl">
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-neutral-950 sm:text-4xl lg:text-5xl">
             Built for{" "}
             <span className="text-[#7C3AED]">eCommerce</span>
           </h2>
@@ -325,7 +325,7 @@ function BigFeatureContent({
       </div>
 
       <div>
-        <h3 className="max-w-[20rem] text-2xl font-bold tracking-[-0.04em] text-neutral-950 sm:text-3xl">
+        <h3 className="max-w-[20rem] text-2xl font-bold tracking-tighter text-neutral-950 sm:text-3xl">
           {title}
         </h3>
         <p className="mt-4 max-w-md text-sm leading-6 text-neutral-600 sm:text-base sm:leading-7">
@@ -362,7 +362,7 @@ function CompactFeatureContent({
 
       <div className="min-w-0 flex-1">
         <div className="mb-3 flex items-center justify-between gap-4">
-          <h3 className="text-lg font-bold tracking-[-0.035em] text-neutral-950">
+          <h3 className="text-lg font-bold tracking-tight text-neutral-950">
             {title}
           </h3>
           <div
