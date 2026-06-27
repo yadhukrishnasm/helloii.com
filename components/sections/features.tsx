@@ -139,7 +139,7 @@ const FEATURES: {
     title: "Built to convert",
     description:
       "Every answer nudges hesitant shoppers toward checkout.",
-    accent: "#2563EB",
+    accent: "#1A56FF",
     accentLight: "#93C5FD",
     cardBg: "#DBEAFE",
     cardBgLight: "#BFDBFE",
@@ -151,7 +151,7 @@ const FEATURES: {
     title: "Learns your whole store",
     description:
       "Helloii reads your products, collections, and policies, so it knows everything on your site.",
-    accent: "#7C3AED",
+    accent: "#8B2FFF",
     accentLight: "#C4B5FD",
     cardBg: "#EDE9FE",
     cardBgLight: "#DDD6FE",
@@ -163,7 +163,7 @@ const FEATURES: {
     title: "Set up by itself",
     description:
       "Helloii reads your store and gets to work automatically — nothing to configure.",
-    accent: "#2563EB",
+    accent: "#1A56FF",
     accentLight: "#93C5FD",
     cardBg: "#DBEAFE",
     cardBgLight: "#BFDBFE",
@@ -175,7 +175,7 @@ const FEATURES: {
     title: "Test in private",
     description:
       "Run Helloii on your store quietly before switching it on for shoppers.",
-    accent: "#4F46E5",
+    accent: "#5B4FFF",
     accentLight: "#A5B4FC",
     cardBg: "#E0E7FF",
     cardBgLight: "#C7D2FE",
@@ -187,7 +187,7 @@ const FEATURES: {
     title: "Human backup, built in",
     description:
       "Helloii handles the routine and hands the tricky ones to you on WhatsApp.",
-    accent: "#7C3AED",
+    accent: "#8B2FFF",
     accentLight: "#C4B5FD",
     cardBg: "#EDE9FE",
     cardBgLight: "#DDD6FE",
@@ -201,8 +201,8 @@ const FEATURES: {
 export function Features() {
   return (
     <section id="features" className="relative overflow-hidden py-20 sm:py-28">
-      <div className="pointer-events-none absolute left-[-12%] top-16 h-72 w-72 rounded-full bg-[#2563EB]/10 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-10 right-[-10%] h-80 w-80 rounded-full bg-[#7C3AED]/10 blur-3xl" />
+      <div className="pointer-events-none absolute left-[-12%] top-16 h-72 w-72 rounded-full bg-[#1A56FF]/10 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-10 right-[-10%] h-80 w-80 rounded-full bg-[#8B2FFF]/10 blur-3xl" />
 
       <Container>
         <motion.div
@@ -218,7 +218,7 @@ export function Features() {
 
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-neutral-950 sm:text-4xl lg:text-5xl">
             Built for{" "}
-            <span className="text-[#7C3AED]">eCommerce</span>
+            <span className="text-[#8B2FFF]">eCommerce</span>
           </h2>
 
           <p className="mt-4 text-base leading-7 text-neutral-500">

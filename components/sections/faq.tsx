@@ -28,13 +28,13 @@ export function FAQ() {
       id="faq"
       className="relative overflow-hidden py-24 sm:py-32 lg:py-40"
     >
-      <div className="pointer-events-none absolute left-[8%] top-[10%] -z-10 h-[320px] w-[320px] rounded-full bg-[#FF2FB2]/10 blur-[100px] sm:h-[480px] sm:w-[480px]" />
-      <div className="pointer-events-none absolute right-[8%] bottom-[10%] -z-10 h-[320px] w-[320px] rounded-full bg-[#FFB800]/14 blur-[100px] sm:h-[480px] sm:w-[480px]" />
+      <div className="pointer-events-none absolute left-[8%] top-[10%] -z-10 h-[320px] w-[320px] rounded-full bg-[#1A56FF]/10 blur-[100px] sm:h-[480px] sm:w-[480px]" />
+      <div className="pointer-events-none absolute right-[8%] bottom-[10%] -z-10 h-[320px] w-[320px] rounded-full bg-[#8B2FFF]/10 blur-[100px] sm:h-[480px] sm:w-[480px]" />
 
       <Container>
         <div className="mx-auto max-w-4xl text-center">
           <Reveal>
-            <div className="glass-item inline-flex rounded-full px-4 py-2 text-sm font-semibold text-[#2563EB]">
+            <div className="glass-item inline-flex rounded-full px-4 py-2 text-sm font-semibold text-[#1A56FF]">
               FAQ
             </div>
           </Reveal>
@@ -109,7 +109,7 @@ function FAQItem({
         </span>
 
         <span
-          className={`btn-press btn-glass-secondary flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xl font-medium text-[#2563EB] duration-300 ${open ? "rotate-45" : "rotate-0"}`}
+          className={`btn-press btn-glass-secondary flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xl font-medium text-[#1A56FF] duration-300 ${open ? "rotate-45" : "rotate-0"}`}
         >
           +
         </span>

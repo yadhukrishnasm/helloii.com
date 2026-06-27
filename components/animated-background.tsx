@@ -15,7 +15,7 @@ const BLOBS = [
     fx: 0.31,
     fy: 0.25,
     size: 600,
-    color: "rgba(37,99,235,0.36)",
+    color: "rgba(26,86,255,0.36)",
   },
   {
     cx: 0.68,
@@ -25,7 +25,7 @@ const BLOBS = [
     fx: 0.2,
     fy: 0.29,
     size: 680,
-    color: "rgba(79,70,229,0.30)",
+    color: "rgba(91,79,255,0.30)",
   },
   {
     cx: 0.8,
@@ -35,7 +35,7 @@ const BLOBS = [
     fx: 0.18,
     fy: 0.22,
     size: 720,
-    color: "rgba(124,58,237,0.24)",
+    color: "rgba(139,47,255,0.24)",
   },
   {
     cx: 0.25,
@@ -45,7 +45,7 @@ const BLOBS = [
     fx: 0.21,
     fy: 0.19,
     size: 580,
-    color: "rgba(37,99,235,0.28)",
+    color: "rgba(26,86,255,0.28)",
   },
 ] as const;
 
@@ -165,7 +165,7 @@ export function AnimatedBackground() {
               height: 480,
               borderRadius: "50%",
               background:
-                "radial-gradient(circle at 35% 35%, rgba(255,255,255,0.75), rgba(37,99,235,0.26) 40%, rgba(255,47,178,0.20) 65%, transparent 85%)",
+                "radial-gradient(circle at 35% 35%, rgba(255,255,255,0.75), rgba(26,86,255,0.26) 40%, rgba(255,47,178,0.20) 65%, transparent 85%)",
               filter: "blur(65px)",
               willChange: "transform",
             }}

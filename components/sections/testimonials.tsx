@@ -11,7 +11,7 @@ const TESTIMONIALS = [
     name: "Meera Nair",
     store: "The Weave Studio",
     initials: "MN",
-    color: "#2563EB",
+    color: "#1A56FF",
   },
   {
     quote:
@@ -19,7 +19,7 @@ const TESTIMONIALS = [
     name: "James Okafor",
     store: "Vitaleaf Naturals",
     initials: "JO",
-    color: "#7C3AED",
+    color: "#8B2FFF",
   },
   {
     quote:
@@ -27,7 +27,7 @@ const TESTIMONIALS = [
     name: "Priya Rajan",
     store: "Bloom & Thread",
     initials: "PR",
-    color: "#2563EB",
+    color: "#1A56FF",
   },
 ];
 

@@ -7,6 +7,7 @@ export default function ChatPreview({
   turns,
   accent,
   start = true,
+  controlledTurn,
 }: {
   turns: ChatTurn[];
   accent: string;
@@ -14,7 +15,13 @@ export default function ChatPreview({
   // until the parent says it's actually in view, so a chat someone
   // scrolls down to isn't already mid-conversation.
   start?: boolean;
+  // When provided, the chat stops driving itself (no auto-advance, no
+  // looping) and instead asks exactly this turn, staying on its answer
+  // until the parent moves to a new index — used to let scroll position
+  // control pacing instead of an internal timer.
+  controlledTurn?: number;
 }) {
+  const isControlled = controlledTurn !== undefined;
   const [activeTurn, setActiveTurn] = useState(0);
   const [completedTurns, setCompletedTurns] = useState<number[]>([]);
   const [phase, setPhase] = useState<
@@ -25,6 +32,28 @@ export default function ChatPreview({
   const turn = turns[activeTurn];
   const accentLight = lightenHex(accent, 75);
   const isLastTurn = activeTurn === turns.length - 1;
+
+  // Controlled mode: whenever the parent's scroll-driven index changes,
+  // jump to that turn and replay its question/answer from scratch. Turns
+  // before it are marked complete (transcript so far); turns at or after
+  // it are cleared, so scrolling back up un-asks later questions instead
+  // of leaving stale answers behind.
+  useEffect(() => {
+    if (!isControlled || controlledTurn === activeTurn) return;
+
+    setCompletedTurns((prev) =>
+      prev
+        .filter((i) => i < controlledTurn)
+        .concat(
+          Array.from({ length: controlledTurn }, (_, i) => i).filter(
+            (i) => !prev.includes(i),
+          ),
+        ),
+    );
+    setActiveTurn(controlledTurn);
+    setPhase("input");
+    setTypedText("");
+  }, [controlledTurn, isControlled, activeTurn]);
 
   useEffect(() => {
     if (!start || phase !== "input") return;
@@ -83,6 +112,15 @@ export default function ChatPreview({
   useEffect(() => {
     if (phase !== "answer") return;
 
+    // Controlled mode: stay on this answer — the parent (scroll position)
+    // decides when to move to the next question, not a timer.
+    if (isControlled) {
+      setCompletedTurns((prev) =>
+        prev.includes(activeTurn) ? prev : [...prev, activeTurn],
+      );
+      return;
+    }
+
     const timer = window.setTimeout(
       () => {
         setCompletedTurns((prev) => {
@@ -101,10 +139,10 @@ export default function ChatPreview({
     );
 
     return () => window.clearTimeout(timer);
-  }, [phase, activeTurn, isLastTurn]);
+  }, [phase, activeTurn, isLastTurn, isControlled]);
 
   useEffect(() => {
-    if (phase !== "clearing") return;
+    if (phase !== "clearing" || isControlled) return;
 
     const timer = window.setTimeout(() => {
       setCompletedTurns([]);

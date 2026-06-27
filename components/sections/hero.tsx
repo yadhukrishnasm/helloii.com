@@ -215,7 +215,7 @@ export function Hero() {
       className="relative flex min-h-screen items-center pb-12 pt-24 sm:pb-20 sm:pt-32"
     >
       <Container>
-        <div className="relative overflow-visible rounded-3xl bg-gradient-to-br from-[#1a3faa] via-[#2563EB] to-[#4f46e5] px-6 py-10 shadow-[0_32px_80px_rgba(37,99,235,0.30)] sm:px-14 sm:py-30">
+        <div className="relative overflow-visible rounded-3xl bg-gradient-to-br from-[#1438C9] via-[#1A56FF] to-[#5b4fff] px-6 py-10 shadow-[0_32px_80px_rgba(26,86,255,0.30)] sm:px-14 sm:py-30">
           <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]">
             <div className="grain-overlay absolute inset-0 rounded-[inherit] opacity-[0.6]" />
 
@@ -223,7 +223,7 @@ export function Hero() {
 
             <div className="absolute -left-16 -top-16 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
 
-            <div className="absolute -bottom-16 -right-16 h-64 w-64 rounded-full bg-[#7C3AED]/30 blur-3xl" />
+            <div className="absolute -bottom-16 -right-16 h-64 w-64 rounded-full bg-[#8B2FFF]/30 blur-3xl" />
           </div>
 
           {/* Desktop exploded stat cards — only shown once the box is wide
@@ -262,7 +262,7 @@ export function Hero() {
 
             <h1 className="h-headline mt-4 text-[2.3rem] font-bold leading-[1.08] tracking-tight text-white sm:mt-6 sm:text-6xl sm:leading-[1.05] lg:text-7xl">
               The AI assistant that turns{" "}
-              <span className="text-[#b2de5f]">questions</span> into checkouts.
+              <span className="text-[#A8E64D]">questions</span> into checkouts.
             </h1>
 
             <p className="h-sub mx-auto mt-3 max-w-xl text-sm leading-6 text-blue-100/80 sm:mt-5 sm:text-lg sm:leading-8">
@@ -342,7 +342,7 @@ export function Hero() {
                 href="https://calendar.app.google/uCHWaZUmUy9fbeax5"
                 target="_blank"
                 rel="noreferrer"
-                className="btn-press inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-[#2563EB] shadow-[0_8px_24px_rgba(0,0,0,0.15)]"
+                className="btn-press inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-[#1A56FF] shadow-[0_8px_24px_rgba(0,0,0,0.15)]"
               >
                 Book a demo
               </a>

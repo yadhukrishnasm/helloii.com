@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { motion } from "framer-motion";
 import { Container } from "@/components/layout/container";
 import { LiquidGlassBubble } from "@/components/ui/liquid-glass";
@@ -11,8 +12,8 @@ const PLANS = [
     name: "Free",
     price: "Free",
     period: null,
-    accent: "#2563EB",
-    accentLight: "#60a5fa",
+    accent: "#1A56FF",
+    accentLight: "#5A9CFF",
     features: [
       "50 Chats Per month",
       "20 Products maximum for training",
@@ -24,8 +25,9 @@ const PLANS = [
     name: "Basic",
     price: "$25",
     period: "/ month",
-    accent: "#7C3AED",
+    accent: "#8B2FFF",
     accentLight: "#C4B5FD",
+    recommended: true,
     features: [
       "1000 Chats Per month",
       "500 Products maximum for training",
@@ -37,7 +39,7 @@ const PLANS = [
     name: "Pro",
     price: "$55",
     period: "/ month",
-    accent: "#6D28D9",
+    accent: "#7A1FE0",
     accentLight: "#A78BFA",
     features: [
       "2500 Chats Per month",
@@ -51,8 +53,8 @@ const PLANS = [
 export function Pricing() {
   return (
     <section id="pricing" className="relative overflow-hidden py-20 sm:py-28">
-      <div className="pointer-events-none absolute left-[-8%] top-16 h-72 w-72 rounded-full bg-[#7C3AED]/08 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-10 right-[-8%] h-80 w-80 rounded-full bg-[#2563EB]/08 blur-3xl" />
+      <div className="pointer-events-none absolute left-[-8%] top-16 h-72 w-72 rounded-full bg-[#8B2FFF]/08 blur-3xl" />
+      <div className="pointer-events-none absolute bottom-10 right-[-8%] h-80 w-80 rounded-full bg-[#1A56FF]/08 blur-3xl" />
 
       <Container>
         <motion.div
@@ -85,8 +87,31 @@ export function Pricing() {
                 delay: i * 0.08,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="glass-card rounded-[28px] p-6"
+              className="relative"
             >
+              {/* Sits outside .glass-card's own overflow-hidden — a child
+                  of the card would get clipped right where it pokes
+                  above the card's top edge. */}
+              {plan.recommended && (
+                <span
+                  className="absolute -top-3.5 left-1/2 z-20 -translate-x-1/2 rounded-full px-3.5 py-1 text-[11px] font-bold uppercase tracking-[0.14em] text-white shadow-[0_6px_16px_rgba(0,0,0,0.18)]"
+                  style={{ background: plan.accent }}
+                >
+                  Recommended
+                </span>
+              )}
+
+              <div
+                className={`glass-card rounded-[28px] p-6 ${
+                  plan.recommended ? "ring-2 ring-offset-0" : ""
+                }`}
+                style={
+                  plan.recommended
+                    ? ({ "--tw-ring-color": plan.accent } as CSSProperties)
+                    : undefined
+                }
+              >
+
               <p className="relative z-10 text-sm font-bold uppercase tracking-widest text-neutral-500">
                 {plan.name}
               </p>
@@ -135,6 +160,7 @@ export function Pricing() {
                   Get started
                 </a>
               </LiquidGlassBubble>
+              </div>
             </motion.div>
           ))}
         </div>

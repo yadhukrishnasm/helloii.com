@@ -106,7 +106,7 @@ export function AskHelloii() {
 
   return (
     <section className="relative overflow-hidden py-20 sm:py-28">
-      <div className="pointer-events-none absolute left-[-10%] top-10 h-72 w-72 rounded-full bg-[#2563EB]/08 blur-3xl" />
+      <div className="pointer-events-none absolute left-[-10%] top-10 h-72 w-72 rounded-full bg-[#1A56FF]/08 blur-3xl" />
 
       <Container size="default">
         <motion.div
@@ -116,7 +116,7 @@ export function AskHelloii() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
           className="mx-auto max-w-2xl text-center"
         >
-          <div className="glass-item inline-flex rounded-full px-4 py-2 text-sm font-bold text-[#2563EB]">
+          <div className="glass-item inline-flex rounded-full px-4 py-2 text-sm font-bold text-[#1A56FF]">
             Try it live
           </div>
 
@@ -152,8 +152,8 @@ export function AskHelloii() {
                 <div key={ex.id} className="space-y-3">
                   <div className="flex flex-col items-end gap-1 px-4">
                     <LiquidGlassBubble
-                      accent="#2563EB"
-                      accentLight="#60a5fa"
+                      accent="#1A56FF"
+                      accentLight="#5A9CFF"
                       className="max-w-[85%] rounded-[15px_15px_5px_15px] px-4 py-2.5"
                     >
                       <p className="text-sm font-bold leading-snug">
@@ -216,8 +216,8 @@ export function AskHelloii() {
               className="btn-press shrink-0 disabled:opacity-60"
             >
               <LiquidGlassBubble
-                accent="#2563EB"
-                accentLight="#60a5fa"
+                accent="#1A56FF"
+                accentLight="#5A9CFF"
                 className="flex h-11 w-11 items-center justify-center rounded-full"
               >
                 <SendIcon />
@@ -262,7 +262,7 @@ export function AskHelloii() {
         </noscript>
 
         <p className="mt-8 text-center text-sm text-neutral-400">
-          <Link href="/faq" className="text-[#2563EB] hover:underline">
+          <Link href="/faq" className="text-[#1A56FF] hover:underline">
             See all FAQs
           </Link>
         </p>

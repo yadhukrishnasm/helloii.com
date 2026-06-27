@@ -50,8 +50,8 @@ export function Footer() {
 
   return (
     <footer className="relative overflow-hidden border-t border-neutral-200/70 py-14 sm:py-16">
-      <div className="pointer-events-none absolute left-[8%] top-0 -z-10 h-[280px] w-[280px] rounded-full bg-[#2563EB]/08 blur-[100px]" />
-      <div className="pointer-events-none absolute right-[8%] bottom-0 -z-10 h-[280px] w-[280px] rounded-full bg-[#7C3AED]/08 blur-[100px]" />
+      <div className="pointer-events-none absolute left-[8%] top-0 -z-10 h-[280px] w-[280px] rounded-full bg-[#1A56FF]/08 blur-[100px]" />
+      <div className="pointer-events-none absolute right-[8%] bottom-0 -z-10 h-[280px] w-[280px] rounded-full bg-[#8B2FFF]/08 blur-[100px]" />
 
       <Container>
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
