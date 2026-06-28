@@ -37,9 +37,18 @@ const LINK_COLUMNS = [
   {
     heading: "Company",
     links: [
-      { label: "hello@helloii.com", href: "mailto:hello@helloii.com", homeOnly: false },
+      {
+        label: "hello@helloii.com",
+        href: "mailto:hello@helloii.com",
+        homeOnly: false,
+      },
       { label: "Book a demo", href: DEMO_URL, homeOnly: false, external: true },
-      { label: "Nysaclan.com", href: "https://nysaclan.com", homeOnly: false, external: true },
+      {
+        label: "Nysaclan.com",
+        href: "https://nysaclan.com",
+        homeOnly: false,
+        external: true,
+      },
     ],
   },
 ];
@@ -57,8 +66,11 @@ export function Footer() {
         <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:justify-between">
           {/* Brand + CTA */}
           <div className="max-w-sm">
-            <Link href="/" className="inline-flex text-2xl font-bold tracking-tighter text-neutral-950">
-              Helloii
+            <Link
+              href="/"
+              className="inline-flex text-2xl font-bold tracking-tighter text-neutral-950"
+            >
+              helloii Ai
             </Link>
 
             <p className="mt-4 text-sm leading-7 text-neutral-600">
@@ -141,10 +153,16 @@ export function Footer() {
           </p>
 
           <div className="flex items-center gap-5">
-            <a href="#" className="text-sm text-neutral-500 transition-colors hover:text-neutral-950">
+            <a
+              href="#"
+              className="text-sm text-neutral-500 transition-colors hover:text-neutral-950"
+            >
               Privacy
             </a>
-            <a href="#" className="text-sm text-neutral-500 transition-colors hover:text-neutral-950">
+            <a
+              href="#"
+              className="text-sm text-neutral-500 transition-colors hover:text-neutral-950"
+            >
               Terms
             </a>
 
@@ -153,7 +171,7 @@ export function Footer() {
                 href="https://x.com/helloiihq"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Helloii on X"
+                aria-label="Helloii Ai on X"
                 className="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200/80 bg-white/70 text-neutral-500 backdrop-blur-sm transition-colors hover:border-neutral-300 hover:text-neutral-950"
               >
                 <XIcon />
@@ -162,7 +180,7 @@ export function Footer() {
                 href="https://www.linkedin.com/company/helloii/"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Helloii on LinkedIn"
+                aria-label="Helloii Ai on LinkedIn"
                 className="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200/80 bg-white/70 text-neutral-500 backdrop-blur-sm transition-colors hover:border-neutral-300 hover:text-neutral-950"
               >
                 <LinkedInIcon />

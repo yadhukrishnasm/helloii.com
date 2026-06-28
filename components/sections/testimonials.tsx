@@ -7,7 +7,7 @@ import { Container } from "@/components/layout/container";
 const TESTIMONIALS = [
   {
     quote:
-      "Since adding Helloii, we cut support tickets by 40% in the first month. Customers get instant answers about sizing and shipping — without ever waiting on us.",
+      "Since adding helloii Ai, we cut support tickets by 40% in the first month. Customers get instant answers about sizing and shipping — without ever waiting on us.",
     name: "Meera Nair",
     store: "The Weave Studio",
     initials: "MN",
@@ -15,7 +15,7 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      "The product Q&A feature is what sold me. Customers ask things I never thought to put in my descriptions, and Helloii handles every single one. It's like having a full-time sales rep embedded in the page.",
+      "The product Q&A feature is what sold me. Customers ask things I never thought to put in my descriptions, and helloii Ai handles every single one. It's like having a full-time sales rep embedded in the page.",
     name: "James Okafor",
     store: "Vitaleaf Naturals",
     initials: "JO",
@@ -35,7 +35,8 @@ export function Testimonials() {
   const [active, setActive] = useState(0);
   const t = TESTIMONIALS[active];
 
-  const prev = () => setActive((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+  const prev = () =>
+    setActive((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
   const next = () => setActive((i) => (i + 1) % TESTIMONIALS.length);
 
   return (
@@ -54,7 +55,6 @@ export function Testimonials() {
 
         {/* Quote area */}
         <div className="relative mx-auto mt-14 max-w-3xl text-center">
-
           {/* Decorative opening mark */}
           <span
             className="pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2 select-none font-serif text-[9rem] leading-none text-neutral-100"
@@ -104,7 +104,9 @@ export function Testimonials() {
                 {t.initials}
               </div>
               <div className="text-left">
-                <p className="text-sm font-semibold text-neutral-950">{t.name}</p>
+                <p className="text-sm font-semibold text-neutral-950">
+                  {t.name}
+                </p>
                 <p className="text-xs text-neutral-400">{t.store} · Shopify</p>
               </div>
             </motion.div>

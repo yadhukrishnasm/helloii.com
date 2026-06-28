@@ -52,13 +52,12 @@ const BLOBS = [
 export function AnimatedBackground() {
   const blobRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Mouse follower blob
-  const mouseX = useMotionValue(
-    typeof window !== "undefined" ? window.innerWidth / 2 : 0,
-  );
-  const mouseY = useMotionValue(
-    typeof window !== "undefined" ? window.innerHeight / 2 : 0,
-  );
+  // Mouse follower blob. Starts at 0,0 so the first client render matches
+  // the server-rendered markup (window isn't available during SSR) — the
+  // real centered position is applied in an effect after hydration, which
+  // avoids a hydration mismatch at the cost of a brief spring-in on mount.
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
   const followerX = useSpring(mouseX, {
     stiffness: 55,
     damping: 20,
@@ -71,6 +70,9 @@ export function AnimatedBackground() {
   });
 
   useEffect(() => {
+    mouseX.set(window.innerWidth / 2);
+    mouseY.set(window.innerHeight / 2);
+
     const onMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);

@@ -9,7 +9,7 @@ const questions = [
   {
     question: "What product should I buy?",
     answer:
-      "Helloii understands intent and guides shoppers to the right product.",
+      "helloii Ai understands intent and guides shoppers to the right product.",
     color: "#FF2FB2",
   },
   {
@@ -21,7 +21,7 @@ const questions = [
   {
     question: "What is your return policy?",
     answer:
-      "Helloii answers common support questions using your store information.",
+      "helloii Ai answers common support questions using your store information.",
     color: "#FF3B30",
   },
   {
@@ -175,7 +175,7 @@ function AboutScrollSection() {
                   style={{ opacity: badgeOpacity, y: badgeY }}
                   className="glass-item inline-flex rounded-full px-4 py-2 text-sm font-bold text-[#2563EB]"
                 >
-                  About Helloii
+                  About helloii Ai
                 </motion.div>
 
                 <motion.h2
@@ -189,7 +189,7 @@ function AboutScrollSection() {
                   style={{ opacity: paraOpacity, y: paraY }}
                   className="hidden lg:block mt-7 max-w-xl text-lg leading-8 text-neutral-600"
                 >
-                  Helloii gives your store an AI assistant that answers
+                  helloii Ai gives your store an AI assistant that answers
                   questions, explains products, handles common doubts, and helps
                   customers move toward checkout.
                 </motion.p>
@@ -283,7 +283,7 @@ function CardHeader() {
         </div>
         <div>
           <p className="text-sm font-bold text-neutral-950">
-            Helloii Assistant
+            helloii Ai Assistant
           </p>
           <p className="text-xs font-normal text-neutral-500">
             Questions become conversations
@@ -302,7 +302,7 @@ function IntroCard() {
         "Can you help me choose?"
       </p>
       <p className="relative z-10 mt-2 lg:mt-4 text-sm leading-6 lg:leading-7 text-neutral-600">
-        As shoppers ask, Helloii turns hesitation into a guided buying flow.
+        As shoppers ask, helloii Ai turns hesitation into a guided buying flow.
       </p>
     </div>
   );

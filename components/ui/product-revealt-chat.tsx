@@ -1,7 +1,18 @@
+import type { ReactNode } from "react";
 import { ChatTurn } from "../sections/chatbot-animation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { LiquidGlassBubble } from "./liquid-glass";
+
+export type ProductIconName = "skincare" | "shoes" | "coffee" | "gift" | "box";
+
+export type ChatProduct = {
+  name: string;
+  price: string;
+  icon: ProductIconName;
+};
+
+export type ChatPreviewTurn = ChatTurn & { products?: ChatProduct[] };
 
 export default function ChatPreview({
   turns,
@@ -9,7 +20,7 @@ export default function ChatPreview({
   start = true,
   controlledTurn,
 }: {
-  turns: ChatTurn[];
+  turns: ChatPreviewTurn[];
   accent: string;
   // The whole phase chain is gated on this — nothing types/sends/replies
   // until the parent says it's actually in view, so a chat someone
@@ -84,7 +95,7 @@ export default function ChatPreview({
 
     const timer = window.setTimeout(() => {
       setPhase("user");
-    }, 360);
+    }, 450);
 
     return () => window.clearTimeout(timer);
   }, [phase]);
@@ -94,7 +105,7 @@ export default function ChatPreview({
 
     const timer = window.setTimeout(() => {
       setPhase("typing");
-    }, 760);
+    }, 950);
 
     return () => window.clearTimeout(timer);
   }, [phase]);
@@ -104,7 +115,7 @@ export default function ChatPreview({
 
     const timer = window.setTimeout(() => {
       setPhase("answer");
-    }, 920);
+    }, 1150);
 
     return () => window.clearTimeout(timer);
   }, [phase]);
@@ -326,7 +337,7 @@ export default function ChatPreview({
                       filter: "blur(4px)",
                     }}
                     transition={{
-                      duration: 0.42,
+                      duration: 0.65,
                       ease: [0.22, 1, 0.36, 1],
                     }}
                     className="flex flex-col gap-3"
@@ -363,7 +374,7 @@ export default function ChatPreview({
                               animate={{ opacity: 1, y: 0, scale: 1 }}
                               exit={{ opacity: 0, y: -6, scale: 0.98 }}
                               transition={{
-                                duration: 0.28,
+                                duration: 0.4,
                                 ease: [0.22, 1, 0.36, 1],
                               }}
                             >
@@ -391,12 +402,21 @@ export default function ChatPreview({
                                 filter: "blur(3px)",
                               }}
                               transition={{
-                                duration: 0.38,
+                                duration: 0.6,
                                 ease: [0.22, 1, 0.36, 1],
                               }}
-                              className="max-w-[88%] rounded-[5px_15px_15px_15px] border border-white/50 bg-white/58 px-3.5 py-3 text-sm leading-6 text-neutral-700 shadow-[0_2px_8px_rgba(20,20,40,0.06)] backdrop-blur-xl"
+                              className="flex flex-col gap-2.5"
                             >
-                              {item.answer}
+                              <div className="max-w-[88%] rounded-[5px_15px_15px_15px] border border-white/50 bg-white/58 px-3.5 py-3 text-sm leading-6 text-neutral-700 shadow-[0_2px_8px_rgba(20,20,40,0.06)] backdrop-blur-xl">
+                                {item.answer}
+                              </div>
+
+                              {item.products && item.products.length > 0 && (
+                                <ProductCardsRow
+                                  products={item.products}
+                                  accent={accent}
+                                />
+                              )}
                             </motion.div>
                           )}
                         </AnimatePresence>
@@ -411,7 +431,9 @@ export default function ChatPreview({
 
         <div className="relative border-t border-white/35 bg-white/28 px-3 py-3 text-center text-[11px] tracking-wide text-neutral-400 backdrop-blur-2xl">
           Powered by{" "}
-          <strong className="font-extrabold text-neutral-600">helloii</strong>
+          <strong className="font-extrabold text-neutral-600">
+            helloii Ai
+          </strong>
         </div>
       </motion.div>
 
@@ -489,6 +511,111 @@ export default function ChatPreview({
         </motion.div>
       </div>
     </div>
+  );
+}
+
+// A single bot answer can recommend more than one product (e.g. "show me
+// options"), so this scrolls horizontally instead of wrapping — matches
+// how real chat-commerce widgets present multi-item recommendations.
+function ProductCardsRow({
+  products,
+  accent,
+}: {
+  products: ChatProduct[];
+  accent: string;
+}) {
+  return (
+    <div className="-mx-1 flex max-w-[92%] gap-2.5 overflow-x-auto px-1 pb-1">
+      {products.map((product) => (
+        <div
+          key={product.name}
+          className="flex w-[132px] shrink-0 flex-col overflow-hidden rounded-[14px] border border-white/55 bg-white shadow-[0_4px_14px_rgba(20,20,40,0.07)]"
+        >
+          <div
+            className="flex h-[78px] w-full items-center justify-center"
+            style={{
+              background: `linear-gradient(135deg, ${accent}22, ${accent}0a)`,
+            }}
+          >
+            <ProductIcon name={product.icon} color={accent} />
+          </div>
+
+          <div className="px-2.5 py-2">
+            <p className="line-clamp-2 text-[11px] font-bold leading-tight text-neutral-800">
+              {product.name}
+            </p>
+            <p
+              className="mt-1 text-[11px] font-black"
+              style={{ color: accent }}
+            >
+              {product.price}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function ProductIcon({
+  name,
+  color,
+}: {
+  name: ProductIconName;
+  color: string;
+}) {
+  const icons: Record<ProductIconName, ReactNode> = {
+    skincare: (
+      <path
+        d="M9 3h6M10 3v3.5c0 .4-.15.78-.42 1.06C8.32 8.85 7 10.5 7 13a5 5 0 1 0 10 0c0-2.5-1.32-4.15-2.58-5.44A1.5 1.5 0 0 1 14 6.5V3"
+        stroke={color}
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    ),
+    shoes: (
+      <path
+        d="M3 16.5c0-1 .7-1.7 1.6-2.1L11 11.8c.8-.35 1.3-1.1 1.3-1.95V8.5l2.3 1.9c.7.6 1.6.9 2.5.9H21v3.2c0 1.3-1 2.4-2.3 2.5l-13.4.9C4.4 18 3 17.4 3 16.5Z"
+        stroke={color}
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    ),
+    coffee: (
+      <path
+        d="M5 9h12v5a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4V9Zm12 1.5h1.5a2 2 0 1 1 0 4H17M8 4.5c0 .9-1 1-1 2s1 1.1 1 2M12 4.5c0 .9-1 1-1 2s1 1.1 1 2"
+        stroke={color}
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    ),
+    gift: (
+      <path
+        d="M4 9h16v3H4V9Zm1 3h14v7a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-7Zm7-3V20M12 9c-1.4 0-3.4-.5-3.4-2.25S10.6 4.5 12 6c1.4-1.5 3.4-1.5 3.4.75S13.4 9 12 9Z"
+        stroke={color}
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    ),
+    box: (
+      <path
+        d="M4 8.5 12 4l8 4.5M4 8.5v7L12 20l8-4.5v-7M4 8.5 12 13l8-4.5M12 13v7"
+        stroke={color}
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    ),
+  };
+
+  return (
+    <svg viewBox="0 0 24 24" fill="none" width="40%" height="40%">
+      {icons[name]}
+    </svg>
   );
 }
 

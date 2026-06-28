@@ -10,7 +10,7 @@ import { ALL_FAQS } from "@/lib/faq-data";
 // A few quick-start chips — clicking these still calls the real AI
 // endpoint, they're just convenience shortcuts to a pre-filled question.
 const SUGGESTED_QUESTIONS = [
-  "What is Helloii?",
+  "What is helloii Ai?",
   "How much does it cost?",
   "How long does setup take?",
   "Does it work with my Shopify store?",
@@ -121,12 +121,12 @@ export function AskHelloii() {
           </div>
 
           <h2 className="mt-5 text-3xl font-bold tracking-tight text-neutral-950 sm:text-4xl">
-            Ask Helloii anything.
+            Ask helloii Ai anything.
           </h2>
 
           <p className="mt-4 text-base leading-7 text-neutral-500">
             This is the same Question Box your customers will use — try it. Ask
-            about pricing, setup, or how it works, and Helloii answers
+            about pricing, setup, or how it works, and helloii Ai answers
             instantly.
           </p>
         </motion.div>
@@ -140,7 +140,7 @@ export function AskHelloii() {
         >
           {/* Chat-style transcript — user bubble on the right (liquid glass,
               same gradient bubble as the product animation's chatbox),
-              Helloii's reply on the left in a plain white bubble. Capped to
+              helloii Ai's reply on the left in a plain white bubble. Capped to
               VISIBLE_EXCHANGES tall, scrolls internally beyond that. */}
           {exchanges.length > 0 && (
             <div
@@ -205,7 +205,7 @@ export function AskHelloii() {
             <input
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
-              placeholder="Ask a question about Helloii…"
+              placeholder="Ask a question about helloii Ai…"
               maxLength={300}
               className="glass-item w-full rounded-full px-5 py-3 text-sm text-neutral-950 placeholder:text-neutral-400 outline-none"
             />
@@ -225,7 +225,7 @@ export function AskHelloii() {
             </button>
           </form>
           <p className="pointer-events-none select-none text-center text-[10px] font-medium m-3  text-neutral-400/60">
-            powered by helloii
+            powered by helloii Ai
           </p>
           <div className="relative z-10 mb-4 flex flex-wrap gap-2 justify-center">
             {SUGGESTED_QUESTIONS.map((q) => (

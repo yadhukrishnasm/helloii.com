@@ -11,10 +11,21 @@ import { Pricing } from "@/components/sections/pricing";
 import { AskHelloii } from "@/components/sections/ask-helloii";
 import { CTABanner } from "@/components/sections/cta-banner";
 import { Footer } from "@/components/sections/footer";
+import { StructuredData } from "@/components/structured-data";
+import { siteUrl, siteName, siteDescription } from "@/lib/site";
+
+const WEBSITE_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteName,
+  url: siteUrl,
+  description: siteDescription,
+};
 
 export default function HomePage() {
   return (
     <>
+      <StructuredData data={WEBSITE_JSON_LD} />
       <Navbar />
       <main>
         <Hero />

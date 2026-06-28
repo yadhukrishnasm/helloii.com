@@ -29,7 +29,7 @@ export function Navbar() {
               href="/"
               className="font-bold tracking-tight text-neutral-950"
             >
-              Helloii
+              helloii Ai
             </Link>
 
             <nav className="hidden items-center gap-6 md:flex">

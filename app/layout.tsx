@@ -3,16 +3,16 @@ import "./globals.css";
 
 import { AnimatedBackground } from "@/components/animated-background";
 import SmoothScroll from "@/components/smooth-scroll";
+import { GoogleAnalytics } from "@/components/google-analytics";
+import { siteUrl, siteDescription } from "@/lib/site";
 
-const SITE_URL = "https://helloii.com";
-const ENTITY_SENTENCE =
-  "Helloii is an AI shopping assistant for Shopify stores that reduces support load by instantly answering customer questions about products, shipping, returns, sizing, and store policies — 24/7, with no human in the loop for routine questions.";
+const ENTITY_SENTENCE = siteDescription;
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "Helloii — AI Shopping Assistant for Shopify Stores",
-    template: "%s | Helloii",
+    default: "helloii Ai — AI Shopping Assistant for Shopify Stores",
+    template: "%s | helloii Ai",
   },
   description: ENTITY_SENTENCE,
   keywords: [
@@ -26,15 +26,18 @@ export const metadata: Metadata = {
     "Shopify conversion optimization",
     "product discovery AI",
   ],
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
-    title: "Helloii — AI Shopping Assistant for Shopify Stores",
+    title: "helloii Ai — AI Shopping Assistant for Shopify Stores",
     description: ENTITY_SENTENCE,
-    url: SITE_URL,
+    url: siteUrl,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Helloii — AI Shopping Assistant for Shopify Stores",
+    title: "helloii Ai — AI Shopping Assistant for Shopify Stores",
     description: ENTITY_SENTENCE,
   },
 };
@@ -42,12 +45,12 @@ export const metadata: Metadata = {
 const ORG_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Helloii",
-  url: SITE_URL,
-  email: "hello@helloii.com",
+  name: "helloii Ai",
+  url: siteUrl,
+  email: "hello@helloii Ai.com",
   sameAs: [
-    "https://x.com/helloiihq",
-    "https://www.linkedin.com/company/helloii/",
+    "https://x.com/helloii Aihq",
+    "https://www.linkedin.com/company/helloii Ai/",
   ],
   parentOrganization: {
     "@type": "Organization",
@@ -59,7 +62,7 @@ const ORG_JSON_LD = {
 const SOFTWARE_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "Helloii",
+  name: "helloii Ai",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Shopify",
   description: ENTITY_SENTENCE,
@@ -97,10 +100,10 @@ const REVIEW_JSON_LD = [
   {
     "@context": "https://schema.org",
     "@type": "Review",
-    itemReviewed: { "@type": "SoftwareApplication", name: "Helloii" },
+    itemReviewed: { "@type": "SoftwareApplication", name: "helloii Ai" },
     author: { "@type": "Person", name: "Meera Nair" },
     reviewBody:
-      "Since adding Helloii, we cut support tickets by 40% in the first month. Customers get instant answers about sizing and shipping — without ever waiting on us.",
+      "Since adding helloii Ai, we cut support tickets by 40% in the first month. Customers get instant answers about sizing and shipping — without ever waiting on us.",
     reviewRating: {
       "@type": "Rating",
       ratingValue: "5",
@@ -110,10 +113,10 @@ const REVIEW_JSON_LD = [
   {
     "@context": "https://schema.org",
     "@type": "Review",
-    itemReviewed: { "@type": "SoftwareApplication", name: "Helloii" },
+    itemReviewed: { "@type": "SoftwareApplication", name: "helloii Ai" },
     author: { "@type": "Person", name: "James Okafor" },
     reviewBody:
-      "The product Q&A feature is what sold me. Customers ask things I never thought to put in my descriptions, and Helloii handles every single one.",
+      "The product Q&A feature is what sold me. Customers ask things I never thought to put in my descriptions, and helloii Ai handles every single one.",
     reviewRating: {
       "@type": "Rating",
       ratingValue: "5",
@@ -123,7 +126,7 @@ const REVIEW_JSON_LD = [
   {
     "@context": "https://schema.org",
     "@type": "Review",
-    itemReviewed: { "@type": "SoftwareApplication", name: "Helloii" },
+    itemReviewed: { "@type": "SoftwareApplication", name: "helloii Ai" },
     author: { "@type": "Person", name: "Priya Rajan" },
     reviewBody:
       "Setup took under 10 minutes. Within the first week the assistant was already handling 80% of pre-sale questions. Our conversion rate on product pages went up noticeably.",
@@ -163,6 +166,8 @@ export default function RootLayout({
             dangerouslySetInnerHTML={{ __html: JSON.stringify(review) }}
           />
         ))}
+
+        <GoogleAnalytics />
       </body>
     </html>
   );

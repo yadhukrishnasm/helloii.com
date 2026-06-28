@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-
-const SITE_URL = "https://helloii.com";
+import { siteUrl } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -9,6 +8,8 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "*",
         allow: "/",
       },
+      { userAgent: "Googlebot", allow: "/" },
+      { userAgent: "Bingbot", allow: "/" },
       // Explicitly allow AI/LLM crawlers so content can be cited
       { userAgent: "GPTBot", allow: "/" },
       { userAgent: "ChatGPT-User", allow: "/" },
@@ -17,8 +18,8 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "Google-Extended", allow: "/" },
       { userAgent: "ClaudeBot", allow: "/" },
       { userAgent: "anthropic-ai", allow: "/" },
-      { userAgent: "Bingbot", allow: "/" },
     ],
-    sitemap: `${SITE_URL}/sitemap.xml`,
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }

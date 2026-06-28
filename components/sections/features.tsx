@@ -10,7 +10,13 @@ type IconComponent = React.FC<{ color: string }>;
 
 function BrandColorsIcon({ color }: { color: string }) {
   return (
-    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="52%" height="52%">
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      width="52%"
+      height="52%"
+    >
       {/* Palette base */}
       <path
         d="M24 6C14.06 6 6 14.06 6 24c0 9.94 8.06 18 18 18 1.66 0 3-.9 3-2.5 0-.65-.25-1.25-.62-1.75-.36-.47-.58-1.04-.58-1.75 0-1.66 1.34-3 3-3h3.54C37.82 33 42 28.52 42 23c0-9.39-8.06-17-18-17z"
@@ -30,25 +36,78 @@ function BrandColorsIcon({ color }: { color: string }) {
 
 function KnowledgeBaseIcon({ color }: { color: string }) {
   return (
-    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="52%" height="52%">
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      width="52%"
+      height="52%"
+    >
       {/* Bottom layer */}
-      <ellipse cx="24" cy="36" rx="14" ry="4.5" stroke={color} strokeWidth="2" />
-      <path d="M10 36v4c0 2.49 6.27 4.5 14 4.5S38 42.49 38 40v-4" stroke={color} strokeWidth="2" />
+      <ellipse
+        cx="24"
+        cy="36"
+        rx="14"
+        ry="4.5"
+        stroke={color}
+        strokeWidth="2"
+      />
+      <path
+        d="M10 36v4c0 2.49 6.27 4.5 14 4.5S38 42.49 38 40v-4"
+        stroke={color}
+        strokeWidth="2"
+      />
       {/* Middle layer */}
-      <ellipse cx="24" cy="26" rx="14" ry="4.5" stroke={color} strokeWidth="2" />
-      <path d="M10 26v4c0 2.49 6.27 4.5 14 4.5S38 32.49 38 30v-4" stroke={color} strokeWidth="2" />
+      <ellipse
+        cx="24"
+        cy="26"
+        rx="14"
+        ry="4.5"
+        stroke={color}
+        strokeWidth="2"
+      />
+      <path
+        d="M10 26v4c0 2.49 6.27 4.5 14 4.5S38 32.49 38 30v-4"
+        stroke={color}
+        strokeWidth="2"
+      />
       {/* Top layer */}
-      <ellipse cx="24" cy="16" rx="14" ry="4.5" stroke={color} strokeWidth="2" fill={color} fillOpacity="0.1" />
-      <path d="M10 16v4c0 2.49 6.27 4.5 14 4.5S38 22.49 38 20v-4" stroke={color} strokeWidth="2" />
+      <ellipse
+        cx="24"
+        cy="16"
+        rx="14"
+        ry="4.5"
+        stroke={color}
+        strokeWidth="2"
+        fill={color}
+        fillOpacity="0.1"
+      />
+      <path
+        d="M10 16v4c0 2.49 6.27 4.5 14 4.5S38 22.49 38 20v-4"
+        stroke={color}
+        strokeWidth="2"
+      />
       {/* Sync arrow on top */}
-      <path d="M20 13.5 L24 10 L28 13.5" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        d="M20 13.5 L24 10 L28 13.5"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
 function AISparkleIcon({ color }: { color: string }) {
   return (
-    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="52%" height="52%">
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      width="52%"
+      height="52%"
+    >
       {/* Main large sparkle */}
       <path
         d="M24 6 L26.4 20.8 L38 24 L26.4 27.2 L24 42 L21.6 27.2 L10 24 L21.6 20.8 Z"
@@ -75,11 +134,47 @@ function AISparkleIcon({ color }: { color: string }) {
 
 function AnalyticsIcon({ color }: { color: string }) {
   return (
-    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="52%" height="52%">
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      width="52%"
+      height="52%"
+    >
       {/* Bars */}
-      <rect x="7" y="28" width="7" height="14" rx="2" fill={color} fillOpacity="0.25" stroke={color} strokeWidth="1.8" />
-      <rect x="20.5" y="20" width="7" height="22" rx="2" fill={color} fillOpacity="0.4" stroke={color} strokeWidth="1.8" />
-      <rect x="34" y="12" width="7" height="30" rx="2" fill={color} fillOpacity="0.6" stroke={color} strokeWidth="1.8" />
+      <rect
+        x="7"
+        y="28"
+        width="7"
+        height="14"
+        rx="2"
+        fill={color}
+        fillOpacity="0.25"
+        stroke={color}
+        strokeWidth="1.8"
+      />
+      <rect
+        x="20.5"
+        y="20"
+        width="7"
+        height="22"
+        rx="2"
+        fill={color}
+        fillOpacity="0.4"
+        stroke={color}
+        strokeWidth="1.8"
+      />
+      <rect
+        x="34"
+        y="12"
+        width="7"
+        height="30"
+        rx="2"
+        fill={color}
+        fillOpacity="0.6"
+        stroke={color}
+        strokeWidth="1.8"
+      />
       {/* Trend line */}
       <path
         d="M10.5 26 L24 17 L37.5 9"
@@ -102,7 +197,13 @@ function AnalyticsIcon({ color }: { color: string }) {
 
 function ChatboxIcon({ color }: { color: string }) {
   return (
-    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="52%" height="52%">
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      width="52%"
+      height="52%"
+    >
       {/* Main chat bubble */}
       <path
         d="M8 10C8 7.79 9.79 6 12 6H36C38.21 6 40 7.79 40 10V28C40 30.21 38.21 32 36 32H20L12 40V32H12C9.79 32 8 30.21 8 28V10Z"
@@ -113,10 +214,25 @@ function ChatboxIcon({ color }: { color: string }) {
         fillOpacity="0.08"
       />
       {/* Cursor / text lines */}
-      <path d="M15 17H33" stroke={color} strokeWidth="2" strokeLinecap="round" />
-      <path d="M15 23H26" stroke={color} strokeWidth="2" strokeLinecap="round" />
+      <path
+        d="M15 17H33"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <path
+        d="M15 23H26"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
       {/* Blinking cursor line */}
-      <path d="M28 23H29.5" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+      <path
+        d="M28 23H29.5"
+        stroke={color}
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }
@@ -137,8 +253,7 @@ const FEATURES: {
   {
     icon: BrandColorsIcon,
     title: "Built to convert",
-    description:
-      "Every answer nudges hesitant shoppers toward checkout.",
+    description: "Every answer nudges hesitant shoppers toward checkout.",
     accent: "#1A56FF",
     accentLight: "#93C5FD",
     cardBg: "#DBEAFE",
@@ -150,7 +265,7 @@ const FEATURES: {
     icon: KnowledgeBaseIcon,
     title: "Learns your whole store",
     description:
-      "Helloii reads your products, collections, and policies, so it knows everything on your site.",
+      "helloii Ai reads your products, collections, and policies, so it knows everything on your site.",
     accent: "#8B2FFF",
     accentLight: "#C4B5FD",
     cardBg: "#EDE9FE",
@@ -162,7 +277,7 @@ const FEATURES: {
     icon: AISparkleIcon,
     title: "Set up by itself",
     description:
-      "Helloii reads your store and gets to work automatically — nothing to configure.",
+      "helloii Ai reads your store and gets to work automatically — nothing to configure.",
     accent: "#1A56FF",
     accentLight: "#93C5FD",
     cardBg: "#DBEAFE",
@@ -174,7 +289,7 @@ const FEATURES: {
     icon: AnalyticsIcon,
     title: "Test in private",
     description:
-      "Run Helloii on your store quietly before switching it on for shoppers.",
+      "Run helloii Ai on your store quietly before switching it on for shoppers.",
     accent: "#5B4FFF",
     accentLight: "#A5B4FC",
     cardBg: "#E0E7FF",
@@ -186,7 +301,7 @@ const FEATURES: {
     icon: ChatboxIcon,
     title: "Human backup, built in",
     description:
-      "Helloii handles the routine and hands the tricky ones to you on WhatsApp.",
+      "helloii Ai handles the routine and hands the tricky ones to you on WhatsApp.",
     accent: "#8B2FFF",
     accentLight: "#C4B5FD",
     cardBg: "#EDE9FE",
@@ -217,8 +332,7 @@ export function Features() {
           </p>
 
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-neutral-950 sm:text-4xl lg:text-5xl">
-            Built for{" "}
-            <span className="text-[#8B2FFF]">eCommerce</span>
+            Built for <span className="text-[#8B2FFF]">eCommerce</span>
           </h2>
 
           <p className="mt-4 text-base leading-7 text-neutral-500">
@@ -280,9 +394,22 @@ function FeatureCard({
       className="group flex h-full max-w-none flex-col justify-between rounded-[28px] p-6 text-neutral-950 transition-transform duration-300 hover:-translate-y-1"
     >
       {isBig ? (
-        <BigFeatureContent icon={icon} title={title} description={description} accent={accent} accentLight={accentLight} />
+        <BigFeatureContent
+          icon={icon}
+          title={title}
+          description={description}
+          accent={accent}
+          accentLight={accentLight}
+        />
       ) : (
-        <CompactFeatureContent icon={icon} title={title} description={description} accent={accent} accentLight={accentLight} size={size} />
+        <CompactFeatureContent
+          icon={icon}
+          title={title}
+          description={description}
+          accent={accent}
+          accentLight={accentLight}
+          size={size}
+        />
       )}
 
       <div className="mt-6 flex items-center gap-3">
@@ -357,7 +484,11 @@ function CompactFeatureContent({
         icon={icon}
         accent={accent}
         accentLight={accentLight}
-        className={size === "small" ? "h-16 w-16 rounded-2xl" : "h-20 w-20 rounded-[24px]"}
+        className={
+          size === "small"
+            ? "h-16 w-16 rounded-2xl"
+            : "h-20 w-20 rounded-[24px]"
+        }
       />
 
       <div className="min-w-0 flex-1">

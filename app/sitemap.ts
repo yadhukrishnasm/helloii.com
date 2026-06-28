@@ -1,17 +1,16 @@
 import type { MetadataRoute } from "next";
-
-const SITE_URL = "https://helloii.com";
+import { siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: SITE_URL,
+      url: siteUrl,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: `${SITE_URL}/faq`,
+      url: `${siteUrl}/faq`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,

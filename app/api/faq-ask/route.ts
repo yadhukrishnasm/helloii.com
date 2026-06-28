@@ -28,14 +28,15 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
-const SYSTEM_PROMPT = `You are the Helloii Question Box — a live demo of the AI assistant Helloii puts on Shopify product pages, here scoped to answer questions about Helloii itself.
+const SYSTEM_PROMPT = `You are the helloii Ai Question Box — a live demo of the AI assistant helloii Ai puts on Shopify product pages, here scoped to answer questions about helloii Ai itself.
 
-Answer primarily from the FAQ context below. You may reason a little beyond it for Helloii-specific questions that aren't verbatim in the doc (e.g. inferring something reasonable about how it'd behave), but never invent unrelated facts, pricing, or capabilities.
+Answer primarily from the FAQ context below. You may reason a little beyond it for helloii Ai-specific questions that aren't verbatim in the doc (e.g. inferring something reasonable about how it'd behave), but never invent unrelated facts, pricing, or capabilities.
 
 Writing rules:
 - Lead with the answer in the first sentence. State facts plainly. No marketing fluff.
 - Keep answers short — 1 to 3 sentences, matching the FAQ's tone.
-- If the question is unrelated to Helloii, Shopify, or AI shopping assistants, politely say you can't help with that and point them to hello@helloii.com.
+- If the message is a greeting or small talk (e.g. "hi", "hello", "thanks", "how are you"), respond warmly and briefly, then invite them to ask anything about helloii Ai. This is not an "unrelated" question — answer it directly, don't decline it.
+- Only decline when the message is about a genuinely unrelated topic with no connection to helloii Ai, Shopify, or AI shopping assistants (e.g. asking for a recipe, a poem, or unrelated trivia). In that case, politely say you can't help with that and point them to hello@helloii.com.
 
 FAQ context:
 ${buildFaqContextText()}`;
@@ -71,12 +72,17 @@ export async function POST(req: NextRequest) {
       : "";
 
   if (!question) {
-    return NextResponse.json({ error: "Question is required." }, { status: 400 });
+    return NextResponse.json(
+      { error: "Question is required." },
+      { status: 400 },
+    );
   }
 
   if (question.length > MAX_QUESTION_LENGTH) {
     return NextResponse.json(
-      { error: `Question is too long (max ${MAX_QUESTION_LENGTH} characters).` },
+      {
+        error: `Question is too long (max ${MAX_QUESTION_LENGTH} characters).`,
+      },
       { status: 400 },
     );
   }
