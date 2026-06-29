@@ -25,7 +25,7 @@ const PLANS = [
     name: "Basic",
     price: "$25",
     period: "/ month",
-    accent: "#8B2FFF",
+    accent: "#7A1FE0",
     accentLight: "#C4B5FD",
     recommended: true,
     features: [
@@ -111,55 +111,54 @@ export function Pricing() {
                     : undefined
                 }
               >
+                <p className="relative z-10 text-sm font-bold uppercase tracking-widest text-neutral-500">
+                  {plan.name}
+                </p>
 
-              <p className="relative z-10 text-sm font-bold uppercase tracking-widest text-neutral-500">
-                {plan.name}
-              </p>
-
-              <div className="relative z-10 mt-3 flex items-end gap-1">
-                <span className="text-4xl font-bold tracking-tight text-neutral-950">
-                  {plan.price}
-                </span>
-                {plan.period && (
-                  <span className="mb-1 text-sm text-neutral-400">
-                    {plan.period}
+                <div className="relative z-10 mt-3 flex items-end gap-1">
+                  <span className="text-4xl font-bold tracking-tight text-neutral-950">
+                    {plan.price}
                   </span>
-                )}
-              </div>
+                  {plan.period && (
+                    <span className="mb-1 text-sm text-neutral-400">
+                      {plan.period}
+                    </span>
+                  )}
+                </div>
 
-              <p className="relative z-10 mt-6 text-xs font-bold uppercase tracking-[0.18em] text-neutral-400">
-                Features
-              </p>
+                <p className="relative z-10 mt-6 text-xs font-bold uppercase tracking-[0.18em] text-neutral-400">
+                  Features
+                </p>
 
-              <ul className="relative z-10 mt-4 space-y-3">
-                {plan.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className="flex items-start gap-2.5 text-sm leading-6 text-neutral-700"
-                  >
-                    <span
-                      className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full"
-                      style={{ background: plan.accent }}
-                    />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+                <ul className="relative z-10 mt-4 space-y-3">
+                  {plan.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="flex items-start gap-2.5 text-sm leading-6 text-neutral-700"
+                    >
+                      <span
+                        className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full"
+                        style={{ background: plan.accent }}
+                      />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
 
-              <LiquidGlassBubble
-                accent={plan.accent}
-                accentLight={plan.accentLight}
-                className="btn-press relative z-10 mt-7 block rounded-full"
-              >
-                <a
-                  href={SHOPIFY_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="block w-full py-2.5 text-center text-sm font-semibold"
+                <LiquidGlassBubble
+                  accent={plan.accent}
+                  accentLight={plan.accentLight}
+                  className="btn-press relative z-10 mt-7 block rounded-full"
                 >
-                  Get started
-                </a>
-              </LiquidGlassBubble>
+                  <a
+                    href={SHOPIFY_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="block w-full py-2.5 text-center text-sm font-semibold"
+                  >
+                    Get started
+                  </a>
+                </LiquidGlassBubble>
               </div>
             </motion.div>
           ))}

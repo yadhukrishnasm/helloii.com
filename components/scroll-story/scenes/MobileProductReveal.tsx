@@ -113,13 +113,13 @@ function MobileFlow({ flow }: { flow: Flow }) {
           <span aria-hidden>→</span>
         </a>
 
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="mt-4 flex flex-wrap gap-2.5">
           {flow.stats.map((stat) => (
             <span
               key={stat.label}
-              className="glass-item inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold text-neutral-600"
+              className="glass-item inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold text-neutral-600"
             >
-              <span className="h-3.5 w-3.5 shrink-0">
+              <span className="h-5 w-5 shrink-0">
                 <StatIcon name={stat.icon} color={flow.accent} />
               </span>
               {stat.label}

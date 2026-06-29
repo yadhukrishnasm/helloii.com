@@ -70,7 +70,10 @@ export function FaqAnswerWidget({
 
   useEffect(() => {
     if (!start || phase !== "suggestions") return;
-    const timer = window.setTimeout(() => setPhase("selecting"), 900);
+    // Long enough to actually read all 3 suggestions before one gets
+    // "clicked" — this used to be 900ms, which moved on almost as soon
+    // as the list appeared.
+    const timer = window.setTimeout(() => setPhase("selecting"), 2400);
     return () => window.clearTimeout(timer);
   }, [phase, start]);
 
@@ -185,11 +188,11 @@ export function FaqAnswerWidget({
                         : { scale: 1, opacity: 1 }
                     }
                     transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    className="rounded-[14px] border px-3 py-2 text-[13px] leading-5"
+                    className="rounded-full border-2 px-4 py-2.5 text-[13px] font-bold leading-5 shadow-[0_2px_6px_rgba(20,20,40,0.06)]"
                     style={{
-                      borderColor: isSelected ? accent : "rgba(0,0,0,0.08)",
-                      background: isSelected ? `${accent}14` : "white",
-                      color: isSelected ? accent : "#525252",
+                      borderColor: isSelected ? accent : `${accent}55`,
+                      background: isSelected ? `${accent}33` : `${accent}1A`,
+                      color: accent,
                     }}
                   >
                     {suggestion}
@@ -207,7 +210,7 @@ export function FaqAnswerWidget({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
-          className="mt-4 flex max-h-[300px] flex-col gap-3 overflow-y-auto overflow-x-hidden pr-1"
+          className="chat-scroll mt-4 flex max-h-[300px] flex-col gap-3 overflow-y-auto overflow-x-hidden"
         >
           {completedTurns
             .filter((i) => i !== turnIndex)
