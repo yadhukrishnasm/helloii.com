@@ -7,7 +7,7 @@ import { Container } from "@/components/layout/container";
 const TESTIMONIALS = [
   {
     quote:
-      "Since adding helloii Ai, we cut support tickets by 40% in the first month. Customers get instant answers about sizing and shipping — without ever waiting on us.",
+      "Since adding Helloii AI, we cut support tickets by 40% in the first month. Customers get instant answers about sizing and shipping — without ever waiting on us.",
     name: "Meera Nair",
     store: "The Weave Studio",
     initials: "MN",
@@ -15,7 +15,7 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      "The product Q&A feature is what sold me. Customers ask things I never thought to put in my descriptions, and helloii Ai handles every single one. It's like having a full-time sales rep embedded in the page.",
+      "The product Q&A feature is what sold me. Customers ask things I never thought to put in my descriptions, and Helloii AI handles every single one. It's like having a full-time sales rep embedded in the page.",
     name: "James Okafor",
     store: "Vitaleaf Naturals",
     initials: "JO",
@@ -40,7 +40,7 @@ export function Testimonials() {
   const next = () => setActive((i) => (i + 1) % TESTIMONIALS.length);
 
   return (
-    <section className="relative py-24 sm:py-32">
+    <section className="relative overflow-hidden py-24 sm:py-32">
       <Container>
         {/* Label */}
         <motion.p

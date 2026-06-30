@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, useMotionValueEvent, useTransform } from "framer-motion";
 import type { MotionValue } from "framer-motion";
 import { Container } from "@/components/layout/container";
-import ChatPreview from "@/components/ui/product-revealt-chat";
+import ChatPreview from "@/components/scroll-story/product-revealt-chat";
 import { FaqAnswerWidget } from "../FaqAnswerWidget";
 import { StatIcon } from "../icons";
 import type { Flow } from "../data/product-flows";

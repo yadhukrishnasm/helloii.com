@@ -18,7 +18,7 @@ export type Step = {
 export const STEPS: Step[] = [
   {
     step: "1",
-    title: "Install helloii Ai in one click",
+    title: "Install Helloii AI in one click",
     description: "Add it from Shopify and activate it without code.",
     accent: "#1A56FF",
     accentLight: "#5A9CFF",
@@ -30,7 +30,7 @@ export const STEPS: Step[] = [
   },
   {
     step: "2",
-    title: "Your store data syncs automatically",
+    title: "AI automatically learns about your website",
     description:
       "Products, policies, FAQs, and collections are read instantly.",
     accent: "#5B4FFF",
@@ -43,8 +43,9 @@ export const STEPS: Step[] = [
   },
   {
     step: "3",
-    title: "Customers get answers while shopping",
-    description: "helloii Ai responds on product pages when buyers need help.",
+    title: "Customers start getting instant resolutions",
+    description:
+      "Helloii AI responds to customer queries everywhere inside your website.",
     accent: "#8B2FFF",
     accentLight: "#B377FF",
     icon: "chat",

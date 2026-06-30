@@ -40,14 +40,14 @@ const SCENES: ScrollStoryScene[] = (() => {
 
 export function ProductReveal() {
   return (
-    <section id="product" className="relative py-20 sm:py-28">
+    <section id="product" className="relative overflow-x-clip [overflow-clip-margin:20px] py-20 sm:py-28">
       {/* Mobile renders its own heading inside MobileProductReveal, since
           it needs to sit in normal scroll flow there rather than above a
           desktop-only ScrollStory. */}
       <Container className="hidden lg:block">
         <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-16">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-neutral-400">
-            What helloii Ai does
+            What Helloii AI does
           </p>
 
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-neutral-950 sm:text-4xl lg:text-5xl">

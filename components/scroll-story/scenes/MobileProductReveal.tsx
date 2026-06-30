@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { Container } from "@/components/layout/container";
-import ChatPreview from "@/components/ui/product-revealt-chat";
+import ChatPreview from "@/components/scroll-story/product-revealt-chat";
 import { FaqAnswerWidget } from "../FaqAnswerWidget";
 import { StatIcon } from "../icons";
 import { FLOWS } from "../data/product-flows";
@@ -27,7 +27,10 @@ const DEMO_URL = "https://demo.helloii.com";
  */
 export function MobileProductReveal() {
   return (
-    <section id="product-mobile" className="relative py-20 lg:hidden">
+    <section
+      id="product-mobile"
+      className="relative overflow-x-clip [overflow-clip-margin:20px] py-20 lg:hidden"
+    >
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -37,7 +40,7 @@ export function MobileProductReveal() {
           className="mx-auto mb-10 max-w-3xl text-center"
         >
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-neutral-400">
-            What helloii Ai does
+            What Helloii AI does
           </p>
 
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-neutral-950 sm:text-4xl">
@@ -80,7 +83,7 @@ function MobileFlow({ flow }: { flow: Flow }) {
   const turnIndex = useMotionIndex(chatProgress, total);
 
   return (
-    <section className="relative py-14">
+    <section className="relative overflow-x-clip [overflow-clip-margin:20px] py-14">
       <motion.div
         initial={{ opacity: 0, y: 18 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -136,7 +139,10 @@ function MobileFlow({ flow }: { flow: Flow }) {
         {/* h-screen + flex centering keeps the chat vertically centered
             in the viewport the whole time it's stuck, instead of pinned
             near the top edge. */}
-        <div className="sticky top-0 flex h-screen flex-col items-center justify-center">
+        <div
+          className="sticky flex flex-col items-center justify-center"
+          style={{ top: "var(--nav-height)", height: "calc(100vh - var(--nav-height))" }}
+        >
           <div
             style={{ opacity: chatStarted ? 1 : 0.4 }}
             className="w-full transition-opacity duration-500 ease-out"

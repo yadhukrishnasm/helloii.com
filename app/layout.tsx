@@ -11,8 +11,8 @@ const ENTITY_SENTENCE = siteDescription;
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "helloii Ai — AI Shopping Assistant for Shopify Stores",
-    template: "%s | helloii Ai",
+    default: "Helloii AI — AI Shopping Assistant for Shopify Stores",
+    template: "%s | Helloii AI",
   },
   description: ENTITY_SENTENCE,
   keywords: [
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   openGraph: {
-    title: "helloii Ai — AI Shopping Assistant for Shopify Stores",
+    title: "Helloii AI — AI Shopping Assistant for Shopify Stores",
     description: ENTITY_SENTENCE,
     url: siteUrl,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "helloii Ai — AI Shopping Assistant for Shopify Stores",
+    title: "Helloii AI — AI Shopping Assistant for Shopify Stores",
     description: ENTITY_SENTENCE,
   },
 };
@@ -45,12 +45,12 @@ export const metadata: Metadata = {
 const ORG_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "helloii Ai",
+  name: "Helloii AI",
   url: siteUrl,
-  email: "hello@helloii Ai.com",
+  email: "hello@helloii.com",
   sameAs: [
-    "https://x.com/helloii Aihq",
-    "https://www.linkedin.com/company/helloii Ai/",
+    "https://x.com/helloiihq",
+    "https://www.linkedin.com/company/helloii/",
   ],
   parentOrganization: {
     "@type": "Organization",
@@ -62,7 +62,7 @@ const ORG_JSON_LD = {
 const SOFTWARE_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "helloii Ai",
+  name: "Helloii AI",
   applicationCategory: "BusinessApplication",
   operatingSystem: "Shopify",
   description: ENTITY_SENTENCE,
@@ -100,10 +100,10 @@ const REVIEW_JSON_LD = [
   {
     "@context": "https://schema.org",
     "@type": "Review",
-    itemReviewed: { "@type": "SoftwareApplication", name: "helloii Ai" },
+    itemReviewed: { "@type": "SoftwareApplication", name: "Helloii AI" },
     author: { "@type": "Person", name: "Meera Nair" },
     reviewBody:
-      "Since adding helloii Ai, we cut support tickets by 40% in the first month. Customers get instant answers about sizing and shipping — without ever waiting on us.",
+      "Since adding Helloii AI, we cut support tickets by 40% in the first month. Customers get instant answers about sizing and shipping — without ever waiting on us.",
     reviewRating: {
       "@type": "Rating",
       ratingValue: "5",
@@ -113,10 +113,10 @@ const REVIEW_JSON_LD = [
   {
     "@context": "https://schema.org",
     "@type": "Review",
-    itemReviewed: { "@type": "SoftwareApplication", name: "helloii Ai" },
+    itemReviewed: { "@type": "SoftwareApplication", name: "Helloii AI" },
     author: { "@type": "Person", name: "James Okafor" },
     reviewBody:
-      "The product Q&A feature is what sold me. Customers ask things I never thought to put in my descriptions, and helloii Ai handles every single one.",
+      "The product Q&A feature is what sold me. Customers ask things I never thought to put in my descriptions, and Helloii AI handles every single one.",
     reviewRating: {
       "@type": "Rating",
       ratingValue: "5",
@@ -126,7 +126,7 @@ const REVIEW_JSON_LD = [
   {
     "@context": "https://schema.org",
     "@type": "Review",
-    itemReviewed: { "@type": "SoftwareApplication", name: "helloii Ai" },
+    itemReviewed: { "@type": "SoftwareApplication", name: "Helloii AI" },
     author: { "@type": "Person", name: "Priya Rajan" },
     reviewBody:
       "Setup took under 10 minutes. Within the first week the assistant was already handling 80% of pre-sale questions. Our conversion rate on product pages went up noticeably.",

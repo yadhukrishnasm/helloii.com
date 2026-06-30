@@ -312,23 +312,23 @@ export function Hero() {
             </h1>
 
             <p className="h-sub mx-auto mt-3 max-w-xl text-sm leading-6 text-blue-100/80 sm:mt-5 sm:text-lg sm:leading-8">
-              When shoppers can't get an answer, they leave. helloii Ai answers
+              When shoppers can't get an answer, they leave. Helloii AI answers
               instantly on your product pages — sizing, shipping, returns,
               comparisons — guiding customers to the right product and to
               checkout.
             </p>
 
             <p className="sr-only">
-              helloii Ai is an AI shopping assistant for Shopify stores that
+              Helloii AI is an AI shopping assistant for Shopify stores that
               reduces support load by instantly answering customer questions
               about products, shipping, returns, sizing, and store policies —
               24/7, with no human in the loop for routine questions.
             </p>
 
             <p className="sr-only">
-              helloii Ai belongs to the category of AI customer support and
+              Helloii AI belongs to the category of AI customer support and
               sales assistants for Shopify stores. Unlike chatbots that require
-              manual FAQ setup, helloii Ai automatically learns a store's
+              manual FAQ setup, Helloii AI automatically learns a store's
               product catalog, collections, and policies on installation. It
               reduces support-team workload by answering routine pre-sale and
               post-sale questions instantly, and hands off harder or unresolved

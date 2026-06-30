@@ -70,7 +70,7 @@ export function Footer() {
               href="/"
               className="inline-flex text-2xl font-bold tracking-tighter text-neutral-950"
             >
-              helloii Ai
+              Helloii AI
             </Link>
 
             <p className="mt-4 text-sm leading-7 text-neutral-600">
@@ -149,7 +149,15 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col gap-5 border-t border-neutral-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-neutral-500">
-            © Helloii.com, from the House of Nysaclan — Nysaclan.com
+            © Helloii.com, from the House of Nysaclan —{" "}
+            <a
+              href="https://nysaclan.com"
+              target="_blank"
+              rel="noreferrer"
+              className="transition-colors hover:text-neutral-950"
+            >
+              Nysaclan.com
+            </a>
           </p>
 
           <div className="flex items-center gap-5">
@@ -171,7 +179,7 @@ export function Footer() {
                 href="https://x.com/helloiihq"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Helloii Ai on X"
+                aria-label="Helloii AI on X"
                 className="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200/80 bg-white/70 text-neutral-500 backdrop-blur-sm transition-colors hover:border-neutral-300 hover:text-neutral-950"
               >
                 <XIcon />
@@ -180,7 +188,7 @@ export function Footer() {
                 href="https://www.linkedin.com/company/helloii/"
                 target="_blank"
                 rel="noreferrer"
-                aria-label="Helloii Ai on LinkedIn"
+                aria-label="Helloii AI on LinkedIn"
                 className="flex h-8 w-8 items-center justify-center rounded-full border border-neutral-200/80 bg-white/70 text-neutral-500 backdrop-blur-sm transition-colors hover:border-neutral-300 hover:text-neutral-950"
               >
                 <LinkedInIcon />

@@ -12,7 +12,7 @@ const HEIGHT_VH = STEPS.length * 82;
 
 export function HowItWorks() {
   return (
-    <section className="relative py-20 sm:py-28">
+    <section className="relative overflow-x-clip py-20 sm:py-28">
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute right-[-10%] top-16 h-72 w-72 rounded-full bg-[#5B4FFF]/10 blur-3xl" />
         <div className="absolute left-[-10%] bottom-10 h-80 w-80 rounded-full bg-[#1A56FF]/[0.08] blur-3xl" />
@@ -32,7 +32,7 @@ export function HowItWorks() {
           </h2>
 
           <p className="mt-4 text-base leading-7 text-neutral-500">
-            No technical setup. No prompt engineering. helloii Ai reads your
+            No technical setup. No prompt engineering. Helloii AI reads your
             store and gets to work immediately.
           </p>
         </div>

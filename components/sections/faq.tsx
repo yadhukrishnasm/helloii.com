@@ -47,7 +47,7 @@ export function FAQ() {
 
           <Reveal>
             <p className="mx-auto mt-7 max-w-2xl text-base leading-8 text-neutral-600 sm:text-lg">
-              Answers about what helloii Ai does, how it works, what it costs,
+              Answers about what Helloii AI does, how it works, what it costs,
               and how it fits inside a Shopify store.
             </p>
           </Reveal>

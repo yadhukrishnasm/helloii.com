@@ -7,7 +7,7 @@ const SHOPIFY_URL = "http://apps.shopify.com/ai-sales-support-assistant";
 
 export function CTABanner() {
   return (
-    <section className="relative py-20 sm:py-28">
+    <section className="relative overflow-hidden py-20 sm:py-28">
       <Container>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -29,11 +29,11 @@ export function CTABanner() {
           </p>
 
           <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Start using helloii Ai free on your Shopify store today.
+            Start using Helloii AI free on your Shopify store today.
           </h2>
 
           <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-blue-100">
-            Install it and see helloii Ai answering your customers in minutes.
+            Install it and see Helloii AI answering your customers in minutes.
           </p>
 
           <div className="mt-9 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">

@@ -1,100 +1,201 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useLayoutEffect, useRef, useState } from "react";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import type { MotionValue } from "framer-motion";
 import { LiquidGlassBubble } from "@/components/ui/liquid-glass";
 import { STEPS } from "../data/how-it-works";
 import type { Step } from "../data/how-it-works";
 import { StepIcon } from "../icons";
 
-/**
- * Mobile/tablet keeps its own simple, native-scroll mechanism — no
- * ScrollStory pinned desktop viewport, no rAF, no scroll-jacking. Each
- * step tracks *its own* scroll position (not a single progress value
- * shared across the whole 4-step stack) — sharing one progress value
- * meant each step's reveal window was 1/4 of the *entire* stack's
- * height, which for a tall stack requires scrolling well past where a
- * step is already fully visible before its window's threshold catches
- * up. Per-step tracking ties the reveal directly to that step actually
- * scrolling into view, so it's never still fading in once it's already
- * sitting on screen.
- *
- * Shown below `lg:` — matches ScrollStory's own cutoff.
- */
+type LineMetrics = {
+  top: number;
+  height: number;
+  revealPoints: number[];
+};
+
+const DEFAULT_LINE_METRICS: LineMetrics = {
+  top: 24,
+  height: 1,
+  revealPoints: [0, 0.33, 0.66, 1],
+};
+
+function smoothstep(value: number) {
+  const t = Math.min(1, Math.max(0, value));
+  return t * t * (3 - 2 * t);
+}
+
 export function MobileHowItWorks() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const iconRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const reduceMotion = useReducedMotion();
+
+  const [lineMetrics, setLineMetrics] =
+    useState<LineMetrics>(DEFAULT_LINE_METRICS);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+
+    /**
+     * Starts when the first step area is around 72% down the viewport.
+     * Ends when the first step area is still visible around 24% down the viewport.
+     *
+     * This makes the whole line complete before the first step fully leaves view.
+     */
+    offset: ["start 72%", "start 24%"],
+  });
+
+  const lineProgress = useTransform(scrollYProgress, (value) => {
+    if (reduceMotion) return Math.min(1, Math.max(0, value));
+    return smoothstep(value);
+  });
+
+  useLayoutEffect(() => {
+    const container = containerRef.current;
+
+    if (!container) return;
+
+    const updateLineMetrics = () => {
+      const containerRect = container.getBoundingClientRect();
+      const icons = iconRefs.current.filter(Boolean) as HTMLDivElement[];
+
+      if (icons.length < 2) return;
+
+      const centers = icons.map((icon) => {
+        const rect = icon.getBoundingClientRect();
+        return rect.top - containerRect.top + rect.height / 2;
+      });
+
+      const firstCenter = centers[0];
+      const lastCenter = centers[centers.length - 1];
+      const height = Math.max(1, lastCenter - firstCenter);
+
+      const revealPoints = centers.map((center) => {
+        return Math.min(1, Math.max(0, (center - firstCenter) / height));
+      });
+
+      setLineMetrics({
+        top: firstCenter,
+        height,
+        revealPoints,
+      });
+    };
+
+    updateLineMetrics();
+
+    const resizeObserver = new ResizeObserver(updateLineMetrics);
+    resizeObserver.observe(container);
+
+    iconRefs.current.forEach((icon) => {
+      if (icon) resizeObserver.observe(icon);
+    });
+
+    window.addEventListener("resize", updateLineMetrics);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updateLineMetrics);
+    };
+  }, []);
+
   return (
-    <div className="mx-auto mt-14 max-w-sm lg:hidden">
-      {STEPS.map((step, i) => (
-        <MobileStep
-          key={step.step}
-          step={step}
-          isLast={i === STEPS.length - 1}
-          nextAccent={STEPS[i + 1]?.accent}
+    <div
+      ref={containerRef}
+      className="relative mx-auto mt-14 max-w-sm lg:hidden"
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-6 z-0 w-[3px] -translate-x-1/2 overflow-hidden rounded-full bg-neutral-200/60"
+        style={{
+          top: lineMetrics.top,
+          height: lineMetrics.height,
+        }}
+      >
+        <motion.div
+          style={{ scaleY: lineProgress }}
+          className="absolute inset-0 origin-top rounded-full bg-gradient-to-b from-[#1A56FF] via-[#5B4FFF] to-[#8B2FFF]"
         />
-      ))}
+      </div>
+
+      <div className="relative z-10">
+        {STEPS.map((step, index) => (
+          <MobileStep
+            key={step.step}
+            step={step}
+            iconRef={(node) => {
+              iconRefs.current[index] = node;
+            }}
+            progress={lineProgress}
+            revealAt={
+              lineMetrics.revealPoints[index] ?? index / (STEPS.length - 1)
+            }
+          />
+        ))}
+      </div>
     </div>
   );
 }
 
 function MobileStep({
   step,
-  isLast,
-  nextAccent,
+  iconRef,
+  progress,
+  revealAt,
 }: {
   step: Step;
-  isLast: boolean;
-  nextAccent?: string;
+  iconRef: (node: HTMLDivElement | null) => void;
+  progress: MotionValue<number>;
+  revealAt: number;
 }) {
-  const stepRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
 
-  // Tight window tied to this step's own geometry: starts revealing as
-  // soon as it's barely visible at the bottom of the viewport, and is
-  // fully revealed well before it'd be considered "on screen" further up.
-  const { scrollYProgress } = useScroll({
-    target: stepRef,
-    offset: ["start 92%", "start 55%"],
-  });
+  const start = Math.max(0, revealAt - 0.08);
+  const end = Math.min(1, revealAt + 0.08);
 
-  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 0.5, 1]);
-  const x = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [14, 0]);
-  const scale = useTransform(
-    scrollYProgress,
-    [0, 1],
-    reduceMotion ? [1, 1] : [0.85, 1],
+  const opacity = useTransform(progress, [start, end], [0, 1]);
+
+  const x = useTransform(
+    progress,
+    [start, end],
+    reduceMotion ? [0, 0] : [10, 0],
   );
-  const lineScale = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+  const scale = useTransform(
+    progress,
+    [start, end],
+    reduceMotion ? [1, 1] : [0.9, 1],
+  );
+
+  const textY = useTransform(
+    progress,
+    [start, end],
+    reduceMotion ? [0, 0] : [8, 0],
+  );
 
   return (
-    <div ref={stepRef} className="flex gap-4">
-      <div className="flex flex-col items-center">
-        <motion.div style={{ opacity, scale }} className="h-12 w-12 shrink-0">
+    <div className="relative flex gap-4">
+      <div className="relative z-20 flex flex-col items-center">
+        <motion.div
+          ref={iconRef}
+          style={{ opacity, scale }}
+          className="h-12 w-12 shrink-0"
+        >
           <LiquidGlassBubble
             accent={step.accent}
             accentLight={step.accentLight}
-            className="flex h-full w-full items-center justify-center rounded-2xl"
+            className="flex h-full w-full items-center justify-center rounded-2xl shadow-[0_14px_36px_rgba(26,86,255,0.12)]"
           >
             <StepIcon name={step.icon} color={step.accent} />
           </LiquidGlassBubble>
         </motion.div>
-
-        {!isLast && (
-          <div className="relative my-1.5 w-[3px] flex-1 overflow-hidden rounded-full bg-neutral-200/60">
-            <motion.div
-              style={{
-                scaleY: lineScale,
-                background: `linear-gradient(to bottom, ${step.accent}, ${
-                  nextAccent ?? step.accent
-                })`,
-                boxShadow: "0 2px 6px rgba(15, 23, 42, 0.18)",
-              }}
-              className="absolute inset-0 origin-top rounded-full"
-            />
-          </div>
-        )}
       </div>
 
-      <motion.div style={{ opacity, x }} className="min-w-0 pb-10">
+      <motion.div style={{ opacity, x, y: textY }} className="min-w-0 pb-10">
         <p
           className="text-xs font-bold uppercase tracking-[0.18em]"
           style={{ color: step.accent }}

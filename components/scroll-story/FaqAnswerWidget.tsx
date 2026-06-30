@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import type { ChatPreviewTurn } from "@/components/ui/product-revealt-chat";
+import type { ChatPreviewTurn } from "@/components/scroll-story/product-revealt-chat";
 
 type Phase = "suggestions" | "selecting" | "typing" | "thinking" | "answer";
 
@@ -188,10 +188,8 @@ export function FaqAnswerWidget({
                         : { scale: 1, opacity: 1 }
                     }
                     transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    className="rounded-full border-2 px-4 py-2.5 text-[13px] font-bold leading-5 shadow-[0_2px_6px_rgba(20,20,40,0.06)]"
+                    className="rounded-full px-4 py-2.5 text-[13px] font-bold leading-5 shadow-[0_2px_6px_rgba(20,20,40,0.06)]"
                     style={{
-                      borderColor: isSelected ? accent : `${accent}55`,
-                      background: isSelected ? `${accent}33` : `${accent}1A`,
                       color: accent,
                     }}
                   >
@@ -275,7 +273,7 @@ export function FaqAnswerWidget({
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
                 <p className="text-[11px] font-semibold text-neutral-400">
-                  helloii Ai answered
+                  Helloii AI answered
                 </p>
                 <div className="mt-1.5 max-w-[92%] rounded-[4px_14px_14px_14px] border border-white/50 bg-white/65 px-3.5 py-2.5 text-sm leading-6 text-neutral-700">
                   {turn.answer}
@@ -314,7 +312,7 @@ function TranscriptPair({
 
       <div>
         <p className="text-[11px] font-semibold text-neutral-400">
-          helloii Ai answered
+          Helloii AI answered
         </p>
         <div className="mt-1.5 max-w-[92%] rounded-[4px_14px_14px_14px] border border-white/50 bg-white/65 px-3.5 py-2.5 text-sm leading-6 text-neutral-700">
           {turn.answer}

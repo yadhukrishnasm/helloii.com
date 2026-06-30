@@ -1364,7 +1364,7 @@ function ChatPanel({
               flexShrink: 0,
             }}
           >
-            Powered by <strong style={{ color: "#6a6a73" }}>helloii Ai</strong>
+            Powered by <strong style={{ color: "#6a6a73" }}>Helloii AI</strong>
           </div>
         </div>
       </div>

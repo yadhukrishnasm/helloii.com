@@ -265,7 +265,7 @@ const FEATURES: {
     icon: KnowledgeBaseIcon,
     title: "Learns your whole store",
     description:
-      "helloii Ai reads your products, collections, and policies, so it knows everything on your site.",
+      "Helloii AI reads your products, collections, and policies, so it knows everything on your site.",
     accent: "#8B2FFF",
     accentLight: "#C4B5FD",
     cardBg: "#EDE9FE",
@@ -277,7 +277,7 @@ const FEATURES: {
     icon: AISparkleIcon,
     title: "Set up by itself",
     description:
-      "helloii Ai reads your store and gets to work automatically — nothing to configure.",
+      "Helloii AI reads your store and gets to work automatically — nothing to configure.",
     accent: "#1A56FF",
     accentLight: "#93C5FD",
     cardBg: "#DBEAFE",
@@ -289,7 +289,7 @@ const FEATURES: {
     icon: AnalyticsIcon,
     title: "Test in private",
     description:
-      "Run helloii Ai on your store quietly before switching it on for shoppers.",
+      "Run Helloii AI on your store quietly before switching it on for shoppers.",
     accent: "#5B4FFF",
     accentLight: "#A5B4FC",
     cardBg: "#E0E7FF",
@@ -301,7 +301,7 @@ const FEATURES: {
     icon: ChatboxIcon,
     title: "Human backup, built in",
     description:
-      "helloii Ai handles the routine and hands the tricky ones to you on WhatsApp.",
+      "Helloii AI handles the routine and hands the tricky ones to you on WhatsApp.",
     accent: "#8B2FFF",
     accentLight: "#C4B5FD",
     cardBg: "#EDE9FE",

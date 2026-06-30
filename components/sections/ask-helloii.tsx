@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Container } from "@/components/layout/container";
@@ -10,17 +10,12 @@ import { ALL_FAQS } from "@/lib/faq-data";
 // A few quick-start chips — clicking these still calls the real AI
 // endpoint, they're just convenience shortcuts to a pre-filled question.
 const SUGGESTED_QUESTIONS = [
-  "What is helloii Ai?",
+  "What is Helloii AI?",
   "How much does it cost?",
   "How long does setup take?",
   "Does it work with my Shopify store?",
   "Can I customize how it looks?",
 ];
-
-// Caps how many exchanges are visible at once before the transcript
-// scrolls internally — this is the box's max height, not a hard limit on
-// how many questions can be asked.
-const VISIBLE_EXCHANGES = 3;
 
 type Exchange = {
   id: number;
@@ -46,13 +41,8 @@ export function AskHelloii() {
   // Kept in memory only — resets on page refresh, no persistence.
   const [exchanges, setExchanges] = useState<Exchange[]>([]);
   const [nextId, setNextId] = useState(0);
-  const scrollRef = useRef<HTMLDivElement>(null);
 
   const loading = exchanges.some((e) => e.loading);
-
-  useEffect(() => {
-    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight });
-  }, [exchanges]);
 
   async function handleAsk(q: string) {
     const trimmed = q.trim();
@@ -121,17 +111,18 @@ export function AskHelloii() {
           </div>
 
           <h2 className="mt-5 text-3xl font-bold tracking-tight text-neutral-950 sm:text-4xl">
-            Ask helloii Ai anything.
+            Ask Helloii AI anything.
           </h2>
 
           <p className="mt-4 text-base leading-7 text-neutral-500">
             This is the same Question Box your customers will use — try it. Ask
-            about pricing, setup, or how it works, and helloii Ai answers
+            about pricing, setup, or how it works, and Helloii AI answers
             instantly.
           </p>
         </motion.div>
 
         <motion.div
+          layout
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
@@ -140,56 +131,53 @@ export function AskHelloii() {
         >
           {/* Chat-style transcript — user bubble on the right (liquid glass,
               same gradient bubble as the product animation's chatbox),
-              helloii Ai's reply on the left in a plain white bubble. Capped to
-              VISIBLE_EXCHANGES tall, scrolls internally beyond that. */}
-          {exchanges.length > 0 && (
-            <div
-              ref={scrollRef}
-              className="chat-scroll-thin relative z-10 mb-4 space-y-3 overflow-y-auto scroll-smooth"
-              style={{ maxHeight: `${VISIBLE_EXCHANGES * 116}px` }}
-            >
-              {exchanges.map((ex) => (
-                <div key={ex.id} className="space-y-3">
-                  <div className="flex flex-col items-end gap-1 px-4">
-                    <LiquidGlassBubble
-                      accent="#1A56FF"
-                      accentLight="#5A9CFF"
-                      className="max-w-[85%] rounded-[15px_15px_5px_15px] px-4 py-2.5"
-                    >
-                      <p className="text-sm font-bold leading-snug">
-                        {ex.question}
-                      </p>
-                    </LiquidGlassBubble>
-                  </div>
+              Helloii AI's reply on the left in a plain white bubble. Grows
+              with every exchange instead of scrolling internally — the
+              outer card's `layout` prop animates that growth smoothly
+              rather than snapping, and nothing here ever scrolls on its
+              own (no scrollIntoView/scrollTo calls). */}
+          <div className="relative z-10 mb-4 space-y-3">
+            {exchanges.map((ex) => (
+              <div key={ex.id} className="space-y-3">
+                <div className="flex flex-col items-end gap-1 px-4">
+                  <LiquidGlassBubble
+                    accent="#1A56FF"
+                    accentLight="#5A9CFF"
+                    className="max-w-[85%] rounded-[15px_15px_5px_15px] px-4 py-2.5"
+                  >
+                    <p className="text-sm font-bold leading-snug">
+                      {ex.question}
+                    </p>
+                  </LiquidGlassBubble>
+                </div>
 
-                  <div className="flex flex-col items-start gap-1">
-                    <div className="max-w-[85%] rounded-[15px_15px_15px_5px] bg-white px-4 py-2.5 shadow-[0_2px_8px_rgba(20,20,40,0.06)]">
-                      {ex.loading ? (
-                        <div className="flex items-center gap-1 py-0.5 px-10">
-                          {[0, 1, 2].map((i) => (
-                            <motion.span
-                              key={i}
-                              className="block h-1.5 w-1.5 rounded-full bg-neutral-300"
-                              animate={{ y: [0, -3, 0] }}
-                              transition={{
-                                duration: 0.8,
-                                repeat: Infinity,
-                                delay: i * 0.15,
-                              }}
-                            />
-                          ))}
-                        </div>
-                      ) : (
-                        <p className="text-sm leading-6 text-neutral-700">
-                          {ex.error ?? ex.answer}
-                        </p>
-                      )}
-                    </div>
+                <div className="flex flex-col items-start gap-1">
+                  <div className="max-w-[85%] rounded-[15px_15px_15px_5px] bg-white px-4 py-2.5 shadow-[0_2px_8px_rgba(20,20,40,0.06)]">
+                    {ex.loading ? (
+                      <div className="flex items-center gap-1 py-0.5 px-10">
+                        {[0, 1, 2].map((i) => (
+                          <motion.span
+                            key={i}
+                            className="block h-1.5 w-1.5 rounded-full bg-neutral-300"
+                            animate={{ y: [0, -3, 0] }}
+                            transition={{
+                              duration: 0.8,
+                              repeat: Infinity,
+                              delay: i * 0.15,
+                            }}
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      <p className="text-sm leading-6 text-neutral-700">
+                        {ex.error ?? ex.answer}
+                      </p>
+                    )}
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
+              </div>
+            ))}
+          </div>
 
           {/* Suggested questions only show once a chat has actually started —
               keeps the empty state clean, and gives quick follow-ups once
@@ -205,7 +193,7 @@ export function AskHelloii() {
             <input
               value={question}
               onChange={(e) => setQuestion(e.target.value)}
-              placeholder="Ask a question about helloii Ai…"
+              placeholder="Ask a question about Helloii AI…"
               maxLength={300}
               className="glass-item w-full rounded-full px-5 py-3 text-sm text-neutral-950 placeholder:text-neutral-400 outline-none"
             />
@@ -225,7 +213,7 @@ export function AskHelloii() {
             </button>
           </form>
           <p className="pointer-events-none select-none text-center text-[10px] font-medium m-3  text-neutral-400/60">
-            powered by helloii Ai
+            powered by Helloii AI
           </p>
           <div className="relative z-10 mb-4 flex flex-wrap gap-2 justify-center">
             {SUGGESTED_QUESTIONS.map((q) => (

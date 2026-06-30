@@ -70,8 +70,8 @@ export function AnimatedBackground() {
   });
 
   useEffect(() => {
-    mouseX.set(window.innerWidth / 2);
-    mouseY.set(window.innerHeight / 2);
+    mouseX.set(document.documentElement.clientWidth / 2);
+    mouseY.set(document.documentElement.clientHeight / 2);
 
     const onMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
@@ -89,8 +89,8 @@ export function AnimatedBackground() {
   // mobile hydration. useLayoutEffect (not useEffect) is what guarantees
   // "before paint" here.
   useLayoutEffect(() => {
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
+    const vw = document.documentElement.clientWidth;
+    const vh = document.documentElement.clientHeight;
 
     BLOBS.forEach((blob, i) => {
       const el = blobRefs.current[i];
@@ -110,8 +110,8 @@ export function AnimatedBackground() {
       if (startTime === null) startTime = ts;
       const time = (ts - startTime) / 1000; // seconds
 
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
+      const vw = document.documentElement.clientWidth;
+      const vh = document.documentElement.clientHeight;
 
       BLOBS.forEach((blob, i) => {
         const el = blobRefs.current[i];

@@ -1,4 +1,4 @@
-import type { ChatPreviewTurn } from "@/components/ui/product-revealt-chat";
+import type { ChatPreviewTurn } from "@/components/scroll-story/product-revealt-chat";
 
 export type StatIconName = "clock" | "chat" | "ticket" | "spark" | "target";
 
@@ -32,9 +32,9 @@ export const FLOWS: Flow[] = [
   {
     tag: "Instant Answers",
     headline:
-      "helloii Ai answers customer questions about products, shipping, payment, or anything else on your store.",
+      "Helloii AI answers customer questions about products, shipping, payment, or anything else on your store.",
     description:
-      "Instead of leaving customers to figure it out, helloii Ai gives them an instant, accurate answer — so they don't open a support ticket or leave.",
+      "Instead of leaving customers to figure it out, Helloii AI gives them an instant, accurate answer — so they don't open a support ticket or leave.",
     accent: "#1A56FF",
     turns: [
       {
@@ -65,9 +65,9 @@ export const FLOWS: Flow[] = [
   {
     tag: "Product recommendations",
     headline:
-      "helloii Ai asks the right questions and recommends the exact product the customer is looking for.",
+      "Helloii AI asks the right questions and recommends the exact product the customer is looking for.",
     description:
-      "Instead of leaving customers to dig through your catalog, helloii Ai guides them to the right product — and lifts conversions.",
+      "Instead of leaving customers to dig through your catalog, Helloii AI guides them to the right product — and lifts conversions.",
     accent: "#8B2FFF",
     turns: [
       {
@@ -78,12 +78,14 @@ export const FLOWS: Flow[] = [
           {
             name: "Fragrance-Free Hydrating Set",
             price: "₹1,299",
-            icon: "skincare",
+            imageQuery: "lotion",
+            imageLock: 1,
           },
           {
             name: "Calm & Restore Gift Box",
             price: "₹1,599",
-            icon: "gift",
+            imageQuery: "wrapped-gift",
+            imageLock: 5,
           },
         ],
       },
@@ -95,7 +97,9 @@ export const FLOWS: Flow[] = [
           {
             name: "Stride Support Trainer",
             price: "₹3,499",
-            icon: "shoes",
+            imageUrl: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=264&h=200&fit=crop&auto=format",
+            imageQuery: "adidas",
+            imageLock: 3,
           },
         ],
       },
@@ -106,12 +110,14 @@ export const FLOWS: Flow[] = [
           {
             name: "Medium Roast Hazelnut",
             price: "₹549",
-            icon: "coffee",
+            imageQuery: "roasted-coffee",
+            imageLock: 1,
           },
           {
             name: "Dark Roast Classic",
             price: "₹499",
-            icon: "coffee",
+            imageQuery: "roasted-coffee",
+            imageLock: 2,
           },
         ],
       },
@@ -130,7 +136,7 @@ export const FLOWS: Flow[] = [
     tag: "Smart FAQs",
     headline: "No more predefined FAQs.",
     description:
-      "helloii Ai answers any question a customer asks while browsing — not just a fixed list.",
+      "Helloii AI answers any question a customer asks while browsing — not just a fixed list.",
     accent: "#5B4FFF",
     faqWidget: {
       placeholder: "Type your question here…",

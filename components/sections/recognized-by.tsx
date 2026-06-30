@@ -23,7 +23,7 @@ const CUSTOMERS = [
   },
   {
     name: "Gold Age",
-    src: "https://goldage.life/cdn/shop/files/AD906D9D-0C9C-470D-8073-5F2237B44DE7-2_90x.jpg?v=1651237394",
+    src: "/logos/goldage.png",
     flat: true,
   },
   {
@@ -32,6 +32,7 @@ const CUSTOMERS = [
   },
 ];
 
+//flat is true for  locally stored images
 type Customer = {
   name: string;
   src: string | null;
@@ -127,7 +128,7 @@ function CustomerLogo({ customer }: { customer: Customer }) {
             src={customer.src}
             alt={customer.name}
             loading="lazy"
-            className="relative z-10 h-9 w-auto max-w-[120px] rounded-md object-contain opacity-60 grayscale transition-all duration-300 ease-out group-hover:opacity-100 group-hover:grayscale-0"
+            className="relative z-10 h-9 w-auto max-w-[120px] object-contain opacity-60 brightness-0 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:grayscale-0"
           />
         ) : (
           <img
