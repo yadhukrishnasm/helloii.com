@@ -6,7 +6,7 @@ type IconProps = { color: string };
 
 function InstallIcon({ color }: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" width="46%" height="46%">
+    <svg viewBox="0 0 24 24" fill="none" width="56%" height="56%">
       <path
         d="M12 3v12m0 0-4-4m4 4 4-4"
         stroke={color}
@@ -27,7 +27,7 @@ function InstallIcon({ color }: IconProps) {
 
 function SyncIcon({ color }: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" width="46%" height="46%">
+    <svg viewBox="0 0 24 24" fill="none" width="56%" height="56%">
       <path
         d="M4 12a8 8 0 0 1 14-5.3L20 8"
         stroke={color}
@@ -62,7 +62,7 @@ function SyncIcon({ color }: IconProps) {
 
 function ChatIcon({ color }: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" width="46%" height="46%">
+    <svg viewBox="0 0 24 24" fill="none" width="56%" height="56%">
       <path
         d="M4 5h16v11H9l-4 4V5Z"
         stroke={color}
@@ -81,7 +81,7 @@ function ChatIcon({ color }: IconProps) {
 
 function GrowthIcon({ color }: IconProps) {
   return (
-    <svg viewBox="0 0 24 24" fill="none" width="46%" height="46%">
+    <svg viewBox="0 0 24 24" fill="none" width="56%" height="56%">
       <path
         d="M4 18 9 12l4 3 7-8"
         stroke={color}

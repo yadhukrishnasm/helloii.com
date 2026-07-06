@@ -149,14 +149,14 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col gap-5 border-t border-neutral-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-neutral-500">
-            © Helloii.com, from the House of Nysaclan —{" "}
+            © Helloii.com, from the{" "}
             <a
               href="https://nysaclan.com"
               target="_blank"
               rel="noreferrer"
               className="transition-colors hover:text-neutral-950"
             >
-              Nysaclan.com
+              House of Nysaclan
             </a>
           </p>
 

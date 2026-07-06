@@ -190,7 +190,7 @@ function MobileStep({
             accentLight={step.accentLight}
             className="flex h-full w-full items-center justify-center rounded-2xl shadow-[0_14px_36px_rgba(26,86,255,0.12)]"
           >
-            <StepIcon name={step.icon} color={step.accent} />
+            <StepIcon name={step.icon} color="white" />
           </LiquidGlassBubble>
         </motion.div>
       </div>

@@ -156,7 +156,7 @@ function DesktopStep({
           accentLight={step.accentLight}
           className="flex h-full w-full items-center justify-center rounded-[1.4rem] shadow-[0_18px_45px_rgba(26,86,255,0.18)]"
         >
-          <StepIcon name={step.icon} color={step.accent} />
+          <StepIcon name={step.icon} color="white" />
         </LiquidGlassBubble>
       </motion.div>
 
