@@ -110,7 +110,7 @@ export function MobileHowItWorks() {
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute left-6 z-0 w-[3px] -translate-x-1/2 overflow-hidden rounded-full bg-neutral-200/60"
+        className="pointer-events-none absolute left-6 z-0 w-[3px] -translate-x-1/2 overflow-hidden rounded-full bg-neutral-300/80"
         style={{
           top: lineMetrics.top,
           height: lineMetrics.height,
@@ -183,7 +183,7 @@ function MobileStep({
         <motion.div
           ref={iconRef}
           style={{ opacity, scale }}
-          className="h-12 w-12 shrink-0"
+          className="h-12 w-12 shrink-0 bg-white rounded-2xl"
         >
           <LiquidGlassBubble
             accent={step.accent}
