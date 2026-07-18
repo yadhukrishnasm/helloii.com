@@ -30,6 +30,7 @@ const MIN_EDGE = 0.0001;
  * pointer-events: none instead of being unmounted, so nothing pops in
  * abruptly and layout never shifts.
  */
+
 export function SceneFrame({
   progress,
   start,

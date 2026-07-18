@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "product discovery AI",
   ],
   alternates: {
-    canonical: siteUrl,
+    canonical: "/",
   },
   openGraph: {
     title: "Helloii AI — AI Shopping Assistant for Shopify Stores",

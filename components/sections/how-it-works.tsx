@@ -39,10 +39,10 @@ export function HowItWorks() {
       </Container>
 
       {/* startOffset="86%" — calibrated so the story's progress (and so
-          the line/step reveal) starts while the heading above is still
-          about 60% down the viewport, instead of waiting until the
-          story has scrolled all the way to the top (which is also right
-          where it pins). Same approach as ProductReveal's ScrollStory. */}
+      the line/step reveal) starts while the heading above is still
+      about 60% down the viewport, instead of waiting until the
+      story has scrolled all the way to the top (which is also right
+      where it pins). Same approach as ProductReveal's ScrollStory. */}
       <ScrollStory
         className="mt-16"
         heightVh={HEIGHT_VH}
