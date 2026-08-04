@@ -5,7 +5,16 @@ import { Database, ShieldCheck, Scale, type LucideIcon } from "lucide-react";
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/ui/reveal";
 
-const GROUPS: { heading: string; icon: LucideIcon; sections: any[] }[] = [
+const GROUPS: {
+  heading: string;
+  icon: LucideIcon;
+  sections: {
+    title: string;
+    body: string[];
+    list?: string[];
+    footer?: string;
+  }[];
+}[] = [
   {
     heading: "What we collect & how we use it",
     icon: Database,
@@ -18,7 +27,9 @@ const GROUPS: { heading: string; icon: LucideIcon; sections: any[] }[] = [
       },
       {
         title: "Information we collect",
-        body: ["When a merchant installs Helloii, Shopify grants us access to the following via API scopes:"],
+        body: [
+          "When a merchant installs Helloii, Shopify grants us access to the following via API scopes:",
+        ],
         list: [
           "Products, theme, and store content — used to power accurate chatbot answers",
           "Orders — used to answer order-status and tracking questions",
@@ -89,15 +100,21 @@ const GROUPS: { heading: string; icon: LucideIcon; sections: any[] }[] = [
       },
       {
         title: "Children's data",
-        body: ["Helloii is not directed at children, and we do not knowingly collect data from children under 16."],
+        body: [
+          "Helloii is not directed at children, and we do not knowingly collect data from children under 16.",
+        ],
       },
       {
         title: "Changes to this policy",
-        body: ["We may update this policy over time. Material changes will be posted here with an updated date."],
+        body: [
+          "We may update this policy over time. Material changes will be posted here with an updated date.",
+        ],
       },
       {
         title: "Contact us",
-        body: ["Questions about this policy or your data? Email us at hello@helloii.com."],
+        body: [
+          "Questions about this policy or your data? Email us at hello@helloii.com.",
+        ],
       },
     ],
   },
@@ -105,7 +122,10 @@ const GROUPS: { heading: string; icon: LucideIcon; sections: any[] }[] = [
 
 export default function PrivacyPolicy() {
   return (
-    <section id="privacy-policy" className="relative overflow-hidden py-24 sm:py-32 lg:py-40">
+    <section
+      id="privacy-policy"
+      className="relative overflow-hidden py-24 sm:py-32 lg:py-40"
+    >
       <div className="pointer-events-none absolute left-[8%] top-[10%] -z-10 h-[320px] w-[320px] rounded-full bg-[#1A56FF]/10 blur-[100px] sm:h-[480px] sm:w-[480px]" />
       <div className="pointer-events-none absolute right-[8%] bottom-[10%] -z-10 h-[320px] w-[320px] rounded-full bg-[#8B2FFF]/10 blur-[100px] sm:h-[480px] sm:w-[480px]" />
 
@@ -125,12 +145,15 @@ export default function PrivacyPolicy() {
 
           <Reveal>
             <p className="mx-auto mt-7 max-w-2xl text-base leading-8 text-neutral-600 sm:text-lg">
-              How Helloii AI collects, uses, and protects data for merchants and their customers.
+              How Helloii AI collects, uses, and protects data for merchants and
+              their customers.
             </p>
           </Reveal>
 
           <Reveal>
-            <p className="mt-3 text-sm text-neutral-400">Last updated: August 4, 2026</p>
+            <p className="mt-3 text-sm text-neutral-400">
+              Last updated: August 4, 2026
+            </p>
           </Reveal>
         </div>
 
@@ -140,7 +163,10 @@ export default function PrivacyPolicy() {
               <div className="overflow-hidden rounded-[32px] border border-white/60 bg-white/65 p-6 shadow-[0_18px_50px_rgba(0,0,0,0.06)] backdrop-blur-md sm:p-10">
                 <div className="flex items-center gap-4">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#1A56FF] to-[#8B2FFF]">
-                    <group.icon className="h-6 w-6 text-white" strokeWidth={2} />
+                    <group.icon
+                      className="h-6 w-6 text-white"
+                      strokeWidth={2}
+                    />
                   </div>
                   <h2 className="text-xl font-bold tracking-tight text-neutral-950 sm:text-2xl lg:text-3xl">
                     {group.heading}
@@ -163,7 +189,10 @@ export default function PrivacyPolicy() {
 
                       <div className="mt-3 space-y-3">
                         {section.body.map((paragraph) => (
-                          <p key={paragraph} className="text-base leading-8 text-neutral-600 sm:text-lg">
+                          <p
+                            key={paragraph}
+                            className="text-base leading-8 text-neutral-600 sm:text-lg"
+                          >
                             {paragraph}
                           </p>
                         ))}
@@ -171,7 +200,10 @@ export default function PrivacyPolicy() {
                         {section.list && (
                           <ul className="space-y-2.5 pl-1">
                             {section.list.map((item) => (
-                              <li key={item} className="flex gap-3 text-base leading-8 text-neutral-600 sm:text-lg">
+                              <li
+                                key={item}
+                                className="flex gap-3 text-base leading-8 text-neutral-600 sm:text-lg"
+                              >
                                 <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[#1A56FF]" />
                                 <span>{item}</span>
                               </li>
@@ -180,7 +212,9 @@ export default function PrivacyPolicy() {
                         )}
 
                         {section.footer && (
-                          <p className="text-base leading-8 text-neutral-600 sm:text-lg">{section.footer}</p>
+                          <p className="text-base leading-8 text-neutral-600 sm:text-lg">
+                            {section.footer}
+                          </p>
                         )}
                       </div>
                     </div>
