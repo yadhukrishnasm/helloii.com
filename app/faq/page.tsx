@@ -29,11 +29,10 @@ export const metadata: Metadata = {
 export default function FAQPage() {
   return (
     <>
-      <Navbar />
+
       <main className="pt-20">
         <FAQ />
       </main>
-      <Footer />
     </>
   );
 }

@@ -28,10 +28,11 @@ const LINK_COLUMNS = [
   {
     heading: "Product",
     links: [
-      { label: "Product", href: "/#product", homeOnly: true },
-      { label: "Features", href: "/#features", homeOnly: true },
-      { label: "Pricing", href: "/#pricing", homeOnly: true },
+      { label: "Product", href: "/#product", homeOnly: false },
+      { label: "Features", href: "/#features", homeOnly: false },
+      { label: "Pricing", href: "/#pricing", homeOnly: false },
       { label: "FAQ", href: "/faq", homeOnly: false },
+      { label: "Privacy Policy", href: "/policy", homeOnly: false },
     ],
   },
   {

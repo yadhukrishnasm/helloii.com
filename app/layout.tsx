@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import { AnimatedBackground } from "@/components/animated-background";
-import SmoothScroll from "@/components/smooth-scroll";
 import { GoogleAnalytics } from "@/components/google-analytics";
 import { siteUrl, siteDescription } from "@/lib/site";
+import { Footer } from "@/components/sections/footer";
+import { Navbar } from "@/components/layout/navbar";
 
 const ENTITY_SENTENCE = siteDescription;
 
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     "product discovery AI",
   ],
   alternates: {
-    canonical: "/",
+    canonical: siteUrl,
   },
   openGraph: {
     title: "Helloii AI — AI Shopping Assistant for Shopify Stores",
@@ -147,8 +148,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="min-h-screen text-neutral-950 antialiased">
         <AnimatedBackground />
+        <Navbar />
         {children}
-
+        <Footer />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSON_LD) }}

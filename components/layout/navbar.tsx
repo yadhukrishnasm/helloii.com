@@ -33,28 +33,27 @@ export function Navbar() {
             </Link>
 
             <nav className="hidden items-center gap-6 md:flex">
-              {isHome && (
-                <>
-                  <a
-                    href="#product"
-                    className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
-                  >
-                    Product
-                  </a>
-                  <a
-                    href="#features"
-                    className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
-                  >
-                    Features
-                  </a>
-                  <a
-                    href="#pricing"
-                    className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
-                  >
-                    Pricing
-                  </a>
-                </>
-              )}
+              <>
+                <a
+                  href="#product"
+                  className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
+                >
+                  Product
+                </a>
+                <a
+                  href="#features"
+                  className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
+                >
+                  Features
+                </a>
+                <a
+                  href="#pricing"
+                  className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"
+                >
+                  Pricing
+                </a>
+              </>
+
               <Link
                 href="/faq"
                 className="text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-950"

@@ -38,7 +38,7 @@ export default function HomePage() {
         <AskHelloii />
         <CTABanner />
       </main>
-      <Footer />
+
     </>
   );
 }
